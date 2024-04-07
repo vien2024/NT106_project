@@ -1,0 +1,22 @@
+D:\Workspace\LTM Project\Login Form\bin\Debug\net8.0-windows\Login Form.exe
+D:\Workspace\LTM Project\Login Form\bin\Debug\net8.0-windows\Guna.UI2.dll
+D:\Workspace\LTM Project\Login Form\bin\Debug\net8.0-windows\System.Management.dll
+D:\Workspace\LTM Project\Login Form\bin\Debug\net8.0-windows\runtimes\win\lib\net7.0\System.Management.dll
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login Form.csproj.AssemblyReference.cache
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login_Form.Form1.resources
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login_Form.Properties.Resources.resources
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login Form.csproj.GenerateResource.cache
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login Form.GeneratedMSBuildEditorConfig.editorconfig
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login Form.AssemblyInfoInputs.cache
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login Form.AssemblyInfo.cs
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login Form.csproj.CoreCompileInputs.cache
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login Form.csproj.Up2Date
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login Form.dll
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\refint\Login Form.dll
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login Form.pdb
+D:\Workspace\LTM Project\Login Form\bin\Debug\net8.0-windows\Login Form.deps.json
+D:\Workspace\LTM Project\Login Form\bin\Debug\net8.0-windows\Login Form.runtimeconfig.json
+D:\Workspace\LTM Project\Login Form\bin\Debug\net8.0-windows\Login Form.dll
+D:\Workspace\LTM Project\Login Form\bin\Debug\net8.0-windows\Login Form.pdb
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\Login Form.genruntimeconfig.cache
+D:\Workspace\LTM Project\Login Form\obj\Debug\net8.0-windows\ref\Login Form.dll
