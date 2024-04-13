@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NT106_project", "NT106_project.csproj", "{6DDCAC5C-F330-4D20-9348-9454FFB11644}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Login Form", "..\..\Workspace\LTM Project\Login Form\Login Form.csproj", "{41526B88-8268-43F3-91A9-4DFE15D0FCD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Login Form", "Login Form\Login Form.csproj", "{41526B88-8268-43F3-91A9-4DFE15D0FCD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
