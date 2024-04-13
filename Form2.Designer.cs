@@ -1,14 +1,14 @@
-﻿namespace Login_Form
+﻿namespace NT106_project
 {
-    partial class Form1
+    partial class Form2
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,8 +23,8 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -44,8 +44,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            btn_lgnpanel = new Button();
-            btn_supanel = new Button();
+            label6 = new Label();
             panel1 = new Panel();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             label3 = new Label();
@@ -53,8 +52,7 @@
             guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
             guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             label1 = new Label();
-            panel2 = new Panel();
-            label9 = new Label();
+            btn_supanel = new Button();
             guna2TextBox7 = new Guna.UI2.WinForms.Guna2TextBox();
             label8 = new Label();
             guna2TextBox6 = new Guna.UI2.WinForms.Guna2TextBox();
@@ -62,33 +60,23 @@
             label4 = new Label();
             label5 = new Label();
             guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
+            btn_lgnpanel = new Button();
             guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
-            label6 = new Label();
+            label9 = new Label();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // btn_lgnpanel
+            // label6
             // 
-            btn_lgnpanel.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            btn_lgnpanel.Location = new Point(10, 12);
-            btn_lgnpanel.Name = "btn_lgnpanel";
-            btn_lgnpanel.Size = new Size(184, 38);
-            btn_lgnpanel.TabIndex = 0;
-            btn_lgnpanel.Text = "Login";
-            btn_lgnpanel.UseVisualStyleBackColor = true;
-            btn_lgnpanel.Click += btn_lgnpanel_Click;
-            // 
-            // btn_supanel
-            // 
-            btn_supanel.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            btn_supanel.Location = new Point(194, 12);
-            btn_supanel.Name = "btn_supanel";
-            btn_supanel.Size = new Size(180, 38);
-            btn_supanel.TabIndex = 3;
-            btn_supanel.Text = "Signup";
-            btn_supanel.UseVisualStyleBackColor = true;
-            btn_supanel.Click += btn_supanel_Click;
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 16F);
+            label6.Location = new Point(149, 16);
+            label6.Name = "label6";
+            label6.Size = new Size(80, 30);
+            label6.TabIndex = 8;
+            label6.Text = "Signup";
             // 
             // panel1
             // 
@@ -102,7 +90,7 @@
             panel1.Location = new Point(12, 56);
             panel1.Name = "panel1";
             panel1.Size = new Size(362, 382);
-            panel1.TabIndex = 4;
+            panel1.TabIndex = 11;
             // 
             // guna2Button1
             // 
@@ -195,32 +183,16 @@
             label1.TabIndex = 1;
             label1.Text = "Login";
             // 
-            // panel2
+            // btn_supanel
             // 
-            panel2.BackColor = SystemColors.Window;
-            panel2.Controls.Add(label9);
-            panel2.Controls.Add(guna2TextBox7);
-            panel2.Controls.Add(label8);
-            panel2.Controls.Add(guna2TextBox6);
-            panel2.Controls.Add(guna2Button2);
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(guna2TextBox3);
-            panel2.Controls.Add(guna2TextBox4);
-            panel2.Controls.Add(label6);
-            panel2.Location = new Point(12, 56);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(362, 382);
-            panel2.TabIndex = 8;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(39, 98);
-            label9.Name = "label9";
-            label9.Size = new Size(26, 15);
-            label9.TabIndex = 19;
-            label9.Text = "Họ:";
+            btn_supanel.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btn_supanel.Location = new Point(194, 12);
+            btn_supanel.Name = "btn_supanel";
+            btn_supanel.Size = new Size(180, 38);
+            btn_supanel.TabIndex = 10;
+            btn_supanel.Text = "Signup";
+            btn_supanel.UseVisualStyleBackColor = true;
+            btn_supanel.Click += btn_supanel_Click;
             // 
             // guna2TextBox7
             // 
@@ -335,6 +307,17 @@
             guna2TextBox3.Size = new Size(208, 32);
             guna2TextBox3.TabIndex = 10;
             // 
+            // btn_lgnpanel
+            // 
+            btn_lgnpanel.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            btn_lgnpanel.Location = new Point(10, 12);
+            btn_lgnpanel.Name = "btn_lgnpanel";
+            btn_lgnpanel.Size = new Size(184, 38);
+            btn_lgnpanel.TabIndex = 9;
+            btn_lgnpanel.Text = "Login";
+            btn_lgnpanel.UseVisualStyleBackColor = true;
+            btn_lgnpanel.Click += btn_lgnpanel_Click;
+            // 
             // guna2TextBox4
             // 
             guna2TextBox4.BorderColor = Color.Black;
@@ -358,29 +341,44 @@
             guna2TextBox4.Size = new Size(208, 32);
             guna2TextBox4.TabIndex = 9;
             // 
-            // label6
+            // label9
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 16F);
-            label6.Location = new Point(149, 16);
-            label6.Name = "label6";
-            label6.Size = new Size(80, 30);
-            label6.TabIndex = 8;
-            label6.Text = "Signup";
+            label9.AutoSize = true;
+            label9.Location = new Point(39, 98);
+            label9.Name = "label9";
+            label9.Size = new Size(26, 15);
+            label9.TabIndex = 19;
+            label9.Text = "Họ:";
             // 
-            // Form1
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.Window;
+            panel2.Controls.Add(label9);
+            panel2.Controls.Add(guna2TextBox7);
+            panel2.Controls.Add(label8);
+            panel2.Controls.Add(guna2TextBox6);
+            panel2.Controls.Add(guna2Button2);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(guna2TextBox3);
+            panel2.Controls.Add(guna2TextBox4);
+            panel2.Controls.Add(label6);
+            panel2.Location = new Point(12, 56);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(362, 382);
+            panel2.TabIndex = 12;
+            // 
+            // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
             ClientSize = new Size(384, 450);
             Controls.Add(panel1);
             Controls.Add(btn_supanel);
             Controls.Add(btn_lgnpanel);
             Controls.Add(panel2);
-            Name = "Form1";
-            Text = "Form1";
-            Load += Form1_Load;
+            Name = "Form2";
+            Text = "Form2";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -390,25 +388,25 @@
 
         #endregion
 
-        private Button btn_lgnpanel;
-        private Button btn_supanel;
+        private Label label6;
         private Panel panel1;
-        private Label label1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Label label3;
         private Label label2;
-        private Panel panel2;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Label label1;
+        private Button btn_supanel;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox7;
         private Label label8;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox6;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Label label4;
         private Label label5;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+        private Button btn_lgnpanel;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
-        private Label label6;
         private Label label9;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox7;
+        private Panel panel2;
     }
 }
