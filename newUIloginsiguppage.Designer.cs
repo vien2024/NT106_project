@@ -232,12 +232,12 @@
             // guna2HtmlLabel2
             // 
             guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Font = new Font("Segoe UI", 30F);
-            guna2HtmlLabel2.Location = new Point(18, 85);
+            guna2HtmlLabel2.Font = new Font("Segoe UI", 27F);
+            guna2HtmlLabel2.Location = new Point(18, 92);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(374, 69);
+            guna2HtmlLabel2.Size = new Size(473, 63);
             guna2HtmlLabel2.TabIndex = 2;
-            guna2HtmlLabel2.Text = "WELCOME TO ....";
+            guna2HtmlLabel2.Text = "WELCOME TO RAPDIZZ";
             // 
             // guna2HtmlLabel3
             // 
