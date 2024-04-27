@@ -100,7 +100,7 @@
             guna2CircleButton1.Name = "guna2CircleButton1";
             guna2CircleButton1.ShadowDecoration.CustomizableEdges = customizableEdges1;
             guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CircleButton1.Size = new Size(75, 75);
+            guna2CircleButton1.Size = new Size(85, 75);
             guna2CircleButton1.TabIndex = 2;
             // 
             // guna2CustomGradientPanel2
