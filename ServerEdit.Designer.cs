@@ -28,59 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Delete = new Button();
-            ban = new Button();
             lbEmailname = new Label();
             label1 = new Label();
             label3 = new Label();
-            button5 = new Button();
-            button7 = new Button();
             label4 = new Label();
-            button2 = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             label2 = new Label();
-            button4 = new Button();
             label5 = new Label();
             label6 = new Label();
             ListInfo = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             name = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
+            textBox4 = new TextBox();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)ListInfo).BeginInit();
             SuspendLayout();
-            // 
-            // Delete
-            // 
-            Delete.BackColor = Color.Brown;
-            Delete.Font = new Font("Segoe UI", 12F);
-            Delete.ForeColor = SystemColors.ButtonFace;
-            Delete.Location = new Point(168, 218);
-            Delete.Name = "Delete";
-            Delete.Size = new Size(100, 44);
-            Delete.TabIndex = 2;
-            Delete.Text = "Delete";
-            Delete.UseVisualStyleBackColor = false;
-            Delete.Click += button3_Click;
-            // 
-            // ban
-            // 
-            ban.BackColor = Color.Firebrick;
-            ban.Font = new Font("Segoe UI", 12F);
-            ban.ForeColor = SystemColors.ButtonFace;
-            ban.Location = new Point(317, 218);
-            ban.Name = "ban";
-            ban.Size = new Size(107, 44);
-            ban.TabIndex = 3;
-            ban.Text = "Ban";
-            ban.UseVisualStyleBackColor = false;
-            ban.Click += ban_Click;
             // 
             // lbEmailname
             // 
             lbEmailname.AutoEllipsis = true;
             lbEmailname.BackColor = Color.Gray;
             lbEmailname.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbEmailname.Location = new Point(216, 9);
+            lbEmailname.Location = new Point(168, 9);
             lbEmailname.Name = "lbEmailname";
             lbEmailname.Size = new Size(150, 37);
             lbEmailname.TabIndex = 4;
@@ -108,27 +83,6 @@
             label3.TabIndex = 10;
             label3.Text = "Status: ";
             // 
-            // button5
-            // 
-            button5.BackColor = Color.Silver;
-            button5.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(168, 68);
-            button5.Name = "button5";
-            button5.Size = new Size(256, 33);
-            button5.TabIndex = 7;
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
-            // 
-            // button7
-            // 
-            button7.BackColor = Color.Silver;
-            button7.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.Location = new Point(168, 119);
-            button7.Name = "button7";
-            button7.Size = new Size(256, 33);
-            button7.TabIndex = 12;
-            button7.UseVisualStyleBackColor = false;
-            // 
             // label4
             // 
             label4.AutoEllipsis = true;
@@ -140,46 +94,24 @@
             label4.TabIndex = 13;
             label4.Text = "Find:";
             // 
-            // button2
-            // 
-            button2.BackColor = Color.Silver;
-            button2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(168, 170);
-            button2.Name = "button2";
-            button2.Size = new Size(256, 33);
-            button2.TabIndex = 14;
-            button2.UseVisualStyleBackColor = false;
-            // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.BackColor = Color.Gainsboro;
-            flowLayoutPanel1.Location = new Point(32, 49);
+            flowLayoutPanel1.Location = new Point(24, 49);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(429, 299);
             flowLayoutPanel1.TabIndex = 15;
-            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // label2
             // 
             label2.AutoEllipsis = true;
             label2.BackColor = Color.Gainsboro;
             label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(50, 115);
+            label2.Location = new Point(50, 119);
             label2.Name = "label2";
-            label2.Size = new Size(112, 37);
+            label2.Size = new Size(112, 33);
             label2.TabIndex = 16;
             label2.Text = "User ID:";
-            label2.Click += label2_Click;
-            // 
-            // button4
-            // 
-            button4.BackColor = Color.Silver;
-            button4.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(168, 281);
-            button4.Name = "button4";
-            button4.Size = new Size(256, 33);
-            button4.TabIndex = 17;
-            button4.UseVisualStyleBackColor = false;
             // 
             // label5
             // 
@@ -197,7 +129,7 @@
             label6.AutoEllipsis = true;
             label6.BackColor = Color.Gray;
             label6.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(578, 9);
+            label6.Location = new Point(639, 9);
             label6.Name = "label6";
             label6.Size = new Size(150, 37);
             label6.TabIndex = 20;
@@ -239,53 +171,123 @@
             Status.Name = "Status";
             Status.Width = 125;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(168, 74);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(250, 27);
+            textBox1.TabIndex = 22;
+
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(168, 176);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(250, 27);
+            textBox2.TabIndex = 23;
+
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(168, 125);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(250, 27);
+            textBox3.TabIndex = 24;
+
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(168, 287);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(250, 27);
+            textBox4.TabIndex = 25;
+            textBox4.TextChanged += textBox4_TextChanged;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Firebrick;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(168, 218);
+            button1.Name = "button1";
+            button1.Size = new Size(72, 44);
+            button1.TabIndex = 26;
+            button1.Text = "Delete";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Firebrick;
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(246, 218);
+            button2.Name = "button2";
+            button2.Size = new Size(92, 44);
+            button2.TabIndex = 27;
+            button2.Text = "Reset";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.Firebrick;
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(344, 217);
+            button3.Name = "button3";
+            button3.Size = new Size(74, 44);
+            button3.TabIndex = 28;
+            button3.Text = "Ban";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click_1;
+            // 
             // ServerEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
             ClientSize = new Size(958, 545);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(textBox4);
+            Controls.Add(textBox3);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Controls.Add(ListInfo);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(button4);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button2);
             Controls.Add(label4);
-            Controls.Add(button7);
             Controls.Add(label3);
-            Controls.Add(button5);
             Controls.Add(lbEmailname);
-            Controls.Add(ban);
-            Controls.Add(Delete);
             Controls.Add(flowLayoutPanel1);
             Name = "ServerEdit";
             Text = "ServerEdit";
             Load += ServerEdit_Load;
             ((System.ComponentModel.ISupportInitialize)ListInfo).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Button Delete;
-        private Button ban;
         private Label lbEmailname;
         private Label label1;
         private Label label3;
-        private Button button5;
-        private Button button7;
         private Label label4;
-        private Button button2;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label label2;
-        private Button button4;
         private Label label5;
         private Label label6;
         private DataGridView ListInfo;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn Status;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }
