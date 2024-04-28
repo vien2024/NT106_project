@@ -1,0 +1,43 @@
+CREATE DATABASE UserDB;
+GO
+USE UserDB;
+GO
+ 
+CREATE TABLE UserInfo
+(
+ Email VARCHAR(100) PRIMARY KEY,
+ UserName VARCHAR(50),
+ Status VARCHAR(50)
+)
+GO
+ 
+INSERT INTO UserInfo VALUES (1, 'Vien', 'normal')
+INSERT INTO UserInfo VALUES (2, 'Danh', 'normal')
+INSERT INTO UserInfo VALUES (3, 'Trong', 'normal')
+INSERT INTO UserInfo VALUES (4, 'Nhat', 'normal')
+GO
+
+create proc [dbo].[SP_Retrieve_Users]
+as
+begin
+    select * from UserInfo
+end
+
+create proc [dbo].[SP_SuaStatus]
+@Ten nvarchar(50),
+@Email nvarchar(50),
+@Status nvarchar(50)
+as
+begin
+    update UserInfo set
+    UserName = @Ten,
+    Status = @Status
+    where Email = @Email
+end
+
+create proc [dbo].[SP_XoaUser]
+@Email nvarchar(50)
+as
+begin
+    delete UserInfo where Email = @Email
+end
