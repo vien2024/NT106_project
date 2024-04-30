@@ -59,5 +59,115 @@ namespace NT106_project.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap download {
+            get {
+                object obj = ResourceManager.GetObject("download", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap download__3__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("download__3_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap download_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("download-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_resize_1cyJKAcrqG_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-resize-1cyJKAcrqG-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_resize_4ivJ0DN7wEBN_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-resize-4ivJ0DN7wEBN-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_resize_B3FDY85Dd3dI {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-resize-B3FDY85Dd3dI", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_resize_DnsoNp80ODzX_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-resize-DnsoNp80ODzX-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_resize_QHQkEgi9lfIxtSn_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-resize-QHQkEgi9lfIxtSn-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_resize_R7nmjNBd5Kxw0zi_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-resize-R7nmjNBd5Kxw0zi-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_resize_v2ggb40zwLrTbmgb {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-resize-v2ggb40zwLrTbmgb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgonline_com_ua_resize_v2ggb40zwLrTbmgb_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("imgonline-com-ua-resize-v2ggb40zwLrTbmgb-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
