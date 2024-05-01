@@ -281,9 +281,9 @@
             guna2Button3.Name = "guna2Button3";
             guna2Button3.Padding = new Padding(10, 0, 10, 0);
             guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            guna2Button3.Size = new Size(120, 41);
+            guna2Button3.Size = new Size(128, 41);
             guna2Button3.TabIndex = 11;
-            guna2Button3.Text = "Sign in";
+            guna2Button3.Text = "Sign up";
             // 
             // guna2HtmlLabel6
             // 
