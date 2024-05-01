@@ -24,6 +24,7 @@ namespace NT106_project
         public ChatUI()
         {
             InitializeComponent();
+            MessageBox.Show(emailName);
         }
 
         private void btLogout_Click(object sender, EventArgs e)
