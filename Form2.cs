@@ -19,6 +19,7 @@ namespace NT106_project
             panel1.BringToFront();
         }
         // Thay thế bằng string của ông
+
         string constring = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Login;Integrated Security=True;Encrypt=False";
         
         private void btn_supanel_Click(object sender, EventArgs e)
