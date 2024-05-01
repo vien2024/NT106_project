@@ -151,4 +151,130 @@
   <data name="download__3_-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download__3_-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="audio1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\audio1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Block_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Block 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Block_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Block 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Board_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Board 1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eyes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eyes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_0_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 0 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_0_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 0 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_0_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 0 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_0_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 0 4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_1_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 1 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_1_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 1 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_1_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 1 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_1_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 1 4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_2_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 2 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_2_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 2 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_2_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 2 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_2_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 2 4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_3_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 3 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_3_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 3 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_3_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 3 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_3_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 3 4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ghost_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ghost 5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Life" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Life.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_1_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 1 0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_1_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 1 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_1_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 1 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_1_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 1 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_2_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 2 0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_2_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 2 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_2_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 2 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_2_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 2 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_3_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 3 0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_3_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 3 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_3_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 3 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_3_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 3 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_4_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 4 0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_4_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 4 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_4_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 4 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pacman_4_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pacman 4 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

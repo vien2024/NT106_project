@@ -38,5 +38,11 @@ namespace NT106_project
             guna2Button1.ShadowDecoration.Enabled = false;
             guna2Button2.ShadowDecoration.Enabled = false;
         }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            Form1 pacman = new Form1();
+            pacman.Show();
+        }
     }
 }
