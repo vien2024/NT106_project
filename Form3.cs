@@ -18,6 +18,7 @@ namespace NT106_project
             chatbox.Visible = true;
             Menubox.Visible = true;
             profilebox.Visible = false;
+
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
