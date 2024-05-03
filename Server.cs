@@ -121,21 +121,17 @@ namespace NT106_project
                 // Chat all
                 if(name.Contains("all"))
                 {
-                    foreach(User_connect user in myList)
+                    foreach (User_connect user in myList)
                     {
-                        if(((IPEndPoint)user.Mysocket.Client.RemoteEndPoint).Port != clientPort)
+                        if (((IPEndPoint)user.Mysocket.Client.RemoteEndPoint).Port != clientPort)
                         {
                             ns_temp = user.Mysocket.GetStream();
-                            string sender = substrings[1];
+                            string senderName = substrings[1]; // Rename the variable "sender" to "senderName"
                             string body = message;
-                            MessageBox.Show(sender + ": " + body);
-                            //MessageBox.Show(string.Format("{0}: {1}",substrings[1], message));
-                            recv = Encoding.UTF8.GetBytes("anonymus" +": " + message);
+                            recv = Encoding.UTF8.GetBytes("anonymus: " + message);
                             ns_temp.Write(recv, 0, recv.Length);
-                            AddMessage(user_Connect.Myname + ":" + message);
+                            AddMessage(senderName + ":" + body); // Update the message to include senderName and body
                         }
-                        
-                        
                     }
                     continue;
                 }

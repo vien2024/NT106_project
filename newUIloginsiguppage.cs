@@ -13,7 +13,7 @@ namespace NT106_project
 {
     public partial class newUIloginsiguppage : Form
     {
-        string constring = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Login;Integrated Security=True;Encrypt=False";
+        string constring = "Data Source=LAPTOP-RECNFRML;Initial Catalog=Login;Integrated Security=True;Encrypt=False";
         public newUIloginsiguppage()
         {
             InitializeComponent();
@@ -66,7 +66,7 @@ namespace NT106_project
                 return;
             }
 
-            if (tbEmailSign.Text.Trim() != tbPassConfirmSign.Text.Trim())
+            if (tbPassSign.Text.Trim() != tbPassConfirmSign.Text.Trim())
             {
                 MessageBox.Show("Confirm password does not equal to password!");
                 return;
@@ -82,17 +82,15 @@ namespace NT106_project
             SqlDataReader datareader = check_cmd.ExecuteReader();
             if (datareader.HasRows == true)
             {
-                var account_info = new ChatUI();
-                this.Hide();
-                account_info.emailName = tbEmailSign.Text.Trim();
-                account_info.Show();
+                MessageBox.Show("Email already has account");
+                return;
             }
-
+            conn.Close();
             string q = "INSERT INTO Login_info(password, email)values(@password,@email)";
             SqlCommand cmd = new SqlCommand(q, conn);
+            conn.Open();
             cmd.Parameters.AddWithValue("password", tbPassConfirmSign.Text);
             cmd.Parameters.AddWithValue("email", tbEmailSign.Text);
-            conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Register successfully");
