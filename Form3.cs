@@ -81,9 +81,9 @@ namespace NT106_project
         void Send()
         {
             byte[] data_buf = new byte[1024];
-            data_buf = Encoding.UTF32.GetBytes( receiver + "] " +emailName+ ": " + tbMess.Text);
+            data_buf = Encoding.UTF32.GetBytes(receiver + "] " + emailName + ": " + tbMess.Text);
             stream.Write(data_buf, 0, data_buf.Length);
-            AddMessage("You: "+tbMess.Text);
+            AddMessage("You: " + tbMess.Text);
         }
 
         void Receive()
@@ -105,6 +105,12 @@ namespace NT106_project
         private void SendBut_Click(object sender, EventArgs e)
         {
             Send();
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            form.Show();
         }
     }
 }

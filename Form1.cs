@@ -66,6 +66,8 @@ namespace NT106_project
                 case Keys.Left: pacman.nextDirection = 4; pacman.MovePacman(4); break;
             }
         }
+        // if form1.cs close then show form3.cs
+      
 
     }
 }
