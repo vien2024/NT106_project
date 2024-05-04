@@ -213,7 +213,7 @@
             profilebox.Controls.Add(guna2TextBox2);
             profilebox.CustomizableEdges = customizableEdges22;
             profilebox.FillColor4 = Color.FromArgb(128, 128, 255);
-            profilebox.Location = new Point(0, 1);
+            profilebox.Location = new Point(1, 1);
             profilebox.Name = "profilebox";
             profilebox.ShadowDecoration.CustomizableEdges = customizableEdges23;
             profilebox.Size = new Size(1065, 715);
