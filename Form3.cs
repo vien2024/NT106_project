@@ -31,7 +31,7 @@ namespace NT106_project
             this.emailName = email;
             Connect();
             Thread.Sleep(5);
-            byte[] data = Encoding.UTF32.GetBytes("username:" + emailName);
+            byte[] data = Encoding.UTF8.GetBytes("username:" + emailName);
             stream.Write(data, 0, data.Length);
 
         }
@@ -81,7 +81,7 @@ namespace NT106_project
         void Send()
         {
             byte[] data_buf = new byte[1024];
-            data_buf = Encoding.UTF32.GetBytes(receiver + "] " + emailName + ": " + tbMess.Text);
+            data_buf = Encoding.UTF8.GetBytes("receiver:" + receiver + ":" + tbMess.Text);
             stream.Write(data_buf, 0, data_buf.Length);
             AddMessage("You: " + tbMess.Text);
         }
@@ -92,14 +92,14 @@ namespace NT106_project
             {
                 byte[] recv = new byte[2048];
                 stream.Read(recv, 0, recv.Length);
-                string s = Encoding.UTF32.GetString(recv);
+                string s = Encoding.UTF8.GetString(recv);
                 AddMessage(s);
             }
         }
 
         void AddMessage(string mess)
         {
-            lvMess.Items.Add(new ListViewItem(new string[] { mess }));
+            lvMess.Items.Add(new ListViewItem() { Text = mess });
         }
 
         private void SendBut_Click(object sender, EventArgs e)
