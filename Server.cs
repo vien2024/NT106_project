@@ -115,26 +115,23 @@ namespace NT106_project
                 // Start receiving
                 stream.Read(recv, 0, recv.Length);
                 s = Encoding.UTF32.GetString(recv);
-                message_arr = s.Split(':');
-                message = message_arr[2];
-                name = message_arr[1];
+                message_arr = s.Split(']');
+                message = message_arr[1];
+                name = message_arr[0];
                 // Chat all
-                byte[] mes = new byte[4096];
-                if (name.Contains("all"))
+                if(name.Contains("all"))
                 {
                     foreach (User_connect user in myList)
-                    {   
-
+                    {
                         if (((IPEndPoint)user.Mysocket.Client.RemoteEndPoint).Port != clientPort)
                         {
-                           
                             ns_temp = user.Mysocket.GetStream();
                             string senderName = substrings[1]; // Rename the variable "sender" to "senderName"
                             string body = message;
-                            string allmessage = senderName + ": " + body;
-                            mes = Encoding.UTF32.GetBytes(allmessage);
-                            ns_temp.Write(mes, 0, mes.Length);
-                            AddMessage(allmessage); // Update the message to include senderName and body
+                            recv = Encoding.UTF32.GetBytes(message);
+                            ns_temp.Write(recv, 0, recv.Length);
+                            AddMessage(senderName + ":" + body); // Update the message to include senderName and body
+                          
                         }
                     }
                     continue;
@@ -158,9 +155,7 @@ namespace NT106_project
 
         void AddMessage(string mess)
         {
-                
-                lvMess.Items.Add(new ListViewItem(mess));
-        
+            lvMess.Items.Add(new ListViewItem("\""+mess+"\""));
         }
 
         private void btSend_Click_1(object sender, EventArgs e)

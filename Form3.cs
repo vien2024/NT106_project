@@ -81,7 +81,7 @@ namespace NT106_project
         void Send()
         {
             byte[] data_buf = new byte[1024];
-            data_buf = Encoding.UTF32.GetBytes("receiver:" + receiver + ":" + tbMess.Text);
+            data_buf = Encoding.UTF32.GetBytes( receiver + "] " +emailName+ ": " + tbMess.Text);
             stream.Write(data_buf, 0, data_buf.Length);
             AddMessage("You: "+tbMess.Text);
         }
@@ -99,8 +99,7 @@ namespace NT106_project
 
         void AddMessage(string mess)
         {
-           
-                lvMess.Items.Add(new ListViewItem() { Text =mess });
+            lvMess.Items.Add(new ListViewItem(new string[] { mess }));
         }
 
         private void SendBut_Click(object sender, EventArgs e)
