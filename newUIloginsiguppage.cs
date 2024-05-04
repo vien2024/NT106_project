@@ -13,7 +13,7 @@ namespace NT106_project
 {
     public partial class newUIloginsiguppage : Form
     {
-        string constring = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Login;Integrated Security=True;Encrypt=False";
+        string constring = "Data Source=LAPTOP-RECNFRML;Initial Catalog=Login;Integrated Security=True;Encrypt=False";
         public newUIloginsiguppage()
         {
             InitializeComponent();
