@@ -82,7 +82,7 @@ namespace NT106_project
 
         void Send(Socket client)
         {
-            byte[] data = Encoding.UTF8.GetBytes(tbMess.Text);
+            byte[] data = Encoding.UTF32.GetBytes(tbMess.Text);
             client.Send(data);
             AddMessage(tbMess.Text);
         }
@@ -98,7 +98,7 @@ namespace NT106_project
             NetworkStream stream = client.GetStream();
             NetworkStream ns_temp;
             stream.Read(recv, 0, recv.Length);
-            string s = Encoding.UTF8.GetString(recv);
+            string s = Encoding.UTF32.GetString(recv);
             string[] substrings = s.Split(':');
             User_connect user_Connect = new User_connect(substrings[1], client);
             myList.Add(user_Connect);
@@ -114,10 +114,10 @@ namespace NT106_project
                 Array.Clear(recv, 0, recv.Length);
                 // Start receiving
                 stream.Read(recv, 0, recv.Length);
-                s = Encoding.UTF8.GetString(recv);
-                message_arr = s.Split(':');
-                message = message_arr[2];
-                name = message_arr[1];
+                s = Encoding.UTF32.GetString(recv);
+                message_arr = s.Split(']');
+                message = message_arr[1];
+                name = message_arr[0];
                 // Chat all
                 if(name.Contains("all"))
                 {
@@ -128,9 +128,10 @@ namespace NT106_project
                             ns_temp = user.Mysocket.GetStream();
                             string senderName = substrings[1]; // Rename the variable "sender" to "senderName"
                             string body = message;
-                            recv = Encoding.UTF8.GetBytes("anonymus: " + message);
+                            recv = Encoding.UTF32.GetBytes(message);
                             ns_temp.Write(recv, 0, recv.Length);
                             AddMessage(senderName + ":" + body); // Update the message to include senderName and body
+                          
                         }
                     }
                     continue;
@@ -143,7 +144,7 @@ namespace NT106_project
                     {
                         ns_temp = user.Mysocket.GetStream();
                         s = user_Connect.Myname.ToString() + ":" + message;
-                        recv = Encoding.UTF8.GetBytes(s);
+                        recv = Encoding.UTF32.GetBytes(s);
                         ns_temp.Write(recv, 0, recv.Length);
                         AddMessage(user_Connect.Myname + ":" + message);
                     }
@@ -154,7 +155,7 @@ namespace NT106_project
 
         void AddMessage(string mess)
         {
-            lvMess.Items.Add(new ListViewItem(mess));
+            lvMess.Items.Add(new ListViewItem("\""+mess+"\""));
         }
 
         private void btSend_Click_1(object sender, EventArgs e)
