@@ -36,18 +36,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -65,6 +53,18 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Menubox = new FlowLayoutPanel();
@@ -72,15 +72,6 @@
             guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             chatbox = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            Username = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            chatviewer = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            SendBut = new Guna.UI2.WinForms.Guna2Button();
-            tbMess = new Guna.UI2.WinForms.Guna2TextBox();
-            nameofchater = new Guna.UI2.WinForms.Guna2TextBox();
-            lvMess = new ListView();
-            columnHeader1 = new ColumnHeader();
-            UserList = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             profilebox = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -98,14 +89,23 @@
             guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
             guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
             guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            Username = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            chatviewer = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            SendBut = new Guna.UI2.WinForms.Guna2Button();
+            tbMess = new Guna.UI2.WinForms.Guna2TextBox();
+            nameofchater = new Guna.UI2.WinForms.Guna2TextBox();
+            lvMess = new ListView();
+            columnHeader1 = new ColumnHeader();
+            UserList = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             btForumChat = new Guna.UI2.WinForms.Guna2Button();
             listView1 = new ListView();
             Menubox.SuspendLayout();
             chatbox.SuspendLayout();
-            chatviewer.SuspendLayout();
-            UserList.SuspendLayout();
             profilebox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
+            chatviewer.SuspendLayout();
+            UserList.SuspendLayout();
             SuspendLayout();
             // 
             // Menubox
@@ -191,149 +191,6 @@
             chatbox.Size = new Size(935, 535);
             chatbox.TabIndex = 1;
             // 
-            // Username
-            // 
-            Username.BackColor = Color.Black;
-            Username.CustomizableEdges = customizableEdges24;
-            Username.DefaultText = "";
-            Username.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            Username.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            Username.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            Username.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            Username.FillColor = Color.Gray;
-            Username.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            Username.Font = new Font("Segoe UI", 9F);
-            Username.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            Username.Location = new Point(17, 16);
-            Username.Margin = new Padding(3, 4, 3, 4);
-            Username.Name = "Username";
-            Username.PasswordChar = '\0';
-            Username.PlaceholderText = "";
-            Username.SelectedText = "";
-            Username.ShadowDecoration.CustomizableEdges = customizableEdges25;
-            Username.Size = new Size(171, 57);
-            Username.TabIndex = 3;
-            // 
-            // guna2HtmlLabel1
-            // 
-            guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            guna2HtmlLabel1.Location = new Point(26, 84);
-            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(68, 37);
-            guna2HtmlLabel1.TabIndex = 2;
-            guna2HtmlLabel1.Text = "Chats";
-            // 
-            // chatviewer
-            // 
-            chatviewer.Controls.Add(SendBut);
-            chatviewer.Controls.Add(tbMess);
-            chatviewer.Controls.Add(nameofchater);
-            chatviewer.Controls.Add(lvMess);
-            chatviewer.CustomBorderColor = Color.Black;
-            chatviewer.CustomBorderThickness = new Padding(1, 0, 0, 0);
-            chatviewer.CustomizableEdges = customizableEdges32;
-            chatviewer.Location = new Point(210, 1);
-            chatviewer.Name = "chatviewer";
-            chatviewer.ShadowDecoration.CustomizableEdges = customizableEdges33;
-            chatviewer.Size = new Size(725, 535);
-            chatviewer.TabIndex = 1;
-            // 
-            // SendBut
-            // 
-            SendBut.BackColor = Color.Transparent;
-            SendBut.BorderRadius = 20;
-            SendBut.BorderThickness = 1;
-            SendBut.CustomizableEdges = customizableEdges26;
-            SendBut.DisabledState.BorderColor = Color.DarkGray;
-            SendBut.DisabledState.CustomBorderColor = Color.DarkGray;
-            SendBut.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            SendBut.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            SendBut.FillColor = Color.FromArgb(128, 128, 255);
-            SendBut.FocusedColor = Color.White;
-            SendBut.Font = new Font("Segoe UI", 9F);
-            SendBut.ForeColor = Color.White;
-            SendBut.Location = new Point(619, 472);
-            SendBut.Name = "SendBut";
-            SendBut.ShadowDecoration.CustomizableEdges = customizableEdges27;
-            SendBut.Size = new Size(84, 46);
-            SendBut.TabIndex = 6;
-            SendBut.Text = "Send";
-            SendBut.Click += SendBut_Click;
-            // 
-            // tbMess
-            // 
-            tbMess.BorderColor = Color.Black;
-            tbMess.CustomizableEdges = customizableEdges28;
-            tbMess.DefaultText = "";
-            tbMess.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            tbMess.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            tbMess.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            tbMess.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            tbMess.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tbMess.Font = new Font("Segoe UI", 9F);
-            tbMess.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            tbMess.Location = new Point(13, 472);
-            tbMess.Margin = new Padding(3, 4, 3, 4);
-            tbMess.Name = "tbMess";
-            tbMess.PasswordChar = '\0';
-            tbMess.PlaceholderText = "";
-            tbMess.SelectedText = "";
-            tbMess.ShadowDecoration.CustomizableEdges = customizableEdges29;
-            tbMess.Size = new Size(600, 46);
-            tbMess.TabIndex = 5;
-            // 
-            // nameofchater
-            // 
-            nameofchater.BackColor = Color.Black;
-            nameofchater.CustomizableEdges = customizableEdges30;
-            nameofchater.DefaultText = "";
-            nameofchater.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            nameofchater.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            nameofchater.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            nameofchater.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            nameofchater.FillColor = Color.Gray;
-            nameofchater.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            nameofchater.Font = new Font("Segoe UI", 9F);
-            nameofchater.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            nameofchater.Location = new Point(3, 2);
-            nameofchater.Margin = new Padding(3, 4, 3, 4);
-            nameofchater.Name = "nameofchater";
-            nameofchater.PasswordChar = '\0';
-            nameofchater.PlaceholderText = "";
-            nameofchater.SelectedText = "";
-            nameofchater.ShadowDecoration.CustomizableEdges = customizableEdges31;
-            nameofchater.Size = new Size(171, 41);
-            nameofchater.TabIndex = 4;
-            // 
-            // lvMess
-            // 
-            lvMess.AllowDrop = true;
-            lvMess.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
-            lvMess.LabelWrap = false;
-            lvMess.Location = new Point(3, 44);
-            lvMess.Name = "lvMess";
-            lvMess.Size = new Size(722, 415);
-            lvMess.TabIndex = 1;
-            lvMess.UseCompatibleStateImageBehavior = false;
-            lvMess.View = View.List;
-            lvMess.SelectedIndexChanged += listView2_SelectedIndexChanged;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Width = 700;
-            // 
-            // UserList
-            // 
-            UserList.Controls.Add(btForumChat);
-            UserList.Controls.Add(listView1);
-            UserList.CustomizableEdges = customizableEdges36;
-            UserList.Location = new Point(0, 127);
-            UserList.Name = "UserList";
-            UserList.ShadowDecoration.CustomizableEdges = customizableEdges37;
-            UserList.Size = new Size(211, 409);
-            UserList.TabIndex = 0;
-            // 
             // profilebox
             // 
             profilebox.Controls.Add(guna2Button4);
@@ -354,7 +211,7 @@
             profilebox.Controls.Add(guna2TextBox2);
             profilebox.CustomizableEdges = customizableEdges22;
             profilebox.FillColor4 = Color.FromArgb(128, 128, 255);
-            profilebox.Location = new Point(1, 0);
+            profilebox.Location = new Point(0, 0);
             profilebox.Name = "profilebox";
             profilebox.ShadowDecoration.CustomizableEdges = customizableEdges23;
             profilebox.Size = new Size(932, 536);
@@ -598,6 +455,149 @@
             guna2TextBox2.Size = new Size(228, 42);
             guna2TextBox2.TabIndex = 0;
             // 
+            // Username
+            // 
+            Username.BackColor = Color.Black;
+            Username.CustomizableEdges = customizableEdges24;
+            Username.DefaultText = "";
+            Username.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            Username.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            Username.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            Username.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            Username.FillColor = Color.Gray;
+            Username.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            Username.Font = new Font("Segoe UI", 9F);
+            Username.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            Username.Location = new Point(17, 16);
+            Username.Margin = new Padding(3, 4, 3, 4);
+            Username.Name = "Username";
+            Username.PasswordChar = '\0';
+            Username.PlaceholderText = "";
+            Username.SelectedText = "";
+            Username.ShadowDecoration.CustomizableEdges = customizableEdges25;
+            Username.Size = new Size(171, 57);
+            Username.TabIndex = 3;
+            // 
+            // guna2HtmlLabel1
+            // 
+            guna2HtmlLabel1.BackColor = Color.Transparent;
+            guna2HtmlLabel1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            guna2HtmlLabel1.Location = new Point(26, 84);
+            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            guna2HtmlLabel1.Size = new Size(68, 37);
+            guna2HtmlLabel1.TabIndex = 2;
+            guna2HtmlLabel1.Text = "Chats";
+            // 
+            // chatviewer
+            // 
+            chatviewer.Controls.Add(SendBut);
+            chatviewer.Controls.Add(tbMess);
+            chatviewer.Controls.Add(nameofchater);
+            chatviewer.Controls.Add(lvMess);
+            chatviewer.CustomBorderColor = Color.Black;
+            chatviewer.CustomBorderThickness = new Padding(1, 0, 0, 0);
+            chatviewer.CustomizableEdges = customizableEdges32;
+            chatviewer.Location = new Point(210, 1);
+            chatviewer.Name = "chatviewer";
+            chatviewer.ShadowDecoration.CustomizableEdges = customizableEdges33;
+            chatviewer.Size = new Size(725, 535);
+            chatviewer.TabIndex = 1;
+            // 
+            // SendBut
+            // 
+            SendBut.BackColor = Color.Transparent;
+            SendBut.BorderRadius = 20;
+            SendBut.BorderThickness = 1;
+            SendBut.CustomizableEdges = customizableEdges26;
+            SendBut.DisabledState.BorderColor = Color.DarkGray;
+            SendBut.DisabledState.CustomBorderColor = Color.DarkGray;
+            SendBut.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            SendBut.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            SendBut.FillColor = Color.FromArgb(128, 128, 255);
+            SendBut.FocusedColor = Color.White;
+            SendBut.Font = new Font("Segoe UI", 9F);
+            SendBut.ForeColor = Color.White;
+            SendBut.Location = new Point(619, 472);
+            SendBut.Name = "SendBut";
+            SendBut.ShadowDecoration.CustomizableEdges = customizableEdges27;
+            SendBut.Size = new Size(84, 46);
+            SendBut.TabIndex = 6;
+            SendBut.Text = "Send";
+            SendBut.Click += SendBut_Click;
+            // 
+            // tbMess
+            // 
+            tbMess.BorderColor = Color.Black;
+            tbMess.CustomizableEdges = customizableEdges28;
+            tbMess.DefaultText = "";
+            tbMess.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            tbMess.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            tbMess.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            tbMess.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            tbMess.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbMess.Font = new Font("Segoe UI", 9F);
+            tbMess.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbMess.Location = new Point(13, 472);
+            tbMess.Margin = new Padding(3, 4, 3, 4);
+            tbMess.Name = "tbMess";
+            tbMess.PasswordChar = '\0';
+            tbMess.PlaceholderText = "";
+            tbMess.SelectedText = "";
+            tbMess.ShadowDecoration.CustomizableEdges = customizableEdges29;
+            tbMess.Size = new Size(600, 46);
+            tbMess.TabIndex = 5;
+            // 
+            // nameofchater
+            // 
+            nameofchater.BackColor = Color.Black;
+            nameofchater.CustomizableEdges = customizableEdges30;
+            nameofchater.DefaultText = "";
+            nameofchater.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            nameofchater.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            nameofchater.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            nameofchater.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            nameofchater.FillColor = Color.Gray;
+            nameofchater.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            nameofchater.Font = new Font("Segoe UI", 9F);
+            nameofchater.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            nameofchater.Location = new Point(3, 2);
+            nameofchater.Margin = new Padding(3, 4, 3, 4);
+            nameofchater.Name = "nameofchater";
+            nameofchater.PasswordChar = '\0';
+            nameofchater.PlaceholderText = "";
+            nameofchater.SelectedText = "";
+            nameofchater.ShadowDecoration.CustomizableEdges = customizableEdges31;
+            nameofchater.Size = new Size(171, 41);
+            nameofchater.TabIndex = 4;
+            // 
+            // lvMess
+            // 
+            lvMess.AllowDrop = true;
+            lvMess.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
+            lvMess.LabelWrap = false;
+            lvMess.Location = new Point(3, 44);
+            lvMess.Name = "lvMess";
+            lvMess.Size = new Size(722, 415);
+            lvMess.TabIndex = 1;
+            lvMess.UseCompatibleStateImageBehavior = false;
+            lvMess.View = View.List;
+            lvMess.SelectedIndexChanged += listView2_SelectedIndexChanged;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Width = 700;
+            // 
+            // UserList
+            // 
+            UserList.Controls.Add(btForumChat);
+            UserList.Controls.Add(listView1);
+            UserList.CustomizableEdges = customizableEdges36;
+            UserList.Location = new Point(0, 127);
+            UserList.Name = "UserList";
+            UserList.ShadowDecoration.CustomizableEdges = customizableEdges37;
+            UserList.Size = new Size(211, 409);
+            UserList.TabIndex = 0;
+            // 
             // btForumChat
             // 
             btForumChat.BackColor = Color.Transparent;
@@ -640,11 +640,11 @@
             Menubox.ResumeLayout(false);
             chatbox.ResumeLayout(false);
             chatbox.PerformLayout();
-            chatviewer.ResumeLayout(false);
-            UserList.ResumeLayout(false);
             profilebox.ResumeLayout(false);
             profilebox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
+            chatviewer.ResumeLayout(false);
+            UserList.ResumeLayout(false);
             ResumeLayout(false);
         }
 
