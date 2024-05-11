@@ -8,12 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace NT106_project
 {
     public partial class newUIloginsiguppage : Form
     {
-        string constring = "Data Source=LAPTOP-RECNFRML;Initial Catalog=Login;Integrated Security=True;Encrypt=False";
+        string constring = "Data Source=DESKTOP-02P9IUP;Initial Catalog=LOGIN;Integrated Security=True;Encrypt=False";
         public newUIloginsiguppage()
         {
             InitializeComponent();
@@ -21,6 +23,7 @@ namespace NT106_project
             guna2CustomGradientPanel2.Visible = true;
             guna2CustomGradientPanel3.Visible = false;
             guna2CustomGradientPanel4.Visible = false;
+            
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -41,6 +44,7 @@ namespace NT106_project
             guna2CustomGradientPanel4.Visible = true;
             guna2Button2.CustomBorderThickness = new Padding(0, 0, 0, 0);
             guna2Button1.CustomBorderThickness = new Padding(0, 0, 0, 2);
+            guna2CustomGradientPanel4.BringToFront();
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
@@ -129,6 +133,62 @@ namespace NT106_project
             else
             {
                 MessageBox.Show("Login failed");
+            }
+        }
+
+        private void btn_hidepw_Click(object sender, EventArgs e)
+        {
+            if (tbPasslog.PasswordChar == '\0')
+            {
+                btn_showpw.BringToFront();
+                tbPasslog.PasswordChar = '●';
+            }
+        }
+
+        private void btn_showpw_Click(object sender, EventArgs e)
+        {
+            if (tbPasslog.PasswordChar == '●')
+            {
+                btn_hidepw.BringToFront();
+                tbPasslog.PasswordChar = '\0';
+            }
+        }
+
+        private void btn_showpw_su_Click(object sender, EventArgs e)
+        {
+            if (tbPassSign.PasswordChar == '●')
+            {
+                btn_hidepw_su.BringToFront();
+                //btn_showpw.SendToBack();
+                //btn_hidepw.SendToBack();
+                tbPassSign.PasswordChar = '\0';
+            }
+        }
+
+        private void btn_hidepw_su_Click(object sender, EventArgs e)
+        {
+            if (tbPassSign.PasswordChar == '\0')
+            {
+                btn_showpw_su.BringToFront();
+                tbPassSign.PasswordChar = '●';
+            }
+        }
+
+        private void btn_hidecf_su_Click(object sender, EventArgs e)
+        {
+            if (tbPassConfirmSign.PasswordChar == '\0')
+            {
+                btn_showcf_su.BringToFront();
+                tbPassConfirmSign.PasswordChar = '●';
+            }
+        }
+
+        private void btn_showcf_su_Click(object sender, EventArgs e)
+        {
+            if(tbPassConfirmSign.PasswordChar == '●')
+            {
+                btn_hidecf_su.BringToFront();            
+                tbPassConfirmSign.PasswordChar = '\0';
             }
         }
     }
