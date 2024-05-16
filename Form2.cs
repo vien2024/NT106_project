@@ -20,7 +20,7 @@ namespace NT106_project
         }
         // Thay thế bằng string của ông
 
-        string constring = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Login;Integrated Security=True;Encrypt=False";
+        string constring = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=Login;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
         
         private void btn_supanel_Click(object sender, EventArgs e)
         {
@@ -67,10 +67,10 @@ namespace NT106_project
             SqlDataReader datareader = cmd.ExecuteReader();
             if (datareader.HasRows == true)
             {
-                var account_info = new ChatUI();
+                var account_info = new Form1();
                 this.Hide();
-                account_info.emailName = tbEmailSign.Text.Trim();
-                account_info.Show();
+                //account_info.emailName = tbEmailSign.Text.Trim();
+               // account_info.Show();
             }
             else
             {
