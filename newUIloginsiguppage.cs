@@ -23,7 +23,7 @@ namespace NT106_project
             guna2CustomGradientPanel2.Visible = true;
             guna2CustomGradientPanel3.Visible = false;
             guna2CustomGradientPanel4.Visible = false;
-            
+
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -159,8 +159,6 @@ namespace NT106_project
             if (tbPassSign.PasswordChar == '●')
             {
                 btn_hidepw_su.BringToFront();
-                //btn_showpw.SendToBack();
-                //btn_hidepw.SendToBack();
                 tbPassSign.PasswordChar = '\0';
             }
         }
@@ -185,11 +183,17 @@ namespace NT106_project
 
         private void btn_showcf_su_Click(object sender, EventArgs e)
         {
-            if(tbPassConfirmSign.PasswordChar == '●')
+            if (tbPassConfirmSign.PasswordChar == '●')
             {
-                btn_hidecf_su.BringToFront();            
+                btn_hidecf_su.BringToFront();
                 tbPassConfirmSign.PasswordChar = '\0';
             }
+        }
+
+        private void btn_fyp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FYP fyp = new FYP();
+            fyp.Show();
         }
     }
 }

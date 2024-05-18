@@ -40,9 +40,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -54,7 +54,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -72,7 +72,7 @@
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            btn_showpw = new Guna.UI2.WinForms.Guna2CircleButton();
+            btn_fyp = new LinkLabel();
             guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             btn_showpw_su = new Guna.UI2.WinForms.Guna2CircleButton();
             btn_showcf_su = new Guna.UI2.WinForms.Guna2CircleButton();
@@ -85,6 +85,7 @@
             tbPassConfirmSign = new Guna.UI2.WinForms.Guna2TextBox();
             tbPassSign = new Guna.UI2.WinForms.Guna2TextBox();
             tbEmailSign = new Guna.UI2.WinForms.Guna2TextBox();
+            btn_showpw = new Guna.UI2.WinForms.Guna2CircleButton();
             btn_hidepw = new Guna.UI2.WinForms.Guna2CircleButton();
             btLogin = new Guna.UI2.WinForms.Guna2Button();
             tbPasslog = new Guna.UI2.WinForms.Guna2TextBox();
@@ -250,8 +251,9 @@
             // guna2CustomGradientPanel1
             // 
             guna2CustomGradientPanel1.BorderRadius = 20;
-            guna2CustomGradientPanel1.Controls.Add(btn_showpw);
+            guna2CustomGradientPanel1.Controls.Add(btn_fyp);
             guna2CustomGradientPanel1.Controls.Add(guna2CustomGradientPanel4);
+            guna2CustomGradientPanel1.Controls.Add(btn_showpw);
             guna2CustomGradientPanel1.Controls.Add(btn_hidepw);
             guna2CustomGradientPanel1.Controls.Add(btLogin);
             guna2CustomGradientPanel1.Controls.Add(guna2Button2);
@@ -270,27 +272,17 @@
             guna2CustomGradientPanel1.Size = new Size(323, 359);
             guna2CustomGradientPanel1.TabIndex = 3;
             // 
-            // btn_showpw
+            // btn_fyp
             // 
-            btn_showpw.BackColor = Color.White;
-            btn_showpw.BackgroundImage = Properties.Resources.eye_slash;
-            btn_showpw.BackgroundImageLayout = ImageLayout.Stretch;
-            btn_showpw.BorderColor = Color.Transparent;
-            btn_showpw.DisabledState.BorderColor = Color.DarkGray;
-            btn_showpw.DisabledState.CustomBorderColor = Color.DarkGray;
-            btn_showpw.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btn_showpw.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btn_showpw.FillColor = Color.Transparent;
-            btn_showpw.Font = new Font("Segoe UI", 9F);
-            btn_showpw.ForeColor = Color.White;
-            btn_showpw.Location = new Point(258, 193);
-            btn_showpw.Margin = new Padding(3, 2, 3, 2);
-            btn_showpw.Name = "btn_showpw";
-            btn_showpw.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btn_showpw.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            btn_showpw.Size = new Size(20, 16);
-            btn_showpw.TabIndex = 7;
-            btn_showpw.Click += btn_showpw_Click;
+            btn_fyp.AutoSize = true;
+            btn_fyp.BackColor = Color.FromArgb(192, 192, 255);
+            btn_fyp.Location = new Point(162, 231);
+            btn_fyp.Name = "btn_fyp";
+            btn_fyp.Size = new Size(126, 15);
+            btn_fyp.TabIndex = 12;
+            btn_fyp.TabStop = true;
+            btn_fyp.Text = "Forget your password?";
+            btn_fyp.LinkClicked += btn_fyp_LinkClicked;
             // 
             // guna2CustomGradientPanel4
             // 
@@ -307,13 +299,13 @@
             guna2CustomGradientPanel4.Controls.Add(tbPassConfirmSign);
             guna2CustomGradientPanel4.Controls.Add(tbPassSign);
             guna2CustomGradientPanel4.Controls.Add(tbEmailSign);
-            guna2CustomGradientPanel4.CustomizableEdges = customizableEdges23;
+            guna2CustomGradientPanel4.CustomizableEdges = customizableEdges22;
             guna2CustomGradientPanel4.FillColor = Color.FromArgb(128, 128, 255);
             guna2CustomGradientPanel4.FillColor4 = Color.FromArgb(128, 128, 255);
             guna2CustomGradientPanel4.Location = new Point(0, 66);
             guna2CustomGradientPanel4.Margin = new Padding(3, 2, 3, 2);
             guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
-            guna2CustomGradientPanel4.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2CustomGradientPanel4.ShadowDecoration.CustomizableEdges = customizableEdges23;
             guna2CustomGradientPanel4.Size = new Size(323, 293);
             guna2CustomGradientPanel4.TabIndex = 6;
             // 
@@ -322,18 +314,18 @@
             btn_showpw_su.BackColor = Color.White;
             btn_showpw_su.BackgroundImage = Properties.Resources.eye_slash;
             btn_showpw_su.BackgroundImageLayout = ImageLayout.Stretch;
-            btn_showpw_su.BorderColor = Color.Transparent;
             btn_showpw_su.DisabledState.BorderColor = Color.DarkGray;
             btn_showpw_su.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_showpw_su.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_showpw_su.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_showpw_su.FillColor = Color.Transparent;
+            btn_showpw_su.FocusedColor = Color.Transparent;
             btn_showpw_su.Font = new Font("Segoe UI", 9F);
             btn_showpw_su.ForeColor = Color.White;
             btn_showpw_su.Location = new Point(258, 127);
             btn_showpw_su.Margin = new Padding(3, 2, 3, 2);
             btn_showpw_su.Name = "btn_showpw_su";
-            btn_showpw_su.ShadowDecoration.CustomizableEdges = customizableEdges11;
+            btn_showpw_su.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btn_showpw_su.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             btn_showpw_su.Size = new Size(20, 16);
             btn_showpw_su.TabIndex = 10;
@@ -354,7 +346,7 @@
             btn_showcf_su.Location = new Point(258, 201);
             btn_showcf_su.Margin = new Padding(3, 2, 3, 2);
             btn_showcf_su.Name = "btn_showcf_su";
-            btn_showcf_su.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btn_showcf_su.ShadowDecoration.CustomizableEdges = customizableEdges11;
             btn_showcf_su.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             btn_showcf_su.Size = new Size(20, 16);
             btn_showcf_su.TabIndex = 11;
@@ -365,7 +357,7 @@
             btn_hidepw_su.BackColor = Color.White;
             btn_hidepw_su.BackgroundImage = Properties.Resources.eye;
             btn_hidepw_su.BackgroundImageLayout = ImageLayout.Stretch;
-            btn_hidepw_su.BorderColor = Color.Transparent;
+            btn_hidepw_su.BorderColor = Color.White;
             btn_hidepw_su.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             btn_hidepw_su.DisabledState.BorderColor = Color.DarkGray;
             btn_hidepw_su.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -377,7 +369,7 @@
             btn_hidepw_su.Location = new Point(258, 127);
             btn_hidepw_su.Margin = new Padding(3, 2, 3, 2);
             btn_hidepw_su.Name = "btn_hidepw_su";
-            btn_hidepw_su.ShadowDecoration.CustomizableEdges = customizableEdges13;
+            btn_hidepw_su.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btn_hidepw_su.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             btn_hidepw_su.Size = new Size(20, 16);
             btn_hidepw_su.TabIndex = 9;
@@ -398,7 +390,7 @@
             btn_hidecf_su.Location = new Point(258, 201);
             btn_hidecf_su.Margin = new Padding(3, 2, 3, 2);
             btn_hidecf_su.Name = "btn_hidecf_su";
-            btn_hidecf_su.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btn_hidecf_su.ShadowDecoration.CustomizableEdges = customizableEdges13;
             btn_hidecf_su.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             btn_hidecf_su.Size = new Size(20, 16);
             btn_hidecf_su.TabIndex = 10;
@@ -406,7 +398,7 @@
             // 
             // guna2Button3
             // 
-            guna2Button3.CustomizableEdges = customizableEdges15;
+            guna2Button3.CustomizableEdges = customizableEdges14;
             guna2Button3.DefaultAutoSize = true;
             guna2Button3.DisabledState.BorderColor = Color.DarkGray;
             guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -418,7 +410,7 @@
             guna2Button3.Margin = new Padding(3, 2, 3, 2);
             guna2Button3.Name = "guna2Button3";
             guna2Button3.Padding = new Padding(9, 0, 9, 0);
-            guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges15;
             guna2Button3.Size = new Size(109, 35);
             guna2Button3.TabIndex = 11;
             guna2Button3.Text = "Sign up";
@@ -461,7 +453,7 @@
             // 
             tbPassConfirmSign.BackColor = Color.Transparent;
             tbPassConfirmSign.BorderRadius = 10;
-            tbPassConfirmSign.CustomizableEdges = customizableEdges17;
+            tbPassConfirmSign.CustomizableEdges = customizableEdges16;
             tbPassConfirmSign.DefaultText = "";
             tbPassConfirmSign.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             tbPassConfirmSign.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -475,7 +467,7 @@
             tbPassConfirmSign.PasswordChar = '●';
             tbPassConfirmSign.PlaceholderText = "";
             tbPassConfirmSign.SelectedText = "";
-            tbPassConfirmSign.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            tbPassConfirmSign.ShadowDecoration.CustomizableEdges = customizableEdges17;
             tbPassConfirmSign.Size = new Size(259, 35);
             tbPassConfirmSign.TabIndex = 7;
             // 
@@ -483,7 +475,7 @@
             // 
             tbPassSign.BackColor = Color.Transparent;
             tbPassSign.BorderRadius = 10;
-            tbPassSign.CustomizableEdges = customizableEdges19;
+            tbPassSign.CustomizableEdges = customizableEdges18;
             tbPassSign.DefaultText = "";
             tbPassSign.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             tbPassSign.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -497,7 +489,7 @@
             tbPassSign.PasswordChar = '●';
             tbPassSign.PlaceholderText = "";
             tbPassSign.SelectedText = "";
-            tbPassSign.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            tbPassSign.ShadowDecoration.CustomizableEdges = customizableEdges19;
             tbPassSign.Size = new Size(259, 35);
             tbPassSign.TabIndex = 6;
             // 
@@ -505,7 +497,7 @@
             // 
             tbEmailSign.BackColor = Color.Transparent;
             tbEmailSign.BorderRadius = 10;
-            tbEmailSign.CustomizableEdges = customizableEdges21;
+            tbEmailSign.CustomizableEdges = customizableEdges20;
             tbEmailSign.DefaultText = "";
             tbEmailSign.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             tbEmailSign.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -519,16 +511,38 @@
             tbEmailSign.PasswordChar = '\0';
             tbEmailSign.PlaceholderText = "";
             tbEmailSign.SelectedText = "";
-            tbEmailSign.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            tbEmailSign.ShadowDecoration.CustomizableEdges = customizableEdges21;
             tbEmailSign.Size = new Size(259, 35);
             tbEmailSign.TabIndex = 5;
+            // 
+            // btn_showpw
+            // 
+            btn_showpw.BackColor = Color.White;
+            btn_showpw.BackgroundImage = Properties.Resources.eye_slash;
+            btn_showpw.BackgroundImageLayout = ImageLayout.Stretch;
+            btn_showpw.BorderColor = Color.White;
+            btn_showpw.DisabledState.BorderColor = Color.DarkGray;
+            btn_showpw.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_showpw.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_showpw.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_showpw.FillColor = Color.Transparent;
+            btn_showpw.Font = new Font("Segoe UI", 9F);
+            btn_showpw.ForeColor = Color.White;
+            btn_showpw.Location = new Point(258, 193);
+            btn_showpw.Margin = new Padding(3, 2, 3, 2);
+            btn_showpw.Name = "btn_showpw";
+            btn_showpw.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            btn_showpw.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            btn_showpw.Size = new Size(20, 16);
+            btn_showpw.TabIndex = 10;
+            btn_showpw.Click += btn_showpw_Click;
             // 
             // btn_hidepw
             // 
             btn_hidepw.BackColor = Color.White;
             btn_hidepw.BackgroundImage = Properties.Resources.eye;
             btn_hidepw.BackgroundImageLayout = ImageLayout.Stretch;
-            btn_hidepw.BorderColor = Color.Transparent;
+            btn_hidepw.BorderColor = Color.White;
             btn_hidepw.DisabledState.BorderColor = Color.DarkGray;
             btn_hidepw.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_hidepw.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -686,5 +700,6 @@
         private Guna.UI2.WinForms.Guna2CircleButton btn_showpw_su;
         private Guna.UI2.WinForms.Guna2CircleButton btn_showcf_su;
         private Guna.UI2.WinForms.Guna2CircleButton btn_hidecf_su;
+        private LinkLabel btn_fyp;
     }
 }
