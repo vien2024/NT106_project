@@ -9,5 +9,8 @@
         public string email { get; set; }
         public string disc { get; set; }
 
+        public string name { get; set; }
+        public bool   firstime { get; set; }
+
     }
 }

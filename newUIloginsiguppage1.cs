@@ -12,14 +12,22 @@ using System.Xml.Serialization;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using Firebase.Database;
+using Firebase.Database.Query;
+using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using FireSharp;
+using Firebase.Auth;
 
 
 namespace NT106_project
 {
+    
     public partial class newUIloginsiguppage1 : Form
-    {   
-         private int  check = 0;
+    {
+        
+        private int  checkreg = 0;
+        private int checklog = 0;
         IFirebaseConfig ifc = new FirebaseConfig()
         {
             AuthSecret = "kHKs9ZwngaoM2odQCgyLjDzG7sF0JVQzNEf1IA1N",
@@ -34,8 +42,7 @@ namespace NT106_project
             guna2CustomGradientPanel3.Visible = false;
             guna2CustomGradientPanel4.Visible = false;
         }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void showlogin()
         {
             guna2CustomGradientPanel1.Visible = true;
             guna2CustomGradientPanel2.Visible = true;
@@ -44,8 +51,7 @@ namespace NT106_project
             guna2Button2.CustomBorderThickness = new Padding(0, 0, 0, 2);
             guna2Button1.CustomBorderThickness = new Padding(0, 0, 0, 0);
         }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void showSignup()
         {
             guna2CustomGradientPanel1.Visible = true;
             guna2CustomGradientPanel2.Visible = false;
@@ -54,15 +60,47 @@ namespace NT106_project
             guna2Button2.CustomBorderThickness = new Padding(0, 0, 0, 0);
             guna2Button1.CustomBorderThickness = new Padding(0, 0, 0, 2);
         }
-
-        private void guna2Button3_Click(object sender, EventArgs e)
+        private void guna2Button2_Click(object sender, EventArgs e)
         {
+            showlogin();
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+           showSignup();
+        }
+
+        public async Task<bool> IsUserRegisteredAsync(string Username)
+        {
+            Firebase.Database.FirebaseClient firebaseClient = new Firebase.Database.FirebaseClient("https://appchatdizz-default-rtdb.firebaseio.com/");
+            var users = await firebaseClient
+                .Child("Users")
+                .OrderBy("Username")
+                .EqualTo(Username)
+                .OnceAsync<Data>();
+                
+            return users.Any();
+        }
+
+        private async void guna2Button3_Click(object sender, EventArgs e)
+        {
+            var data = new Data
+            {
+                Userid = tbEmailSign.Text + "_id",
+                Username = tbEmailSign.Text,
+                Password = tbPassSign.Text,
+                name = "User",
+                email = "",
+                phone = "",
+                disc = "",
+                firstime = true,
+            };
             // Đăng ký
             if (string.IsNullOrEmpty(tbEmailSign.Text) || string.IsNullOrEmpty(tbPassSign.Text) || string.IsNullOrEmpty(tbPassConfirmSign.Text))
             {
                 if (string.IsNullOrEmpty(tbEmailSign.Text))
                 {
-                    tbEmailSign.Text = "Please provide Email!";
+                    tbEmailSign.Text = "Please provide Username!";
                     tbEmailSign.BorderColor = System.Drawing.Color.Red;
                 } 
                 if (string.IsNullOrEmpty(tbPassSign.Text))
@@ -75,7 +113,7 @@ namespace NT106_project
                     tbPassConfirmSign.BorderColor = Color.Red;
                     tbPassConfirmSign.Text = "Please provide confirm password!";
                 }
-                check = 1;
+                checkreg = 1;
                 return;
             }
             else
@@ -83,72 +121,138 @@ namespace NT106_project
                 if ((tbPassSign.Text != tbPassConfirmSign.Text) && tbPassConfirmSign.Text != null)
                 {
                     tbPassSign.BorderColor = Color.Red;
-                    tbPassSign.Text = " Confirm password and password are not the same";
+                    tbPassSign.Text = "Confirm password and password are not the same";
                     tbPassConfirmSign.BorderColor = Color.Red;
-                    tbPassConfirmSign.Text = " Confirm password and password are not the same";
-                    check = 1;
+                    tbPassConfirmSign.Text = "Confirm password and password are not the same";
+                    checkreg = 1;
                     return;
                 }
                 else
                 {   
-                    check =0;
-                    
-                    var data = new Data
+                    bool checksame = await IsUserRegisteredAsync(tbEmailSign.Text);
+                    if( checksame)
                     {
-                        Userid = tbEmailSign.Text + "_id",
-                        Username = tbEmailSign.Text,
-                        Password = tbPassSign.Text,
-                        email = null,
-                        phone = null,
-                        disc = null,
-                    };
-                    if (check == 0)
-                    {
-                        SetResponse response = client.Set("User/" + tbEmailSign.Text + "id", data);
-                        Data result = response.ResultAs<Data>();
-                        MessageBox.Show("Data inserted successfull " + result.Userid);
+                        checkreg = 1;
+                        tbEmailSign.BorderColor = Color.Red;
+                        tbEmailSign.Text = "Username is not available";
+                        tbPassSign.Clear();
+                        tbPassConfirmSign.Clear();
                     }
+                    else checkreg = 0;
                 }
-
+            }
+            if (checkreg == 0)
+            {
+                SetResponse response = await client.SetTaskAsync("Users/" + tbEmailSign.Text + "_id", data);
+                Data result = response.ResultAs<Data>();
+                tbEmailSign.Clear();
+                tbPassSign.Clear();
+                tbPassConfirmSign.Clear();
+                MessageBox.Show("Sign Up Success");
+                showlogin();
 
             }
         }
-
-        private void btLogin_Click(object sender, EventArgs e)
+        private async void btLogin_Click(object sender, EventArgs e)
         {
             // Đăng nhập
-            if (string.IsNullOrEmpty(tbEmaillog.Text.Trim()))
+            if (string.IsNullOrEmpty(tbEmaillog.Text) || string.IsNullOrEmpty(tbPasslog.Text))
             {
-                MessageBox.Show("Please provide email");
-                return;
+                if (string.IsNullOrEmpty(tbEmaillog.Text))
+                {
+                    tbEmaillog.BorderColor = Color.Red;
+                    tbEmaillog.Text = "please provide username";
+                }
+                if (string.IsNullOrEmpty(tbPasslog.Text))
+                {
+                    tbPasslog.BorderColor = Color.Red;
+                    tbPasslog.Text = "please provide password";
+                }
+                checklog = 1;
             }
-
-            if (string.IsNullOrEmpty(tbPasslog.Text.Trim()))
+            else 
             {
-                MessageBox.Show("Please provide password");
-                return;
+                bool checkexist = await IsUserRegisteredAsync(tbEmaillog.Text);
+                if (!checkexist)
+                {
+                    checklog = 1;
+                    tbEmaillog.BorderColor = Color.Red;
+                    tbEmaillog.Text = "Username is not existed";
+                    tbPasslog.BorderColor = Color.Red;
+                    tbPasslog.Text = "";
+                }
+                else
+                {
+                    FirebaseResponse response = await client.GetTaskAsync("Users/" + tbEmaillog.Text + "_id");
+                    Data obj = response.ResultAs<Data>();
+                    Data get = new Data();
+                    get.Userid = obj.Userid;
+                    get.Username = obj.Username;
+                    get.Password = obj.Password;
+                    get.email = obj.email;
+                    get.phone = obj.phone;
+                    get.disc = obj.disc;
+                
+                    if (tbPasslog.Text != get.Password)
+                    {
+                        tbEmaillog.BorderColor = Color.Red;
+                        tbEmaillog.Text = "Username or Password is incorrect";
+                        tbPasslog.BorderColor = Color.Red;
+                        tbPasslog.Text = "Username or Password is incorrect";
+                        checklog = 1;
+                    }
+                    else { checklog = 0; }
+                }
+            } 
+            if ( checklog == 0 )
+            {
+                MessageBox.Show("Login successfull");
+
             }
-
-
+            
         }
 
         private void tbEmailSign_Click(object sender, EventArgs e)
         {
-            tbEmailSign.BorderColor = Color.White;
-            tbEmailSign.Text = "";
+            if (tbEmailSign.Text == "Please provide Username")
+            {
+                tbEmailSign.BorderColor = Color.White;
+                tbEmailSign.Clear();
+            }
         }
 
         private void tbPassSign_Click(object sender, EventArgs e)
         {
-            tbPassSign.BorderColor = Color.White;
-            tbPassSign.Text = "";
+            if (tbPassSign.Text == "Please provide password!" || tbPassSign.Text == "Confirm password and password are not the same")
+            {
+                tbPassSign.BorderColor = Color.White;
+                tbPassSign.Clear();
+            }
         }
         private void tbPassConfirmSign_Click(object sender, EventArgs e)
         {
-            tbPassConfirmSign.BorderColor = Color.White;
-            tbPassConfirmSign.Text = "";
+            if (tbPassConfirmSign.Text == "Please provide confirm password!" || tbPassConfirmSign.Text == "Confirm password and password are not the same")
+            {
+                tbPassConfirmSign.BorderColor = Color.White;
+                tbPassConfirmSign.Clear();
+            }
         }
-       
+        private void tbEmaillog_Click(object sender, EventArgs e)
+        {
+            if (tbEmaillog.Text == "please provide username")
+            {
+                tbEmaillog.BorderColor = Color.White;
+                tbEmaillog.Clear();
+            }
+        }
+        private void tbPasslog_Click(object sender, EventArgs e)
+        {
+            if (tbPasslog.Text == "please provide password")
+            {
+                tbPasslog.BorderColor = Color.White;
+                tbPasslog.Clear();
+            }
+        }
 
         private void newUIloginsiguppage1_Load(object sender, EventArgs e)
         {
@@ -158,7 +262,6 @@ namespace NT106_project
             {
                 MessageBox.Show("There was a problem in connecting to the server");
             }
-            else { MessageBox.Show("Connected to the server"); }
         }
     }
 }
