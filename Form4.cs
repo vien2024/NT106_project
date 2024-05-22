@@ -18,8 +18,8 @@ namespace NT106_project
     {
         IFirebaseConfig ifc = new FirebaseConfig()
         {
-            AuthSecret = "fbuBetnnPUKCEfn8z7p47QS8AG9aXzkXhAi2YoXE",
-            BasePath = "https://appchat-73740-default-rtdb.firebaseio.com/",
+            AuthSecret = "kHKs9ZwngaoM2odQCgyLjDzG7sF0JVQzNEf1IA1N",
+            BasePath = "https://appchatdizz-default-rtdb.firebaseio.com/",
         };
         IFirebaseClient client;
 
@@ -31,14 +31,27 @@ namespace NT106_project
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            try
-            {
-                client = new FireSharp.FirebaseClient(ifc);
-            }
-            catch
+
+            client = new FireSharp.FirebaseClient(ifc);
+
+            if (client == null)
             {
                 MessageBox.Show("There was a problem in connecting to the server");
             }
+            else { MessageBox.Show("Connected to the server"); }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var data = new Data
+            {
+                Username = textBox1.Text,
+                phone = textBox2.Text,
+                email = textBox3.Text,
+            };
+            SetResponse response = client.Set("Information/" + textBox1.Text, data);
+            Data result = response.ResultAs<Data>();
+            MessageBox.Show("Data inserted"+ result.Username);
         }
     }
 }

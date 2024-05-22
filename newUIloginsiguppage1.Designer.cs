@@ -71,12 +71,12 @@
             guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
-            guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
+            tbPassConfirmSign = new Guna.UI2.WinForms.Guna2TextBox();
+            tbPassSign = new Guna.UI2.WinForms.Guna2TextBox();
+            tbEmailSign = new Guna.UI2.WinForms.Guna2TextBox();
+            btLogin = new Guna.UI2.WinForms.Guna2Button();
+            tbPasslog = new Guna.UI2.WinForms.Guna2TextBox();
+            tbEmaillog = new Guna.UI2.WinForms.Guna2TextBox();
             label4 = new Label();
             label5 = new Label();
             guna2CustomGradientPanel2.SuspendLayout();
@@ -231,11 +231,11 @@
             // 
             guna2CustomGradientPanel1.BorderRadius = 20;
             guna2CustomGradientPanel1.Controls.Add(guna2CustomGradientPanel4);
-            guna2CustomGradientPanel1.Controls.Add(guna2Button4);
+            guna2CustomGradientPanel1.Controls.Add(btLogin);
             guna2CustomGradientPanel1.Controls.Add(guna2Button2);
-            guna2CustomGradientPanel1.Controls.Add(guna2TextBox4);
+            guna2CustomGradientPanel1.Controls.Add(tbPasslog);
             guna2CustomGradientPanel1.Controls.Add(guna2Button1);
-            guna2CustomGradientPanel1.Controls.Add(guna2TextBox3);
+            guna2CustomGradientPanel1.Controls.Add(tbEmaillog);
             guna2CustomGradientPanel1.Controls.Add(label4);
             guna2CustomGradientPanel1.Controls.Add(label5);
             guna2CustomGradientPanel1.CustomizableEdges = customizableEdges26;
@@ -255,13 +255,13 @@
             guna2CustomGradientPanel4.Controls.Add(guna2HtmlLabel6);
             guna2CustomGradientPanel4.Controls.Add(guna2HtmlLabel5);
             guna2CustomGradientPanel4.Controls.Add(guna2HtmlLabel4);
-            guna2CustomGradientPanel4.Controls.Add(guna2TextBox5);
-            guna2CustomGradientPanel4.Controls.Add(guna2TextBox2);
-            guna2CustomGradientPanel4.Controls.Add(guna2TextBox1);
+            guna2CustomGradientPanel4.Controls.Add(tbPassConfirmSign);
+            guna2CustomGradientPanel4.Controls.Add(tbPassSign);
+            guna2CustomGradientPanel4.Controls.Add(tbEmailSign);
             guna2CustomGradientPanel4.CustomizableEdges = customizableEdges18;
             guna2CustomGradientPanel4.FillColor = Color.FromArgb(128, 128, 255);
             guna2CustomGradientPanel4.FillColor4 = Color.FromArgb(128, 128, 255);
-            guna2CustomGradientPanel4.Location = new Point(0, 88);
+            guna2CustomGradientPanel4.Location = new Point(0, 92);
             guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
             guna2CustomGradientPanel4.ShadowDecoration.CustomizableEdges = customizableEdges19;
             guna2CustomGradientPanel4.Size = new Size(369, 391);
@@ -277,19 +277,20 @@
             guna2Button3.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button3.Font = new Font("Segoe UI", 13F);
             guna2Button3.ForeColor = Color.White;
-            guna2Button3.Location = new Point(128, 326);
+            guna2Button3.Location = new Point(120, 329);
             guna2Button3.Name = "guna2Button3";
             guna2Button3.Padding = new Padding(10, 0, 10, 0);
             guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges11;
             guna2Button3.Size = new Size(128, 41);
             guna2Button3.TabIndex = 11;
             guna2Button3.Text = "Sign up";
+            guna2Button3.Click += guna2Button3_Click;
             // 
             // guna2HtmlLabel6
             // 
             guna2HtmlLabel6.BackColor = Color.Transparent;
             guna2HtmlLabel6.Font = new Font("Segoe UI", 12F);
-            guna2HtmlLabel6.Location = new Point(33, 220);
+            guna2HtmlLabel6.Location = new Point(33, 199);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
             guna2HtmlLabel6.Size = new Size(161, 30);
             guna2HtmlLabel6.TabIndex = 10;
@@ -299,7 +300,7 @@
             // 
             guna2HtmlLabel5.BackColor = Color.Transparent;
             guna2HtmlLabel5.Font = new Font("Segoe UI", 12F);
-            guna2HtmlLabel5.Location = new Point(33, 124);
+            guna2HtmlLabel5.Location = new Point(33, 114);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             guna2HtmlLabel5.Size = new Size(85, 30);
             guna2HtmlLabel5.TabIndex = 9;
@@ -309,144 +310,149 @@
             // 
             guna2HtmlLabel4.BackColor = Color.Transparent;
             guna2HtmlLabel4.Font = new Font("Segoe UI", 12F);
-            guna2HtmlLabel4.Location = new Point(33, 28);
+            guna2HtmlLabel4.Location = new Point(34, 23);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            guna2HtmlLabel4.Size = new Size(95, 30);
+            guna2HtmlLabel4.Size = new Size(50, 30);
             guna2HtmlLabel4.TabIndex = 8;
-            guna2HtmlLabel4.Text = "User name";
+            guna2HtmlLabel4.Text = "Email";
             // 
-            // guna2TextBox5
+            // tbPassConfirmSign
             // 
-            guna2TextBox5.BackColor = Color.Transparent;
-            guna2TextBox5.BorderRadius = 10;
-            guna2TextBox5.CustomizableEdges = customizableEdges12;
-            guna2TextBox5.DefaultText = "";
-            guna2TextBox5.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox5.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox5.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox5.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox5.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox5.Font = new Font("Segoe UI", 9F);
-            guna2TextBox5.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox5.Location = new Point(33, 255);
-            guna2TextBox5.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox5.Name = "guna2TextBox5";
-            guna2TextBox5.PasswordChar = '\0';
-            guna2TextBox5.PlaceholderText = "";
-            guna2TextBox5.SelectedText = "";
-            guna2TextBox5.ShadowDecoration.CustomizableEdges = customizableEdges13;
-            guna2TextBox5.Size = new Size(296, 47);
-            guna2TextBox5.TabIndex = 7;
+            tbPassConfirmSign.BackColor = Color.Transparent;
+            tbPassConfirmSign.BorderRadius = 10;
+            tbPassConfirmSign.CustomizableEdges = customizableEdges12;
+            tbPassConfirmSign.DefaultText = "";
+            tbPassConfirmSign.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            tbPassConfirmSign.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            tbPassConfirmSign.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            tbPassConfirmSign.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            tbPassConfirmSign.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbPassConfirmSign.Font = new Font("Segoe UI", 9F);
+            tbPassConfirmSign.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbPassConfirmSign.Location = new Point(33, 234);
+            tbPassConfirmSign.Margin = new Padding(3, 4, 3, 4);
+            tbPassConfirmSign.Name = "tbPassConfirmSign";
+            tbPassConfirmSign.PasswordChar = '\0';
+            tbPassConfirmSign.PlaceholderText = "Confirm Your Password";
+            tbPassConfirmSign.SelectedText = "";
+            tbPassConfirmSign.ShadowDecoration.CustomizableEdges = customizableEdges13;
+            tbPassConfirmSign.Size = new Size(296, 47);
+            tbPassConfirmSign.TabIndex = 7;
+            tbPassConfirmSign.Click += tbPassConfirmSign_Click;
             // 
-            // guna2TextBox2
+            // tbPassSign
             // 
-            guna2TextBox2.BackColor = Color.Transparent;
-            guna2TextBox2.BorderRadius = 10;
-            guna2TextBox2.CustomizableEdges = customizableEdges14;
-            guna2TextBox2.DefaultText = "";
-            guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox2.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox2.Font = new Font("Segoe UI", 9F);
-            guna2TextBox2.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox2.Location = new Point(33, 155);
-            guna2TextBox2.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox2.Name = "guna2TextBox2";
-            guna2TextBox2.PasswordChar = '\0';
-            guna2TextBox2.PlaceholderText = "";
-            guna2TextBox2.SelectedText = "";
-            guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges15;
-            guna2TextBox2.Size = new Size(296, 47);
-            guna2TextBox2.TabIndex = 6;
+            tbPassSign.BackColor = Color.Transparent;
+            tbPassSign.BorderRadius = 10;
+            tbPassSign.CustomizableEdges = customizableEdges14;
+            tbPassSign.DefaultText = "";
+            tbPassSign.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            tbPassSign.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            tbPassSign.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            tbPassSign.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            tbPassSign.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbPassSign.Font = new Font("Segoe UI", 9F);
+            tbPassSign.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbPassSign.Location = new Point(33, 145);
+            tbPassSign.Margin = new Padding(3, 4, 3, 4);
+            tbPassSign.Name = "tbPassSign";
+            tbPassSign.PasswordChar = '\0';
+            tbPassSign.PlaceholderText = "Password";
+            tbPassSign.SelectedText = "";
+            tbPassSign.ShadowDecoration.CustomizableEdges = customizableEdges15;
+            tbPassSign.Size = new Size(296, 47);
+            tbPassSign.TabIndex = 6;
+            tbPassSign.Click += tbPassSign_Click;
             // 
-            // guna2TextBox1
+            // tbEmailSign
             // 
-            guna2TextBox1.BackColor = Color.Transparent;
-            guna2TextBox1.BorderRadius = 10;
-            guna2TextBox1.CustomizableEdges = customizableEdges16;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(33, 57);
-            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges17;
-            guna2TextBox1.Size = new Size(296, 47);
-            guna2TextBox1.TabIndex = 5;
+            tbEmailSign.BackColor = Color.Transparent;
+            tbEmailSign.BorderColor = Color.White;
+            tbEmailSign.BorderRadius = 10;
+            tbEmailSign.CustomizableEdges = customizableEdges16;
+            tbEmailSign.DefaultText = "";
+            tbEmailSign.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            tbEmailSign.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            tbEmailSign.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            tbEmailSign.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            tbEmailSign.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbEmailSign.Font = new Font("Segoe UI", 9F);
+            tbEmailSign.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbEmailSign.Location = new Point(33, 60);
+            tbEmailSign.Margin = new Padding(3, 4, 3, 4);
+            tbEmailSign.Name = "tbEmailSign";
+            tbEmailSign.PasswordChar = '\0';
+            tbEmailSign.PlaceholderText = "Your Email";
+            tbEmailSign.SelectedText = "";
+            tbEmailSign.ShadowDecoration.CustomizableEdges = customizableEdges17;
+            tbEmailSign.Size = new Size(296, 47);
+            tbEmailSign.TabIndex = 5;
+            tbEmailSign.Click += tbEmailSign_Click;
             // 
-            // guna2Button4
+            // btLogin
             // 
-            guna2Button4.CustomizableEdges = customizableEdges20;
-            guna2Button4.DefaultAutoSize = true;
-            guna2Button4.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button4.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button4.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button4.Font = new Font("Segoe UI", 15F);
-            guna2Button4.ForeColor = Color.White;
-            guna2Button4.Location = new Point(131, 344);
-            guna2Button4.Name = "guna2Button4";
-            guna2Button4.Padding = new Padding(10, 0, 10, 0);
-            guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges21;
-            guna2Button4.Size = new Size(117, 46);
-            guna2Button4.TabIndex = 6;
-            guna2Button4.Text = "Login";
+            btLogin.CustomizableEdges = customizableEdges20;
+            btLogin.DefaultAutoSize = true;
+            btLogin.DisabledState.BorderColor = Color.DarkGray;
+            btLogin.DisabledState.CustomBorderColor = Color.DarkGray;
+            btLogin.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btLogin.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btLogin.Font = new Font("Segoe UI", 15F);
+            btLogin.ForeColor = Color.White;
+            btLogin.Location = new Point(131, 344);
+            btLogin.Name = "btLogin";
+            btLogin.Padding = new Padding(10, 0, 10, 0);
+            btLogin.ShadowDecoration.CustomizableEdges = customizableEdges21;
+            btLogin.Size = new Size(117, 46);
+            btLogin.TabIndex = 6;
+            btLogin.Text = "Login";
+            btLogin.Click += btLogin_Click;
             // 
-            // guna2TextBox4
+            // tbPasslog
             // 
-            guna2TextBox4.BackColor = Color.Transparent;
-            guna2TextBox4.BorderRadius = 10;
-            guna2TextBox4.CustomizableEdges = customizableEdges22;
-            guna2TextBox4.DefaultText = "";
-            guna2TextBox4.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox4.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox4.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox4.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox4.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox4.Font = new Font("Segoe UI", 9F);
-            guna2TextBox4.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox4.Location = new Point(33, 244);
-            guna2TextBox4.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox4.Name = "guna2TextBox4";
-            guna2TextBox4.PasswordChar = '\0';
-            guna2TextBox4.PlaceholderText = "";
-            guna2TextBox4.SelectedText = "";
-            guna2TextBox4.ShadowDecoration.CustomizableEdges = customizableEdges23;
-            guna2TextBox4.Size = new Size(296, 47);
-            guna2TextBox4.TabIndex = 5;
+            tbPasslog.BackColor = Color.Transparent;
+            tbPasslog.BorderRadius = 10;
+            tbPasslog.CustomizableEdges = customizableEdges22;
+            tbPasslog.DefaultText = "";
+            tbPasslog.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            tbPasslog.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            tbPasslog.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            tbPasslog.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            tbPasslog.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbPasslog.Font = new Font("Segoe UI", 9F);
+            tbPasslog.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbPasslog.Location = new Point(33, 244);
+            tbPasslog.Margin = new Padding(3, 4, 3, 4);
+            tbPasslog.Name = "tbPasslog";
+            tbPasslog.PasswordChar = '\0';
+            tbPasslog.PlaceholderText = "";
+            tbPasslog.SelectedText = "";
+            tbPasslog.ShadowDecoration.CustomizableEdges = customizableEdges23;
+            tbPasslog.Size = new Size(296, 47);
+            tbPasslog.TabIndex = 5;
             // 
-            // guna2TextBox3
+            // tbEmaillog
             // 
-            guna2TextBox3.BackColor = Color.Transparent;
-            guna2TextBox3.BorderRadius = 10;
-            guna2TextBox3.CustomizableEdges = customizableEdges24;
-            guna2TextBox3.DefaultText = "";
-            guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox3.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox3.Font = new Font("Segoe UI", 9F);
-            guna2TextBox3.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox3.Location = new Point(33, 158);
-            guna2TextBox3.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox3.Name = "guna2TextBox3";
-            guna2TextBox3.PasswordChar = '\0';
-            guna2TextBox3.PlaceholderText = "";
-            guna2TextBox3.SelectedText = "";
-            guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges25;
-            guna2TextBox3.Size = new Size(296, 47);
-            guna2TextBox3.TabIndex = 4;
+            tbEmaillog.BackColor = Color.Transparent;
+            tbEmaillog.BorderRadius = 10;
+            tbEmaillog.CustomizableEdges = customizableEdges24;
+            tbEmaillog.DefaultText = "";
+            tbEmaillog.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            tbEmaillog.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            tbEmaillog.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            tbEmaillog.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            tbEmaillog.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbEmaillog.Font = new Font("Segoe UI", 9F);
+            tbEmaillog.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            tbEmaillog.Location = new Point(33, 158);
+            tbEmaillog.Margin = new Padding(3, 4, 3, 4);
+            tbEmaillog.Name = "tbEmaillog";
+            tbEmaillog.PasswordChar = '\0';
+            tbEmaillog.PlaceholderText = "";
+            tbEmaillog.SelectedText = "";
+            tbEmaillog.ShadowDecoration.CustomizableEdges = customizableEdges25;
+            tbEmaillog.Size = new Size(296, 47);
+            tbEmaillog.TabIndex = 4;
             // 
             // label4
             // 
@@ -455,9 +461,9 @@
             label4.Font = new Font("Segoe UI", 10F);
             label4.Location = new Point(33, 131);
             label4.Name = "label4";
-            label4.Size = new Size(92, 23);
+            label4.Size = new Size(51, 23);
             label4.TabIndex = 2;
-            label4.Text = "User name";
+            label4.Text = "Email";
             // 
             // label5
             // 
@@ -483,6 +489,7 @@
             ForeColor = SystemColors.ActiveCaptionText;
             Name = "newUIloginsiguppage1";
             Text = "signin/signup";
+            Load += newUIloginsiguppage1_Load;
             guna2CustomGradientPanel2.ResumeLayout(false);
             guna2CustomGradientPanel2.PerformLayout();
             guna2CustomGradientPanel3.ResumeLayout(false);
@@ -505,9 +512,9 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+        private Guna.UI2.WinForms.Guna2Button btLogin;
+        private Guna.UI2.WinForms.Guna2TextBox tbPasslog;
+        private Guna.UI2.WinForms.Guna2TextBox tbEmaillog;
         private Label label4;
         private Label label5;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel4;
@@ -515,8 +522,8 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox5;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox tbPassConfirmSign;
+        private Guna.UI2.WinForms.Guna2TextBox tbPassSign;
+        private Guna.UI2.WinForms.Guna2TextBox tbEmailSign;
     }
 }
