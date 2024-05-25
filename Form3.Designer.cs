@@ -116,7 +116,7 @@
             Menubox.Dock = DockStyle.Left;
             Menubox.Location = new Point(0, 0);
             Menubox.Name = "Menubox";
-            Menubox.Size = new Size(75, 535);
+            Menubox.Size = new Size(68, 535);
             Menubox.TabIndex = 0;
             // 
             // guna2Button1
@@ -184,7 +184,7 @@
             chatbox.Controls.Add(chatviewer);
             chatbox.Controls.Add(UserList);
             chatbox.CustomizableEdges = customizableEdges38;
-            chatbox.Location = new Point(74, 0);
+            chatbox.Location = new Point(69, 0);
             chatbox.Name = "chatbox";
             chatbox.ShadowDecoration.CustomizableEdges = customizableEdges39;
             chatbox.Size = new Size(935, 535);
@@ -210,10 +210,10 @@
             profilebox.Controls.Add(guna2TextBox2);
             profilebox.CustomizableEdges = customizableEdges22;
             profilebox.FillColor4 = Color.FromArgb(128, 128, 255);
-            profilebox.Location = new Point(0, 1);
+            profilebox.Location = new Point(17, 96);
             profilebox.Name = "profilebox";
             profilebox.ShadowDecoration.CustomizableEdges = customizableEdges23;
-            profilebox.Size = new Size(932, 536);
+            profilebox.Size = new Size(874, 534);
             profilebox.TabIndex = 2;
             // 
             // guna2Button4
@@ -274,7 +274,7 @@
             guna2TextBox7.PlaceholderText = "";
             guna2TextBox7.SelectedText = "";
             guna2TextBox7.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2TextBox7.Size = new Size(442, 153);
+            guna2TextBox7.Size = new Size(382, 151);
             guna2TextBox7.TabIndex = 12;
             // 
             // guna2HtmlLabel7
@@ -305,7 +305,7 @@
             guna2TextBox6.PlaceholderText = "";
             guna2TextBox6.SelectedText = "";
             guna2TextBox6.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2TextBox6.Size = new Size(228, 42);
+            guna2TextBox6.Size = new Size(168, 40);
             guna2TextBox6.TabIndex = 10;
             // 
             // guna2HtmlLabel6
@@ -336,7 +336,7 @@
             guna2TextBox5.PlaceholderText = "";
             guna2TextBox5.SelectedText = "";
             guna2TextBox5.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2TextBox5.Size = new Size(228, 42);
+            guna2TextBox5.Size = new Size(168, 40);
             guna2TextBox5.TabIndex = 8;
             // 
             // guna2HtmlLabel5
@@ -407,7 +407,7 @@
             guna2TextBox4.PlaceholderText = "";
             guna2TextBox4.SelectedText = "";
             guna2TextBox4.ShadowDecoration.CustomizableEdges = customizableEdges17;
-            guna2TextBox4.Size = new Size(228, 42);
+            guna2TextBox4.Size = new Size(168, 40);
             guna2TextBox4.TabIndex = 2;
             // 
             // guna2TextBox3
@@ -429,7 +429,7 @@
             guna2TextBox3.PlaceholderText = "";
             guna2TextBox3.SelectedText = "";
             guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges19;
-            guna2TextBox3.Size = new Size(228, 42);
+            guna2TextBox3.Size = new Size(168, 40);
             guna2TextBox3.TabIndex = 1;
             // 
             // guna2TextBox2
@@ -451,7 +451,7 @@
             guna2TextBox2.PlaceholderText = "";
             guna2TextBox2.SelectedText = "";
             guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges21;
-            guna2TextBox2.Size = new Size(228, 42);
+            guna2TextBox2.Size = new Size(168, 40);
             guna2TextBox2.TabIndex = 0;
             // 
             // Username

@@ -25,7 +25,8 @@ namespace NT106_project
     
     public partial class newUIloginsiguppage1 : Form
     {
-        
+        bool a;
+        string b;
         private int  checkreg = 0;
         private int checklog = 0;
         IFirebaseConfig ifc = new FirebaseConfig()
@@ -90,13 +91,14 @@ namespace NT106_project
                 Username = tbEmailSign.Text,
                 Password = tbPassSign.Text,
                 name = "User",
-                email = "",
+                email = Email.Text,
                 phone = "",
-                disc = "",
+                desc = "",
                 firstime = true,
+                verified = false,
             };
             // Đăng ký
-            if (string.IsNullOrEmpty(tbEmailSign.Text) || string.IsNullOrEmpty(tbPassSign.Text) || string.IsNullOrEmpty(tbPassConfirmSign.Text))
+            if (string.IsNullOrEmpty(tbEmailSign.Text) || string.IsNullOrEmpty(tbPassSign.Text) || string.IsNullOrEmpty(tbPassConfirmSign.Text) || string.IsNullOrEmpty(Email.Text))
             {
                 if (string.IsNullOrEmpty(tbEmailSign.Text))
                 {
@@ -112,6 +114,11 @@ namespace NT106_project
                 {
                     tbPassConfirmSign.BorderColor = Color.Red;
                     tbPassConfirmSign.Text = "Please provide confirm password!";
+                }
+                if (string.IsNullOrEmpty(Email.Text))
+                {
+                    Email.BorderColor = Color.Red;
+                    Email.Text = "Please provide email!";
                 }
                 checkreg = 1;
                 return;
@@ -148,13 +155,15 @@ namespace NT106_project
                 tbEmailSign.Clear();
                 tbPassSign.Clear();
                 tbPassConfirmSign.Clear();
-                MessageBox.Show("Sign Up Success");
+                MessageBox.Show("Sign Up Success"); // make notice for success
                 showlogin();
 
             }
         }
         private async void btLogin_Click(object sender, EventArgs e)
         {
+            bool checkfirsttime;
+            string User_id;
             // Đăng nhập
             if (string.IsNullOrEmpty(tbEmaillog.Text) || string.IsNullOrEmpty(tbPasslog.Text))
             {
@@ -191,8 +200,9 @@ namespace NT106_project
                     get.Password = obj.Password;
                     get.email = obj.email;
                     get.phone = obj.phone;
-                    get.disc = obj.disc;
-                
+                    get.desc = obj.desc;
+                    a = obj.firstime;
+                    b= obj.Userid;
                     if (tbPasslog.Text != get.Password)
                     {
                         tbEmaillog.BorderColor = Color.Red;
@@ -205,9 +215,18 @@ namespace NT106_project
                 }
             } 
             if ( checklog == 0 )
-            {
-                MessageBox.Show("Login successfull");
-
+            {   
+                MessageBox.Show("Login successfull");  // make notice for success
+                // rt to home page ( forum chat page only if first time != false )
+                // else rt to profile page
+                // 
+                if (a == true)
+                {   
+                    // rt to profile page
+                    profilepage profile = new profilepage(b);
+                    profile.Show();
+                    this.Hide();
+                }
             }
             
         }
