@@ -13,6 +13,7 @@
         public bool   firstime { get; set; }
 
         public bool   verified { get; set; }
+        public string sex { get; set; }
 
     }
 }

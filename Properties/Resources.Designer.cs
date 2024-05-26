@@ -73,6 +73,16 @@ namespace NT106_project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _360_F_413179058_KVgmeeNLlhgQyBkiieNCnTKCUL9MH9rS_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("360_F_413179058_KVgmeeNLlhgQyBkiieNCnTKCUL9MH9rS-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _5582878 {
             get {
                 object obj = ResourceManager.GetObject("5582878", resourceCulture);
