@@ -11,7 +11,11 @@ namespace NT106_project
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+<<<<<<< Updated upstream
             Application.Run(new Startup());
+=======
+            Application.Run(new Server());
+>>>>>>> Stashed changes
         }
     }
 }

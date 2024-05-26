@@ -10,11 +10,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp;
+using Firebase.Auth;
+using FireSharp.Response;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 namespace NT106_project
 {
     public partial class Server : Form
     {
+        IFirebaseConfig ifc = new FirebaseConfig()
+        {
+            AuthSecret = "kHKs9ZwngaoM2odQCgyLjDzG7sF0JVQzNEf1IA1N",
+            BasePath = "https://appchatdizz-default-rtdb.firebaseio.com/",
+        };
+        IFirebaseClient client;
         public Server()
         {
             InitializeComponent();
@@ -119,7 +132,7 @@ namespace NT106_project
                 message = message_arr[1];
                 name = message_arr[0];
                 // Chat all
-                if(name.Contains("all"))
+                if (name.Contains("all"))
                 {
                     foreach (User_connect user in myList)
                     {
@@ -131,7 +144,7 @@ namespace NT106_project
                             recv = Encoding.UTF32.GetBytes(message);
                             ns_temp.Write(recv, 0, recv.Length);
                             AddMessage(senderName + ":" + body); // Update the message to include senderName and body
-                          
+
                         }
                     }
                     continue;
@@ -155,12 +168,46 @@ namespace NT106_project
 
         void AddMessage(string mess)
         {
-            lvMess.Items.Add(new ListViewItem("\""+mess+"\""));
+            lvMess.Items.Add(new ListViewItem("\"" + mess + "\""));
         }
 
         private void btSend_Click_1(object sender, EventArgs e)
         {
             //Send(client);
+        }
+
+        public async Task<List<Data>> GetAllUsersAsync()
+        {
+            Firebase.Database.FirebaseClient firebaseClient = new Firebase.Database.FirebaseClient("https://appchatdizz-default-rtdb.firebaseio.com/");
+            var users = await firebaseClient
+                .Child("Users")
+                .OnceAsync<Data>();
+
+            List<Data> userList = new List<Data>();
+            foreach (var user in users)
+            {
+                userList.Add(user.Object);
+            }
+
+            return userList;
+        }
+
+        private async void Server_Load(object sender, EventArgs e)
+        {
+            client = new FireSharp.FirebaseClient(ifc);
+
+            if (client == null)
+            {
+                MessageBox.Show("There was a problem in connecting to the server");
+            }
+
+            List<Data> users = await GetAllUsersAsync();
+            dataGridView1.DataSource = users;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
