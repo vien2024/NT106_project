@@ -303,11 +303,12 @@
             Desc.Margin = new Padding(3, 4, 3, 4);
             Desc.Name = "Desc";
             Desc.PasswordChar = '\0';
-            Desc.PlaceholderText = "";
+            Desc.PlaceholderText = "Your description";
             Desc.SelectedText = "";
             Desc.ShadowDecoration.CustomizableEdges = customizableEdges12;
             Desc.Size = new Size(382, 151);
             Desc.TabIndex = 15;
+            Desc.TextOffset = new Point(0, -60);
             // 
             // Phone
             // 
@@ -325,7 +326,7 @@
             Phone.Margin = new Padding(3, 4, 3, 4);
             Phone.Name = "Phone";
             Phone.PasswordChar = '\0';
-            Phone.PlaceholderText = "";
+            Phone.PlaceholderText = "Phone Number";
             Phone.SelectedText = "";
             Phone.ShadowDecoration.CustomizableEdges = customizableEdges14;
             Phone.Size = new Size(195, 43);
@@ -347,7 +348,7 @@
             Email.Margin = new Padding(3, 4, 3, 4);
             Email.Name = "Email";
             Email.PasswordChar = '\0';
-            Email.PlaceholderText = "";
+            Email.PlaceholderText = "Email";
             Email.SelectedText = "";
             Email.ShadowDecoration.CustomizableEdges = customizableEdges16;
             Email.Size = new Size(195, 43);
@@ -391,7 +392,7 @@
             UserName.Margin = new Padding(3, 4, 3, 4);
             UserName.Name = "UserName";
             UserName.PasswordChar = '\0';
-            UserName.PlaceholderText = "";
+            UserName.PlaceholderText = "Your name";
             UserName.SelectedText = "";
             UserName.ShadowDecoration.CustomizableEdges = customizableEdges20;
             UserName.Size = new Size(195, 43);
@@ -432,6 +433,7 @@
             guna2Button5.Size = new Size(165, 44);
             guna2Button5.TabIndex = 4;
             guna2Button5.Text = "choose image ";
+            guna2Button5.Click += guna2Button5_Click;
             // 
             // Userimage
             // 
@@ -562,6 +564,7 @@
             guna2Button8.Size = new Size(70, 56);
             guna2Button8.TabIndex = 10;
             guna2Button8.TextAlign = HorizontalAlignment.Left;
+            guna2Button8.Click += guna2Button8_Click;
             // 
             // profilepage
             // 

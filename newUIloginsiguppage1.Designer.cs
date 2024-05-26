@@ -267,7 +267,7 @@
             guna2CustomGradientPanel4.CustomizableEdges = customizableEdges20;
             guna2CustomGradientPanel4.FillColor = Color.FromArgb(128, 128, 255);
             guna2CustomGradientPanel4.FillColor4 = Color.FromArgb(128, 128, 255);
-            guna2CustomGradientPanel4.Location = new Point(1, 83);
+            guna2CustomGradientPanel4.Location = new Point(0, 82);
             guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
             guna2CustomGradientPanel4.ShadowDecoration.CustomizableEdges = customizableEdges21;
             guna2CustomGradientPanel4.Size = new Size(369, 396);
@@ -501,9 +501,9 @@
             label4.Font = new Font("Segoe UI", 10F);
             label4.Location = new Point(33, 131);
             label4.Name = "label4";
-            label4.Size = new Size(51, 23);
+            label4.Size = new Size(87, 23);
             label4.TabIndex = 2;
-            label4.Text = "Email";
+            label4.Text = "Username";
             // 
             // label5
             // 

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
+
 namespace NT106_project
 {
     public partial class profilepage : Form
@@ -62,7 +63,7 @@ namespace NT106_project
         }
 
         private async void savebtn_Click(object sender, EventArgs e)
-        {   
+        {
             FirebaseResponse response3 = await client.GetTaskAsync("Users/" + Currentuser);
             Data obj3 = response3.ResultAs<Data>();
             var data = new Data
@@ -156,7 +157,7 @@ namespace NT106_project
                 changepw.Password = New_Password.Text;
                 changepw.firstime = false;
                 changepw.verified = true;
-                changepw.name =  obj2.name;
+                changepw.name = obj2.name;
                 changepw.email = obj2.email;
                 changepw.phone = obj2.phone;
                 changepw.desc = obj2.desc;
@@ -172,6 +173,26 @@ namespace NT106_project
             verifyemailpage verifyemailpage = new verifyemailpage(Currentuser);
             verifyemailpage.Show();
             this.Hide();
+        }
+
+        private void guna2Button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            newUIloginsiguppage1 newUIloginsiguppage1 = new newUIloginsiguppage1();
+            newUIloginsiguppage1.Show();
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Select Image";
+            ofd.Filter = "Choose Image(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Image img = new Bitmap(ofd.FileName);
+                Userimage.Image = img.GetThumbnailImage(100, 100, null, new IntPtr());
+            }
+
         }
     }
 }
