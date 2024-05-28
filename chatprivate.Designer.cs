@@ -365,6 +365,7 @@
             Controls.Add(panel1);
             Name = "Privatechat";
             Text = "Privatechat";
+            Load += Privatechat_Load;
             ((System.ComponentModel.ISupportInitialize)userlist).EndInit();
             menulist.ResumeLayout(false);
             ResumeLayout(false);
