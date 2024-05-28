@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,14 @@ namespace NT106_project
             }
             FirebaseResponse response = await client.GetTaskAsync("Users/" + Currentuser);
             Data obj = response.ResultAs<Data>();
-            Userimage.ImageLocation = "";
+            byte[] image = Convert.FromBase64String(obj.image);
+            MemoryStream ms = new MemoryStream();
+            ms.Write(image, 0, Convert.ToInt32(image.Length));
+            Bitmap bm = new Bitmap(ms, false);
+            ms.Dispose();
+
+
+            Userimage.Image = bm;
             UserName.Text = obj.name;
             Email.Text = obj.email;
             Phone.Text = obj.phone;
@@ -63,11 +71,17 @@ namespace NT106_project
         }
 
         private async void savebtn_Click(object sender, EventArgs e)
-        {
+        {   
+            MemoryStream ms = new MemoryStream();
+            Userimage.Image.Save(ms, ImageFormat.Jpeg);
+            byte[] img = ms.ToArray();
+            string output = Convert.ToBase64String(img);
+
             FirebaseResponse response3 = await client.GetTaskAsync("Users/" + Currentuser);
             Data obj3 = response3.ResultAs<Data>();
             var data = new Data
-            {
+            {   
+                image = output,
                 name = UserName.Text,
                 email = Email.Text,
                 phone = Phone.Text,
@@ -153,6 +167,7 @@ namespace NT106_project
                 FirebaseResponse response = await client.GetTaskAsync("Users/" + Currentuser);
                 Data obj2 = response.ResultAs<Data>();
                 Data changepw = new Data();
+                changepw.image = obj2.image;
                 changepw.Userid = obj2.Userid;
                 changepw.Password = New_Password.Text;
                 changepw.firstime = false;

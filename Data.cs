@@ -2,6 +2,7 @@
 {
     internal class Data
     {   
+        public string image { get; set; }
         public string Userid { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }

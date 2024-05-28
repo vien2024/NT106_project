@@ -97,11 +97,6 @@ namespace NT106_project
                 firstime = true,
                 verified = false,
             };
-            var image = new image_model
-            {
-                Userid = tbEmailSign.Text + "_id",
-                Img = ""
-            };
             // Đăng ký
             if (string.IsNullOrEmpty(tbEmailSign.Text) || string.IsNullOrEmpty(tbPassSign.Text) || string.IsNullOrEmpty(tbPassConfirmSign.Text) || string.IsNullOrEmpty(Email.Text))
             {
@@ -157,7 +152,6 @@ namespace NT106_project
             {   
                 
                 SetResponse response = await client.SetTaskAsync("Users/" + tbEmailSign.Text + "_id", data);
-                FirebaseResponse response1 = await client.SetTaskAsync("Users/" + tbEmailSign.Text + "_id", image);
                 tbEmailSign.Clear();
                 tbPassSign.Clear();
                 tbPassConfirmSign.Clear();
