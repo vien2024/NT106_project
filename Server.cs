@@ -25,26 +25,34 @@ namespace NT106_project
         public class User_connect
         {
             // Fields (variables)
-            string _name;
+            string Username;
             TcpClient _socket;
+            string connectedfriend;
 
             // Constructor
-            public User_connect(string name, TcpClient socket)
+            public User_connect(string name1, TcpClient socket, string name2)
             {
-                _name = name;
+                Username = name1;
                 _socket = socket;
+                connectedfriend = name2;
+
             }
 
             public string Myname
             {
-                get { return _name; }
-                set { _name = value; }
+                get { return Username; }
+                set { Username = value; }
             }
 
             public TcpClient Mysocket
             {
                 get { return _socket; }
                 set { _socket = value; }
+            }
+            public string connected
+            {
+                get { return connectedfriend; }
+                set { connectedfriend = value; }
             }
 
 
@@ -100,7 +108,8 @@ namespace NT106_project
             stream.Read(recv, 0, recv.Length);
             string s = Encoding.UTF32.GetString(recv);
             string[] substrings = s.Split(':');
-            User_connect user_Connect = new User_connect(substrings[1], client);
+          
+            User_connect user_Connect = new User_connect(substrings[0], client, substrings[1]);
             myList.Add(user_Connect);
             //
             IPAddress clientIpAddress = ((IPEndPoint)client.Client.RemoteEndPoint).Address;
@@ -152,67 +161,11 @@ namespace NT106_project
             //Send(client);
         }
 
-        private string Create_log_file(string logfile_name)
-        {
-            StreamWriter Filelog = new StreamWriter(logfile_name);
-            Filelog.Close();
-            return logfile_name;
-        }
-
-        private void Find_send(string[] message_arr, bool third, string log_chat = "")
-        {
-            // Nhớ kiểm tra độ dài log_chat
-            NetworkStream ns_temp;
-            string name = message_arr[1];
-            string s;
-            byte[] recv = new byte[2048];
-            string chat = message_arr[3];
-            // Nếu giá trị thứ 3 là false
-            if (!third)
-            {
-                chat = String.Empty;
-                chat = log_chat;
-            }
-            foreach (User_connect user in myList)
-            {
-                if (user.Myname.Contains(name))
-                {
-                    ns_temp = user.Mysocket.GetStream();
-                    s = message_arr[0] + ":" + chat;
-                    recv = Encoding.UTF32.GetBytes(s);
-                    ns_temp.Write(recv, 0, recv.Length);
-                }
-            }
-        }
 
         void Private_chat(string[] message_arr)
         {
             // If giá trị thứ 3 = false
-            string logfile_name = "";
-            string fileContents;
-
-            if (!bool.Parse(message_arr[2]))
-            {
-                // Cần hàm check direct xem file log tồn tại
-                // Cần return name file log lưu nó ở biến global
-
-                // Read the contents of the file into a string
-                using (StreamReader reader = new StreamReader(logfile_name))
-                {
-                    fileContents = reader.ReadToEnd();
-                }
-                Find_send(message_arr, false, fileContents);
-            }
-
-            else
-            {
-                using (StreamWriter writer = new StreamWriter(logfile_name, true))
-                {
-                    writer.WriteLine(logfile_name);
-                }
-                Find_send(message_arr, true);
-
-            }
+           
         }
     }
 }

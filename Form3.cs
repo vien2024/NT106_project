@@ -31,8 +31,13 @@ namespace NT106_project
             this.emailName = email;
             Connect();
             Thread.Sleep(5);
+            
+            
+            //
             byte[] data = Encoding.UTF32.GetBytes("username:" + emailName);
             stream.Write(data, 0, data.Length);
+            //
+
 
         }
 
