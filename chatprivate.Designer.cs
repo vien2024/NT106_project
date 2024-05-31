@@ -49,6 +49,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             userlist = new Guna.UI2.WinForms.Guna2DataGridView();
             reviewchatbox = new ListView();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -63,8 +67,11 @@
             guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button8 = new Guna.UI2.WinForms.Guna2Button();
+            notice = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)userlist).BeginInit();
             menulist.SuspendLayout();
+            notice.SuspendLayout();
             SuspendLayout();
             // 
             // userlist
@@ -93,6 +100,7 @@
             userlist.GridColor = Color.FromArgb(231, 229, 255);
             userlist.Location = new Point(72, 94);
             userlist.Name = "userlist";
+            userlist.ReadOnly = true;
             userlist.RowHeadersVisible = false;
             userlist.RowHeadersWidth = 51;
             userlist.Size = new Size(229, 356);
@@ -110,7 +118,7 @@
             userlist.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             userlist.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             userlist.ThemeStyle.HeaderStyle.Height = 4;
-            userlist.ThemeStyle.ReadOnly = false;
+            userlist.ThemeStyle.ReadOnly = true;
             userlist.ThemeStyle.RowsStyle.BackColor = Color.White;
             userlist.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             userlist.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
@@ -118,12 +126,13 @@
             userlist.ThemeStyle.RowsStyle.Height = 29;
             userlist.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             userlist.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            userlist.CellClick += userlist_CellClick;
             // 
             // reviewchatbox
             // 
             reviewchatbox.Location = new Point(307, 65);
             reviewchatbox.Name = "reviewchatbox";
-            reviewchatbox.Size = new Size(492, 324);
+            reviewchatbox.Size = new Size(485, 324);
             reviewchatbox.TabIndex = 2;
             reviewchatbox.UseCompatibleStateImageBehavior = false;
             // 
@@ -348,12 +357,50 @@
             guna2Button8.TabIndex = 11;
             guna2Button8.TextAlign = HorizontalAlignment.Left;
             // 
+            // notice
+            // 
+            notice.Controls.Add(guna2TextBox1);
+            notice.CustomizableEdges = customizableEdges21;
+            notice.Location = new Point(303, 12);
+            notice.Name = "notice";
+            notice.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            notice.Size = new Size(496, 427);
+            notice.TabIndex = 11;
+            // 
+            // guna2TextBox1
+            // 
+            guna2TextBox1.AllowDrop = true;
+            guna2TextBox1.BackColor = Color.Transparent;
+            guna2TextBox1.BorderColor = Color.Transparent;
+            guna2TextBox1.BorderThickness = 0;
+            guna2TextBox1.CustomizableEdges = customizableEdges19;
+            guna2TextBox1.DefaultText = "please select one to chat with in list list on the left side of this message";
+            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Font = new Font("Segoe UI", 9F);
+            guna2TextBox1.ForeColor = Color.Black;
+            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Location = new Point(0, 53);
+            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
+            guna2TextBox1.Name = "guna2TextBox1";
+            guna2TextBox1.PasswordChar = '\0';
+            guna2TextBox1.PlaceholderText = "";
+            guna2TextBox1.ReadOnly = true;
+            guna2TextBox1.SelectedText = "";
+            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            guna2TextBox1.Size = new Size(496, 287);
+            guna2TextBox1.TabIndex = 0;
+            // 
             // Privatechat
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(800, 450);
+            Controls.Add(notice);
             Controls.Add(menulist);
             Controls.Add(sendbtn);
             Controls.Add(User);
@@ -368,6 +415,7 @@
             Load += Privatechat_Load;
             ((System.ComponentModel.ISupportInitialize)userlist).EndInit();
             menulist.ResumeLayout(false);
+            notice.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -387,5 +435,7 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button guna2Button8;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel notice;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
     }
 }

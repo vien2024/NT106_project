@@ -10,12 +10,22 @@ using System.Windows.Forms;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using Firebase.Database;
+using Firebase.Database.Query;
+
+
+
 
 
 namespace NT106_project
 {
     public partial class Form4 : Form
     {
+        private static Random random = new Random();
+        int Vcode;
+        string fileName;
+        string filePath;
+        bool checkedcreate = false;
         IFirebaseConfig ifc = new FirebaseConfig()
         {
             AuthSecret = "kHKs9ZwngaoM2odQCgyLjDzG7sF0JVQzNEf1IA1N",
@@ -39,16 +49,56 @@ namespace NT106_project
                 MessageBox.Show("There was a problem in connecting to the server");
             }
             else { MessageBox.Show("Connected to the server"); }
-            DataTable dt = new DataTable();
-            dt.Columns.Add("file",typeof(string));
-            dt.Rows.Add("1");
-            dt.Rows.Add("2");
-            dt.Rows.Add("3");
-            dt.Rows.Add("4");
-            guna2DataGridView1.DataSource = dt;
-            guna2DataGridView1.ColumnHeadersVisible = false;
-            guna2DataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            guna2DataGridView1.GridColor = guna2DataGridView1.BackgroundColor;
+           
+        }
+
+        private async void guna2Button1_Click(object sender, EventArgs e)
+        {
+            createfile();
+            if (checkedcreate)
+            {
+                guna2TextBox1.Text = filePath;
+                guna2TextBox3.Text = fileName;
+                var FileLogdata = new FileLogdatabase
+                {
+
+                    Name = fileName,
+                    path = filePath,
+                    User1 = "User1",
+                    User2 = "User2",
+                };
+
+                FirebaseResponse response = await client.SetTaskAsync("Filelog/" + fileName, FileLogdata);
+                FileLogdatabase result = response.ResultAs<FileLogdatabase>();
+
+            }
+        }
+        private void createfile() 
+        {
+            Generatefileid();
+            string folderpath = @"D:\K2-N2\lap_trinh_mang_can_ban\git\filelog";
+            string idnumber = Vcode.ToString();
+            string fileid = $"filelog{Vcode}.txt";
+            fileName = "filelog" + idnumber;
+            filePath = Path.Combine(folderpath, fileid);
+            
+            if (!File.Exists(filePath))
+            {
+                File.Create(filePath).Close();
+                checkedcreate = true;
+            }
+            else
+            {
+                fileName = "";
+                filePath = "";
+                checkedcreate = false;
+                createfile();
+            }
+
+        }
+        private void Generatefileid()
+        {
+            Vcode = random.Next(1000, 10000);
         }
     }
 }

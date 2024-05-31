@@ -119,7 +119,7 @@ namespace NT106_project
                 message = message_arr[1];
                 name = message_arr[0];
                 // Chat all
-                if(name.Contains("all"))
+                if (name.Contains("all"))
                 {
                     foreach (User_connect user in myList)
                     {
@@ -131,37 +131,88 @@ namespace NT106_project
                             recv = Encoding.UTF32.GetBytes(message);
                             ns_temp.Write(recv, 0, recv.Length);
                             AddMessage(senderName + ":" + body); // Update the message to include senderName and body
-                          
+
                         }
                     }
                     continue;
                 }
 
                 // Private chat
-                foreach (User_connect user in myList)
-                {
-                    if (user.Myname.Contains(name))
-                    {
-                        ns_temp = user.Mysocket.GetStream();
-                        s = user_Connect.Myname.ToString() + ":" + message;
-                        recv = Encoding.UTF32.GetBytes(s);
-                        ns_temp.Write(recv, 0, recv.Length);
-                        AddMessage(user_Connect.Myname + ":" + message);
-                    }
-                }
-                AddMessage(user_Connect.Myname + ":" + message);
+                Private_chat(message_arr);
             }
         }
 
         void AddMessage(string mess)
         {
-            lvMess.Items.Add(new ListViewItem("\""+mess+"\""));
+            lvMess.Items.Add(new ListViewItem("\"" + mess + "\""));
         }
 
         private void btSend_Click_1(object sender, EventArgs e)
         {
             //Send(client);
         }
-    }
 
+        private string Create_log_file(string logfile_name)
+        {
+            StreamWriter Filelog = new StreamWriter(logfile_name);
+            Filelog.Close();
+            return logfile_name;
+        }
+
+        private void Find_send(string[] message_arr, bool third, string log_chat = "")
+        {
+            // Nhớ kiểm tra độ dài log_chat
+            NetworkStream ns_temp;
+            string name = message_arr[1];
+            string s;
+            byte[] recv = new byte[2048];
+            string chat = message_arr[3];
+            // Nếu giá trị thứ 3 là false
+            if (!third)
+            {
+                chat = String.Empty;
+                chat = log_chat;
+            }
+            foreach (User_connect user in myList)
+            {
+                if (user.Myname.Contains(name))
+                {
+                    ns_temp = user.Mysocket.GetStream();
+                    s = message_arr[0] + ":" + chat;
+                    recv = Encoding.UTF32.GetBytes(s);
+                    ns_temp.Write(recv, 0, recv.Length);
+                }
+            }
+        }
+
+        void Private_chat(string[] message_arr)
+        {
+            // If giá trị thứ 3 = false
+            string logfile_name = "";
+            string fileContents;
+
+            if (!bool.Parse(message_arr[2]))
+            {
+                // Cần hàm check direct xem file log tồn tại
+                // Cần return name file log lưu nó ở biến global
+
+                // Read the contents of the file into a string
+                using (StreamReader reader = new StreamReader(logfile_name))
+                {
+                    fileContents = reader.ReadToEnd();
+                }
+                Find_send(message_arr, false, fileContents);
+            }
+
+            else
+            {
+                using (StreamWriter writer = new StreamWriter(logfile_name, true))
+                {
+                    writer.WriteLine(logfile_name);
+                }
+                Find_send(message_arr, true);
+
+            }
+        }
+    }
 }
