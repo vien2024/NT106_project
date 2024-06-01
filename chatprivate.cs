@@ -23,6 +23,7 @@ using System.Threading;
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
+using System.Collections.Specialized;
 
 
 
@@ -47,6 +48,12 @@ namespace NT106_project
             InitializeComponent();
             currentuser = UserID;
             userlist.ClearSelection();
+            Connect();
+            Thread.Sleep(5);
+            byte[] data = Encoding.UTF32.GetBytes(UserID);
+            stream.Write(data, 0, data.Length);
+            stream.Flush();
+
         }
 
         private async void Privatechat_Load(object sender, EventArgs e)
@@ -71,8 +78,7 @@ namespace NT106_project
             userlist.AllowUserToResizeRows = false;
             userlist.ClearSelection();
             userlist.DefaultCellStyle.SelectionBackColor = Color.White;
-            Connect();
-
+           
         }
 
 
@@ -80,6 +86,7 @@ namespace NT106_project
         {
             await LoadDataIntoDataGridView();
         }
+        // tìm tên ()
         private async Task LoadDataIntoDataGridView()
         {
             var names = await GetNamesFromFirebaseAsync();
@@ -108,10 +115,11 @@ namespace NT106_project
             return data.Where(item => item.Object.name != Username).Select(item => item.Object.name).ToList();
         }
 
+        // 
         private void userlist_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var cellValue = userlist.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-            notice.Hide();
+            // notice.Hide();
             chater.Text = cellValue.ToString();
         }
 
@@ -125,14 +133,56 @@ namespace NT106_project
             recv.IsBackground = true;
             recv.Start();
         }
-        void Receive()
+        private async void Receive()
         {
             while (true)
             {
                 byte[] recv = new byte[2048];
                 stream.Read(recv, 0, recv.Length);
                 string s = Encoding.UTF32.GetString(recv);
+                if (s == "You have not connected to anyone yet" || s == "You have connected to all users")
+                {
+                    //notice.show();
+                }
+                else
+                {   
+                    //notice.hide();
+                    FirebaseResponse response = await client.GetTaskAsync("User_connect/" + currentuser);
+                    User_connect obj = response.ResultAs<User_connect>();
+                    string a = obj.Lastconnected;
+                    FirebaseResponse response1 = await client.GetTaskAsync("Users/" + a);
+                    Data obj1 = response1.ResultAs<Data>();
+                    chater.Text = obj1.name;
+                    SelectCellWithStringA(userlist, obj1.name);
+                    reviewchatbox.Items.Add(new ListViewItem(s));
+                }
             }
+        }
+        private void SelectCellWithStringA(DataGridView dataGridView, string a)
+        {
+            // Iterate through all rows in the DataGridView
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                // Iterate through all cells in the row
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    // Check if the cell's value is "string a"
+                    if (cell.Value != null && cell.Value.ToString() == a)
+                    {
+                        // Select the cell
+                        cell.Selected = true;
+
+                        // Optionally, scroll to the cell
+                        dataGridView.FirstDisplayedScrollingRowIndex = row.Index;
+
+                        // Exit the loop after finding the first match
+                        return;
+                    }
+                }
+            }
+
+            // If no cell is found with the value "string a", display a message or handle accordingly
+            MessageBox.Show("Cell with value 'string a' not found.");
         }
     }
 }

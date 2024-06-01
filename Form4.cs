@@ -12,6 +12,7 @@ using FireSharp.Interfaces;
 using FireSharp.Response;
 using Firebase.Database;
 using Firebase.Database.Query;
+using static System.Windows.Forms.LinkLabel;
 
 
 
@@ -153,7 +154,14 @@ namespace NT106_project
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            takedatafromfiletolistview();
+            loaddatatolistview();
+        }
+        private void loaddatatolistview()
+        {
+            string[] lines = File.ReadAllLines(filePath);
+            string combinedMessage = string.Join(Environment.NewLine, lines);
+            listView1.Items.Add(new ListViewItem(combinedMessage));
+            
         }
         private void LoadLastLineIntoListView()
         {

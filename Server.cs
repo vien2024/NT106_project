@@ -127,6 +127,10 @@ namespace NT106_project
                 message_arr = s.Split(']');
                 message = message_arr[1];
                 name = message_arr[0];
+
+
+
+
                 // Chat all
                 if (name.Contains("all"))
                 {
@@ -139,6 +143,7 @@ namespace NT106_project
                             string body = message;
                             recv = Encoding.UTF32.GetBytes(message);
                             ns_temp.Write(recv, 0, recv.Length);
+                            ns_temp.Flush();
                             AddMessage(senderName + ":" + body); // Update the message to include senderName and body
 
                         }
@@ -146,8 +151,17 @@ namespace NT106_project
                     continue;
                 }
 
+
+
+
+
+
                 // Private chat
                 Private_chat(message_arr);
+
+
+
+
             }
         }
 
