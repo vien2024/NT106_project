@@ -14,6 +14,7 @@ using FireSharp.Interfaces;
 using FireSharp.Response;
 using Firebase.Database.Query;
 using static Guna.UI2.Native.WinApi;
+using FireSharp;
 
 namespace NT106_project
 {
@@ -79,6 +80,19 @@ namespace NT106_project
         }
         //
 
+        // function to check that 2 user have file log or not
+        private async Task<bool> IsFileLogExistAsync(string User1, string User2)
+        {
+            var firebaseClient = new Firebase.Database.FirebaseClient("https://appchatdizz-default-rtdb.firebaseio.com/");
+
+            var data = await firebaseClient
+                .Child("Filelog") // Replace with your data node in Firebase
+                .OnceAsync<FileLogdatabase>();
+
+            // Check if there is a FileLogdatabase object that matches User1 and User2
+            return data.Any(item => item.Object.User1 == User1 && item.Object.User2 == User2);
+        }
+        // 
 
 
 
@@ -190,31 +204,79 @@ namespace NT106_project
                 }
                 IPAddress clientIpAddress = ((IPEndPoint)client.Client.RemoteEndPoint).Address;
                 int clientPort = ((IPEndPoint)client.Client.RemoteEndPoint).Port;
+                while(true)
+                {
+                    string c;
+                    Array.Clear(recv, 0, recv.Length);
+                    // Start receiving
+                    stream.Read(recv, 0, recv.Length);
+                    c = Encoding.UTF32.GetString(recv);
+                    sendedmess = c.Split(']');
+                    string connected = sendedmess[1];
+                    message = sendedmess[2];
+                    string connector = sendedmess[0];
+                    if (connected != "All")
+                    {
+                        if (message == "")
+                        {
 
+                            var Userconnect = new User_connect
+                            {
+                                Userid = s,
+                                client = client,
+                                Lastconnected = sendedmess[1],
+                            };
+                            // update last connected
+                            FirebaseResponse firebaseResponse3 = await firebaseClient.UpdateTaskAsync("User_connect/" + s, Userconnect);
+                            // check if 2 player have filelog or not
+                            bool isFileLogExist = await IsFileLogExistAsync(s, connected);
+                            if (isFileLogExist)
+                            {
+                                string a = await GetFileLogNameFromFirebaseAsync(s, connected);
+                                FirebaseResponse firebaseResponse2 = await firebaseClient.GetTaskAsync("filelog/" + a);
+                                FileLogdatabase fileLog = firebaseResponse2.ResultAs<FileLogdatabase>();
+                                string path = fileLog.path;
+                                string[] lines = File.ReadAllLines(path);
+                                Send(client, lines, null);
+                            }
+                            else 
+                            {
+                                // create file 
+                                createfile();
+                                // add file log to firebase
+                                var fileLog = new FileLogdatabase
+                                {
+                                    Name = fileName,
+                                    User1 = s,
+                                    User2 = connected,
+                                    path = filePath,
+                                };
+                                FirebaseResponse response = await firebaseClient.SetTaskAsync("Filelog/" + fileName, fileLog);
+                                string mess = "Starting chat with New Friend";
+                                Send(client, null, mess);
+                            }
 
-
-
-
+                        }
+                    }
+                    
+                }    
             }
-            //string[] substrings = s.Split(']');
-            // check if user 1 and 2 have connected to each other or not
-
-
-            // nếu không tạo mới 
-
-
-
-
-            // nếu có gửi file log
-
-
-
-
-
-
-
         }
         //
+
+
+        // function to create file log
+
+        //
+
+
+
+
+
+
+
+
+
         // hàm send mes
         void Send(TcpClient client, string[] mess1,string mess2)
         {

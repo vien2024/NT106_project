@@ -144,7 +144,15 @@ namespace NT106_project
                 {
                     //notice.show();
                 }
-                else
+                else if( s== "Starting chat with New Friend")
+                {
+                    reviewchatbox.Items.Add(new ListViewItem(s));
+                    // command to make this item in the top set to the middle of the listview
+
+
+                }
+
+                else 
                 {   
                     //notice.hide();
                     FirebaseResponse response = await client.GetTaskAsync("User_connect/" + currentuser);
