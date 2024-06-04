@@ -15,6 +15,7 @@ using FireSharp.Response;
 using Firebase.Database.Query;
 using static Guna.UI2.Native.WinApi;
 using FireSharp;
+using Guna.UI2.WinForms;
 
 namespace NT106_project
 {
@@ -257,15 +258,82 @@ namespace NT106_project
                             }
 
                         }
+                        else
+                        {   
+                            insertdatatofile(message);
+                        }
                     }
-                    
+                    else
+                    {
+                        // chat all
+                        if(message == "")
+                        {
+                            var Userconnect = new User_connect
+                            {
+                                Userid = s,
+                                client = client,
+                                Lastconnected = sendedmess[1],
+                            };
+                            // update last connected
+                            FirebaseResponse firebaseResponse3 = await firebaseClient.UpdateTaskAsync("User_connect/" + s, Userconnect);
+                            FirebaseResponse firebaseResponse2 = await firebaseClient.GetTaskAsync("Filelog/" + "All");
+                            FileLogdatabase fileLogAll = firebaseResponse2.ResultAs<FileLogdatabase>();
+                            string path = fileLogAll.path;
+                            string[] lines = File.ReadAllLines(path);
+                            Send(client, lines, null);
+                        }
+                        else
+                        {
+                          var ClientconnecttoAll = await GetClientConectedtoforum();
+                            foreach (var item in ClientconnecttoAll)
+                            {   
+                                IPEndPoint remoteendpoint = (IPEndPoint)item.Client.RemoteEndPoint;
+                                if (remoteendpoint.Port != clientPort)
+                                {
+                                    ns_temp = item.GetStream();
+                                    string senderName = sendedmess[0];
+                                    string body =senderName+ " : " + message;
+                                    recv = Encoding.UTF32.GetBytes(body);
+                                    ns_temp.Write(recv, 0, recv.Length);
+                                    ns_temp.Flush();
+                                }
+                            }
+                        }
+                    }
+
+
                 }    
             }
         }
         //
+        // function to take User dat connect to  forum 
+        private async Task<List<TcpClient>> GetClientConectedtoforum()
+        {
+            var firebaseClient = new Firebase.Database.FirebaseClient("https://appchatdizz-default-rtdb.firebaseio.com/");
 
+            var data = await firebaseClient
+                .Child("User_connect") // Replace with your data node in Firebase
+                .OnceAsync<User_connect>();
 
-        // function to create file log
+            // Extract the names from the data
+            return data.Where(item => item.Object.Lastconnected == "All").Select(item => item.Object.client).ToList();
+        }
+
+        // function to add data to file
+        private void insertdatatofile(string a)
+        {
+            try
+            {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(filePath, true))
+                {
+                    file.WriteLine(a);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         //
 
