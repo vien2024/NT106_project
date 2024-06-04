@@ -28,29 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             userlist = new Guna.UI2.WinForms.Guna2DataGridView();
-            reviewchatbox = new ListView();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             chatbox = new Guna.UI2.WinForms.Guna2TextBox();
             chater = new Guna.UI2.WinForms.Guna2TextBox();
@@ -63,33 +62,34 @@
             guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button8 = new Guna.UI2.WinForms.Guna2Button();
+            reviewchatbox = new ListView();
             ((System.ComponentModel.ISupportInitialize)userlist).BeginInit();
             menulist.SuspendLayout();
             SuspendLayout();
             // 
             // userlist
             // 
-            dataGridViewCellStyle1.BackColor = Color.White;
-            userlist.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            userlist.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             userlist.BorderStyle = BorderStyle.FixedSingle;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            userlist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            userlist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             userlist.ColumnHeadersHeight = 4;
             userlist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            userlist.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            userlist.DefaultCellStyle = dataGridViewCellStyle6;
             userlist.GridColor = Color.FromArgb(231, 229, 255);
             userlist.Location = new Point(72, 94);
             userlist.Name = "userlist";
@@ -121,14 +121,6 @@
             userlist.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             userlist.CellClick += userlist_CellClick;
             // 
-            // reviewchatbox
-            // 
-            reviewchatbox.Location = new Point(307, 65);
-            reviewchatbox.Name = "reviewchatbox";
-            reviewchatbox.Size = new Size(485, 324);
-            reviewchatbox.TabIndex = 2;
-            reviewchatbox.UseCompatibleStateImageBehavior = false;
-            // 
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
@@ -141,7 +133,7 @@
             // 
             // chatbox
             // 
-            chatbox.CustomizableEdges = customizableEdges1;
+            chatbox.CustomizableEdges = customizableEdges19;
             chatbox.DefaultText = "Type a message";
             chatbox.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             chatbox.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -156,14 +148,14 @@
             chatbox.PasswordChar = '\0';
             chatbox.PlaceholderText = "";
             chatbox.SelectedText = "";
-            chatbox.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            chatbox.ShadowDecoration.CustomizableEdges = customizableEdges20;
             chatbox.Size = new Size(395, 38);
             chatbox.TabIndex = 4;
             // 
             // chater
             // 
             chater.BorderColor = Color.White;
-            chater.CustomizableEdges = customizableEdges3;
+            chater.CustomizableEdges = customizableEdges21;
             chater.DefaultText = "";
             chater.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             chater.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -179,14 +171,14 @@
             chater.PlaceholderText = "";
             chater.ReadOnly = true;
             chater.SelectedText = "";
-            chater.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            chater.ShadowDecoration.CustomizableEdges = customizableEdges22;
             chater.Size = new Size(250, 34);
             chater.TabIndex = 6;
             // 
             // User
             // 
             User.BorderColor = Color.White;
-            User.CustomizableEdges = customizableEdges5;
+            User.CustomizableEdges = customizableEdges23;
             User.DefaultText = "";
             User.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             User.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -202,7 +194,7 @@
             User.PlaceholderText = "";
             User.ReadOnly = true;
             User.SelectedText = "";
-            User.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            User.ShadowDecoration.CustomizableEdges = customizableEdges24;
             User.Size = new Size(221, 34);
             User.TabIndex = 7;
             // 
@@ -216,7 +208,7 @@
             // 
             // sendbtn
             // 
-            sendbtn.CustomizableEdges = customizableEdges7;
+            sendbtn.CustomizableEdges = customizableEdges25;
             sendbtn.DisabledState.BorderColor = Color.DarkGray;
             sendbtn.DisabledState.CustomBorderColor = Color.DarkGray;
             sendbtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -228,7 +220,7 @@
             sendbtn.ImageSize = new Size(35, 35);
             sendbtn.Location = new Point(758, 402);
             sendbtn.Name = "sendbtn";
-            sendbtn.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            sendbtn.ShadowDecoration.CustomizableEdges = customizableEdges26;
             sendbtn.Size = new Size(34, 37);
             sendbtn.TabIndex = 9;
             // 
@@ -251,7 +243,7 @@
             // 
             guna2Button1.BackColor = Color.Transparent;
             guna2Button1.BackgroundImageLayout = ImageLayout.Stretch;
-            guna2Button1.CustomizableEdges = customizableEdges9;
+            guna2Button1.CustomizableEdges = customizableEdges27;
             guna2Button1.DisabledState.BorderColor = Color.DarkGray;
             guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -265,14 +257,14 @@
             guna2Button1.Margin = new Padding(0, 1, 0, 0);
             guna2Button1.Name = "guna2Button1";
             guna2Button1.ShadowDecoration.BorderRadius = 0;
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges28;
             guna2Button1.Size = new Size(73, 56);
             guna2Button1.TabIndex = 6;
             // 
             // guna2Button4
             // 
             guna2Button4.BackColor = Color.Transparent;
-            guna2Button4.CustomizableEdges = customizableEdges11;
+            guna2Button4.CustomizableEdges = customizableEdges29;
             guna2Button4.DisabledState.BorderColor = Color.DarkGray;
             guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button4.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -285,14 +277,14 @@
             guna2Button4.Location = new Point(0, 57);
             guna2Button4.Margin = new Padding(0);
             guna2Button4.Name = "guna2Button4";
-            guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges30;
             guna2Button4.Size = new Size(70, 56);
             guna2Button4.TabIndex = 9;
             // 
             // guna2Button3
             // 
             guna2Button3.BackColor = Color.FromArgb(128, 128, 255);
-            guna2Button3.CustomizableEdges = customizableEdges13;
+            guna2Button3.CustomizableEdges = customizableEdges31;
             guna2Button3.DisabledState.BorderColor = Color.DarkGray;
             guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -305,13 +297,13 @@
             guna2Button3.Location = new Point(0, 113);
             guna2Button3.Margin = new Padding(0);
             guna2Button3.Name = "guna2Button3";
-            guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges32;
             guna2Button3.Size = new Size(70, 56);
             guna2Button3.TabIndex = 8;
             // 
             // guna2Button2
             // 
-            guna2Button2.CustomizableEdges = customizableEdges15;
+            guna2Button2.CustomizableEdges = customizableEdges33;
             guna2Button2.DisabledState.BorderColor = Color.DarkGray;
             guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -324,14 +316,14 @@
             guna2Button2.Location = new Point(0, 169);
             guna2Button2.Margin = new Padding(0);
             guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges34;
             guna2Button2.Size = new Size(70, 56);
             guna2Button2.TabIndex = 7;
             // 
             // guna2Button8
             // 
             guna2Button8.BackColor = Color.Transparent;
-            guna2Button8.CustomizableEdges = customizableEdges17;
+            guna2Button8.CustomizableEdges = customizableEdges35;
             guna2Button8.DisabledState.BorderColor = Color.DarkGray;
             guna2Button8.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button8.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -345,10 +337,18 @@
             guna2Button8.Margin = new Padding(0, 163, 0, 0);
             guna2Button8.Name = "guna2Button8";
             guna2Button8.RightToLeft = RightToLeft.Yes;
-            guna2Button8.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            guna2Button8.ShadowDecoration.CustomizableEdges = customizableEdges36;
             guna2Button8.Size = new Size(70, 56);
             guna2Button8.TabIndex = 11;
             guna2Button8.TextAlign = HorizontalAlignment.Left;
+            // 
+            // reviewchatbox
+            // 
+            reviewchatbox.Location = new Point(317, 57);
+            reviewchatbox.Name = "reviewchatbox";
+            reviewchatbox.Size = new Size(475, 314);
+            reviewchatbox.TabIndex = 11;
+            reviewchatbox.UseCompatibleStateImageBehavior = false;
             // 
             // Privatechat
             // 
@@ -356,13 +356,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(800, 450);
+            Controls.Add(reviewchatbox);
             Controls.Add(menulist);
             Controls.Add(sendbtn);
             Controls.Add(User);
             Controls.Add(chater);
             Controls.Add(chatbox);
             Controls.Add(guna2HtmlLabel1);
-            Controls.Add(reviewchatbox);
             Controls.Add(userlist);
             Controls.Add(panel1);
             Name = "Privatechat";
@@ -376,7 +376,6 @@
 
         #endregion
         private Guna.UI2.WinForms.Guna2DataGridView userlist;
-        private ListView reviewchatbox;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2TextBox chatbox;
         private Guna.UI2.WinForms.Guna2TextBox chater;
@@ -389,5 +388,6 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button guna2Button8;
+        private ListView reviewchatbox;
     }
 }

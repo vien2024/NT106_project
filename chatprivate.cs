@@ -148,10 +148,7 @@ namespace NT106_project
                 {
                     reviewchatbox.Items.Add(new ListViewItem(s));
                     // command to make this item in the top set to the middle of the listview
-
-
                 }
-
                 else 
                 {   
                     //notice.hide();
