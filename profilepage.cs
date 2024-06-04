@@ -1,4 +1,5 @@
-﻿using FireSharp.Config;
+﻿using Firebase.Database.Query;
+using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using System;
@@ -12,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace NT106_project
@@ -209,5 +211,44 @@ namespace NT106_project
             }
 
         }
+
+        private async void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            string Username = ""; // Bỏ username vào
+            string newPassword = ""; // Bỏ new password vào
+            Firebase.Database.FirebaseClient _firebaseClient = new Firebase.Database.FirebaseClient("https://appchatdizz-default-rtdb.firebaseio.com/");
+            try
+            {
+                // Kiểm tra xem có tồn tại ko, hơi dư thừa
+                var userData = await _firebaseClient
+                    .Child("Users")
+                    .OrderBy("Username")
+                    .EqualTo(Username)
+                    .OnceAsync<Data>();
+
+                if (userData != null)
+                {
+
+
+                    // Update the user's password in the Firebase Realtime Database
+                    await _firebaseClient
+                        .Child("Users")
+                        .Child(Username)
+                        .Child("password")
+                        .PutAsync(newPassword);
+
+                    MessageBox.Show("Password updated successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("User not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating password: {ex.Message}");
+            }
+        }
     }
+}
 }
