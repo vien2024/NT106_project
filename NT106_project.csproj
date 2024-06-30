@@ -16,6 +16,7 @@
     <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.6" />
     <PackageReference Include="HiNetCloud.ESBClients.WinFormAgent" Version="21.4.14.20" />
     <PackageReference Include="LicensarioSDK" Version="1.0.0.40" />
+    <PackageReference Include="RJCodeAdvance.RJControls" Version="1.0.0" />
     <PackageReference Include="SaaUI.Winforms" Version="1.1.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>

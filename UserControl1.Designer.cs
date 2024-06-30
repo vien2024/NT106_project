@@ -49,7 +49,7 @@ namespace NT106_project
             BackColor = Color.PapayaWhip;
             Controls.Add(lbName);
             Name = "UserControl1";
-            Size = new Size(228, 47);
+            Size = new Size(228, 331);
             ResumeLayout(false);
         }
 
