@@ -10,46 +10,104 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Drawing.Text;
+using Guna.UI2.WinForms;
 
 namespace NT106_project
 {
     public partial class UserControl2 : UserControl
     {
-        public UserControl2(string a)
+        private const int MaxWidth = 387;
+        private const int UppercaseWidth = 27;
+        private const int LowercaseWidth = 17;
+        string message;
+
+        public UserControl2(string mess)
         {
             InitializeComponent();
-            guna2TextBox1.Multiline = true;
-            guna2TextBox1.WordWrap = false;
-            guna2TextBox1.AutoSize = false;
-            guna2TextBox1.Text = WrapText(a, 30); // Call custom method to wrap text
-            guna2TextBox1.ReadOnly = true;
+            message = mess;
+            UpdateTextBox();
 
-            guna2TextBox1.Text = a;
-            guna2TextBox1.MaximumSize = new System.Drawing.Size(400, 600);
-            guna2TextBox1.MinimumSize = new System.Drawing.Size(50, 50);
-            Size preferredSize = TextRenderer.MeasureText(a, guna2TextBox1.Font, new Size(guna2TextBox1.Width, int.MaxValue), TextFormatFlags.WordBreak);
-            guna2TextBox1.Height = preferredSize.Height;
-            
         }
-        private string WrapText(string text, int maxLength)
+
+      
+        private void UpdateTextBox()
         {
-            StringBuilder sb = new StringBuilder();
-            int lineLength = 0;
+            string[] lines = message.Split(new[] { "\r\n" }, StringSplitOptions.None);
+            List<string> adjustedLines = new List<string>();
 
-            foreach (char c in text)
+            int len = 0;
+            foreach (string line in lines)
             {
-                sb.Append(c);
-                lineLength++;
+                int size = 0;
+                int lastSpaceIndex = -1;
+                string currentLine = line;
 
-                if (lineLength == maxLength) // Insert line break after maxLength characters
+                for (int i = 0; i < currentLine.Length; i++)
                 {
-                    sb.AppendLine();
-                    lineLength = 0; // Reset line length
+                    char c = currentLine[i];
+
+                    if (char.IsUpper(c))
+                    {
+                        size += UppercaseWidth;
+                    }
+                    else
+                    {
+                        size += LowercaseWidth;
+                    }
+
+                    if (c == ' ')
+                    {
+                        lastSpaceIndex = i;
+                    }
+
+                    if (size > MaxWidth)
+                    {
+                        if (lastSpaceIndex != -1)
+                        {
+                            currentLine = currentLine.Remove(i, 1).Insert(i, "\r\n");
+                            i = i + 2;
+                        }
+                        for ( int j= lastSpaceIndex; j<=i;j++ )
+                        {
+                            char d = currentLine[i];
+
+                            if (char.IsUpper(d))
+                            {
+                                size -= UppercaseWidth;
+                            }
+                            else
+                            {
+                                size -= LowercaseWidth;
+                            }
+                        }    
+                        
+                    }
+                }
+                adjustedLines.Add(currentLine);
+
+
+                if (size > len)
+                {
+                    len = size;
                 }
             }
 
-            return sb.ToString();
-        }
+            guna2TextBox1.Text = string.Join("\r\n", adjustedLines);
 
+            int lineCount = adjustedLines.Count;
+            int fontHeight = guna2TextBox1.Font.Height;
+            guna2TextBox1.AutoSize = false;
+            int calculatedHeight = fontHeight * (lineCount+ 1);
+            MessageBox.Show($"calculatedHeight: {calculatedHeight}");
+            //guna2TextBox1.Width = Math.Max(len, 50);
+
+            guna2TextBox1.Size = new Size(Math.Max(len, 50),Math.Max(calculatedHeight,50));
+            this.Size = new Size(500, Math.Max(calculatedHeight, 50));
+
+            MessageBox.Show($"tbWidth: {guna2TextBox1.Width}");
+            MessageBox.Show($"tbHeight: {guna2TextBox1.Height}");
+            MessageBox.Show($"Height: {this.Height}");
+            MessageBox.Show($"Witdh: {this.Width}");
+        }    
     }
 }

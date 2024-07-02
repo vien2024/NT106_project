@@ -35,11 +35,9 @@
             // 
             // guna2TextBox1
             // 
-            guna2TextBox1.AllowDrop = true;
-            guna2TextBox1.AutoSize = true;
             guna2TextBox1.BorderRadius = 25;
             guna2TextBox1.CustomizableEdges = customizableEdges1;
-            guna2TextBox1.DefaultText = "hi";
+            guna2TextBox1.DefaultText = "Nhật ho vĩnh tai sao lại ko\r\n\r\n";
             guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
@@ -50,7 +48,7 @@
             guna2TextBox1.Font = new Font("Segoe UI", 12F);
             guna2TextBox1.ForeColor = Color.White;
             guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(255, 0);
+            guna2TextBox1.Location = new Point(100, 0);
             guna2TextBox1.Margin = new Padding(4, 6, 4, 6);
             guna2TextBox1.MaximumSize = new Size(400, 600);
             guna2TextBox1.MaxLength = 1500;
@@ -62,8 +60,9 @@
             guna2TextBox1.ReadOnly = true;
             guna2TextBox1.SelectedText = "";
             guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2TextBox1.Size = new Size(220, 50);
+            guna2TextBox1.Size = new Size(400, 600);
             guna2TextBox1.TabIndex = 2;
+            guna2TextBox1.WordWrap = false;
             // 
             // UserControl2
             // 
@@ -71,11 +70,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(guna2TextBox1);
             Font = new Font("Segoe UI", 9F);
+            MaximumSize = new Size(500, 600);
             MinimumSize = new Size(50, 50);
             Name = "UserControl2";
-            Size = new Size(475, 50);
+            Size = new Size(500, 600);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
