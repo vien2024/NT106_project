@@ -128,8 +128,9 @@
             guna2CustomGradientPanel1.Controls.Add(Userimage);
             guna2CustomGradientPanel1.Controls.Add(guna2HtmlLabel1);
             guna2CustomGradientPanel1.CustomizableEdges = customizableEdges24;
+            guna2CustomGradientPanel1.Dock = DockStyle.Right;
             guna2CustomGradientPanel1.FillColor4 = Color.FromArgb(128, 128, 255);
-            guna2CustomGradientPanel1.Location = new Point(70, -1);
+            guna2CustomGradientPanel1.Location = new Point(69, 0);
             guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges25;
             guna2CustomGradientPanel1.Size = new Size(731, 450);
