@@ -24,29 +24,30 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using Firebase.Database.Query;
 using FireSharp.Response;
 using System.Security.Cryptography;
+using System.Reflection.Metadata;
 
 namespace NT106_project
 {
     public partial class Server : Form
     {
 
-       // constructor .................................................................................................................................
+       // value    .................................................................................................................................
         private static Random random = new Random();
+        List<Socket> Forumclient;
         int Vcode;
         string fileName;
         string filePath;
-        bool checkedcreate = false;
+        private Dictionary<string, Socket> Userconectedlistid;
         IFirebaseConfig ifc = new FirebaseConfig()
         {
             AuthSecret = "kHKs9ZwngaoM2odQCgyLjDzG7sF0JVQzNEf1IA1N",
             BasePath = "https://appchatdizz-default-rtdb.firebaseio.com/",
         };
         IFirebaseClient firebaseClient;
-        IPEndPoint iep;
         Socket server;
         List<Socket> clientList;
         private readonly object lockObj = new object();
-        // End constructor ..............................................................................................................................
+        // End value ..............................................................................................................................
 
 
 
@@ -54,12 +55,13 @@ namespace NT106_project
         public Server()
         {
             InitializeComponent();
+            Userconectedlistid = new Dictionary<string, Socket>();
 
         }
 
         private void Server_Load(object sender, EventArgs e)
         {
-
+            firebaseClient = new FireSharp.FirebaseClient(ifc);
         }
         // End constructor ..............................................................................................................................
 
@@ -222,9 +224,10 @@ namespace NT106_project
         // Process Received Data 
         private async void ProcessReceivedData(Socket client, datasending data)
         {
-           
+                
                 string Userid1 = data.USerid1;
                 bool isconnected = await IsUserConnectedAsync(Userid1);
+                Userconectedlistid[Userid1] = client;
             
             // checkmessage is value to check that client is sending message or not
             if (!data.Checkmessage)
@@ -274,18 +277,20 @@ namespace NT106_project
                     if (data.USerid2 == "All")
                     {   
 
-                        List<Socket> Forumclient = await GetClientConectedtoforum();
+                        Forumclient = await GetClientConectedtoforum();
                         string logpath = "D:\\K2-N2\\lap_trinh_mang_can_ban\\git\\filelog\\forum.txt";
                         try
                         {
                             using (StreamReader sr = new StreamReader(logpath))
                             {
                                 string line;
-                                while ((line = sr.ReadLine()) != null)
+                                string text = File.ReadAllText(logpath);
+                                string[] parts = text.Split('|');
+                                foreach (string part in parts)
                                 {
+                                    datasending data1 = new datasending(part, true);
                                     foreach (Socket client1 in Forumclient)
                                     {
-                                        datasending data1 = new datasending(line, true);
                                         SendData(client1, data1);
                                     }
                                 }
@@ -319,16 +324,15 @@ namespace NT106_project
                             FileLogdatabase fileLog = firebaseResponse2.ResultAs<FileLogdatabase>();
                             string path = fileLog.path;
                             try
-                            {
-                                using (StreamReader sr = new StreamReader(path))
-                                {
+                            {    
                                     string line;
-                                    while ((line = sr.ReadLine()) != null)
+                                    string text = File.ReadAllText(path);
+                                    string[] parts = text.Split('|');
+                                    foreach (string part in parts)
                                     {
-                                        datasending data1 = new datasending(line, true);
+                                        datasending data1 = new datasending(part, true);
                                         SendData(client, data1);
-                                    }
-                                }
+                                    }                                    
                             }
                             catch (Exception ex)
                             {
@@ -341,11 +345,29 @@ namespace NT106_project
                 {
                     if( data.USerid2 == "All" )
                     {
-
+                        string logpath = "D:\\K2-N2\\lap_trinh_mang_can_ban\\git\\filelog\\forum.txt";
+                        string mess = $"{Userid1} && {data.Message}";
+                        insertdatatofile(mess,logpath);
+                        List<Socket> Forumclient = await GetClientConectedtoforum();
+                        foreach (Socket client1 in Forumclient)
+                        {
+                            datasending data1 = new datasending(data.Message, true);
+                            SendData(client, data1);
+                        }    
                     }    
                     else
                     {
-
+                        string a = await GetFileLogNameFromFirebaseAsync(data.USerid1, data.USerid2);
+                        FirebaseResponse firebaseResponse2 = await firebaseClient.GetTaskAsync("filelog/" + a);
+                        FileLogdatabase fileLog = firebaseResponse2.ResultAs<FileLogdatabase>();
+                        string path = fileLog.path;
+                        string mess = $"{Userid1} && {data.Message}";
+                        insertdatatofile(mess,path);
+                        if(Userconectedlistid.ContainsKey(data.USerid2))
+                        {
+                            datasending data1 = new datasending(data.Message, true);
+                            SendData(client, data1);
+                        }    
                     }
                 } 
                     
@@ -474,7 +496,7 @@ namespace NT106_project
         }
 
         // function to add data to file
-        private void insertdatatofile(string a)
+        private void insertdatatofile(string a, string filepath) 
         {
             try
             {
