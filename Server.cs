@@ -57,7 +57,7 @@ namespace NT106_project
             InitializeComponent();
             InitializeServer();
             CheckForIllegalCrossThreadCalls = false;
-            Userconectedlistid = new Dictionary<string, Socket>();
+           
         }
 
         private void Server_Load(object sender, EventArgs e)
@@ -74,14 +74,17 @@ namespace NT106_project
         private void InitializeServer()
         {
             try
-            {
+            {   
+                MessageBox.Show("Server started");
                 server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint iep = new IPEndPoint(IPAddress.Any, 9999);
                 server.Bind(iep);
+                clientList = new List<Socket>();
+                Userconectedlistid = new Dictionary<string, Socket>();
                 Thread acceptClientThread = new Thread(AcceptClients);
                 acceptClientThread.IsBackground = true;
                 acceptClientThread.Start();
-
+                
 
             }
             catch (Exception ex)
@@ -94,7 +97,8 @@ namespace NT106_project
 
         // Accept Clients
         private void AcceptClients()
-        {
+        {   
+            MessageBox.Show("Server is now accepting client");
             try
             {
                 server.Listen(10);
@@ -130,7 +134,8 @@ namespace NT106_project
 
         // send function ...................................................................................................................................
         private void SendData(Socket client, datasending data)
-        {
+        {   
+            MessageBox.Show("data's sent");
             try
             {
                 string jsonString = JsonSerializer.Serialize(data);
@@ -158,7 +163,8 @@ namespace NT106_project
         // all receive function ......................................................................................................................
         // Receive 
         private void receive(Socket client)
-        {
+        {   
+            MessageBox.Show("data's received");
             StringBuilder sb = new StringBuilder();
             try
             {
@@ -225,7 +231,7 @@ namespace NT106_project
         // Process Received Data 
         private async void ProcessReceivedData(Socket client, datasending data)
         {
-                
+                MessageBox.Show("data's processed");
                 string Userid1 = data.USerid1;
                 bool isconnected = await IsUserConnectedAsync(Userid1);
                 Userconectedlistid[Userid1] = client;

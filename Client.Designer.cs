@@ -90,8 +90,8 @@
             guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            sendbtn = new Guna.UI2.WinForms.Guna2Button();
             guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            sendbtn = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             sendbtn1 = new Guna.UI2.WinForms.Guna2Button();
             chater = new Guna.UI2.WinForms.Guna2TextBox();
@@ -134,6 +134,7 @@
             // menulist
             // 
             menulist.BackColor = Color.FromArgb(192, 192, 255);
+            menulist.BorderStyle = BorderStyle.FixedSingle;
             menulist.Controls.Add(guna2Button1);
             menulist.Controls.Add(guna2Button4);
             menulist.Controls.Add(guna2Button3);
@@ -222,7 +223,7 @@
             guna2Button8.ForeColor = Color.Black;
             guna2Button8.Image = Properties.Resources._360_F_413179058_KVgmeeNLlhgQyBkiieNCnTKCUL9MH9rS_removebg_preview;
             guna2Button8.ImageSize = new Size(35, 35);
-            guna2Button8.Location = new Point(0, 387);
+            guna2Button8.Location = new Point(74, 218);
             guna2Button8.Margin = new Padding(0, 218, 0, 0);
             guna2Button8.Name = "guna2Button8";
             guna2Button8.RightToLeft = RightToLeft.Yes;
@@ -258,10 +259,10 @@
             guna2CustomGradientPanel1.CustomizableEdges = customizableEdges48;
             guna2CustomGradientPanel1.Dock = DockStyle.Right;
             guna2CustomGradientPanel1.FillColor4 = Color.FromArgb(128, 128, 255);
-            guna2CustomGradientPanel1.Location = new Point(71, 0);
+            guna2CustomGradientPanel1.Location = new Point(70, 0);
             guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges49;
-            guna2CustomGradientPanel1.Size = new Size(729, 450);
+            guna2CustomGradientPanel1.Size = new Size(730, 450);
             guna2CustomGradientPanel1.TabIndex = 6;
             // 
             // guna2CustomGradientPanel2
@@ -277,37 +278,60 @@
             guna2CustomGradientPanel2.Location = new Point(0, 0);
             guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
             guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            guna2CustomGradientPanel2.Size = new Size(729, 450);
-            guna2CustomGradientPanel2.TabIndex = 26;
+            guna2CustomGradientPanel2.Size = new Size(730, 450);
+            guna2CustomGradientPanel2.TabIndex = 29;
             // 
             // guna2CustomGradientPanel3
             // 
             guna2CustomGradientPanel3.Controls.Add(flowLayoutPanel1);
-            guna2CustomGradientPanel3.Controls.Add(sendbtn);
             guna2CustomGradientPanel3.Controls.Add(guna2TextBox1);
+            guna2CustomGradientPanel3.Controls.Add(sendbtn);
             guna2CustomGradientPanel3.Controls.Add(guna2HtmlLabel10);
             guna2CustomGradientPanel3.CustomizableEdges = customizableEdges13;
             guna2CustomGradientPanel3.Dock = DockStyle.Right;
             guna2CustomGradientPanel3.FillColor = Color.Blue;
-            guna2CustomGradientPanel3.Location = new Point(0, 0);
+            guna2CustomGradientPanel3.Location = new Point(5, 0);
             guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
             guna2CustomGradientPanel3.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2CustomGradientPanel3.Size = new Size(729, 450);
-            guna2CustomGradientPanel3.TabIndex = 17;
+            guna2CustomGradientPanel3.Size = new Size(725, 450);
+            guna2CustomGradientPanel3.TabIndex = 19;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(16, 58);
+            flowLayoutPanel1.BorderStyle = BorderStyle.FixedSingle;
+            flowLayoutPanel1.Location = new Point(16, 65);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(694, 311);
-            flowLayoutPanel1.TabIndex = 17;
+            flowLayoutPanel1.Size = new Size(694, 287);
+            flowLayoutPanel1.TabIndex = 12;
+            // 
+            // guna2TextBox1
+            // 
+            guna2TextBox1.CustomizableEdges = customizableEdges9;
+            guna2TextBox1.DefaultText = "";
+            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Font = new Font("Segoe UI", 9F);
+            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Location = new Point(17, 374);
+            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
+            guna2TextBox1.Multiline = true;
+            guna2TextBox1.Name = "guna2TextBox1";
+            guna2TextBox1.PasswordChar = '\0';
+            guna2TextBox1.PlaceholderText = "";
+            guna2TextBox1.SelectedText = "";
+            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2TextBox1.Size = new Size(649, 48);
+            guna2TextBox1.TabIndex = 11;
+            guna2TextBox1.KeyDown += guna2TextBox1_KeyDown;
             // 
             // sendbtn
             // 
             sendbtn.BackColor = Color.Transparent;
-            sendbtn.CustomizableEdges = customizableEdges9;
+            sendbtn.CustomizableEdges = customizableEdges11;
             sendbtn.DisabledState.BorderColor = Color.DarkGray;
             sendbtn.DisabledState.CustomBorderColor = Color.DarkGray;
             sendbtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -317,34 +341,11 @@
             sendbtn.ForeColor = Color.White;
             sendbtn.Image = Properties.Resources._5582878;
             sendbtn.ImageSize = new Size(35, 35);
-            sendbtn.Location = new Point(672, 388);
+            sendbtn.Location = new Point(672, 374);
             sendbtn.Name = "sendbtn";
-            sendbtn.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            sendbtn.ShadowDecoration.CustomizableEdges = customizableEdges12;
             sendbtn.Size = new Size(38, 48);
             sendbtn.TabIndex = 10;
-            // 
-            // guna2TextBox1
-            // 
-            guna2TextBox1.CustomizableEdges = customizableEdges11;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(17, 387);
-            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox1.Multiline = true;
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2TextBox1.Size = new Size(649, 48);
-            guna2TextBox1.TabIndex = 16;
-            guna2TextBox1.KeyDown += guna2TextBox1_KeyDown;
             // 
             // guna2HtmlLabel10
             // 
@@ -368,7 +369,7 @@
             sendbtn1.ForeColor = Color.White;
             sendbtn1.Image = Properties.Resources._5582878;
             sendbtn1.ImageSize = new Size(35, 35);
-            sendbtn1.Location = new Point(679, 400);
+            sendbtn1.Location = new Point(667, 401);
             sendbtn1.Name = "sendbtn1";
             sendbtn1.ShadowDecoration.CustomizableEdges = customizableEdges16;
             sendbtn1.Size = new Size(34, 37);
@@ -457,12 +458,12 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             userlist.DefaultCellStyle = dataGridViewCellStyle3;
             userlist.GridColor = Color.FromArgb(231, 229, 255);
-            userlist.Location = new Point(-1, 93);
+            userlist.Location = new Point(3, 93);
             userlist.Name = "userlist";
             userlist.ReadOnly = true;
             userlist.RowHeadersVisible = false;
             userlist.RowHeadersWidth = 51;
-            userlist.Size = new Size(230, 356);
+            userlist.Size = new Size(226, 356);
             userlist.TabIndex = 1;
             userlist.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             userlist.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -485,6 +486,7 @@
             userlist.ThemeStyle.RowsStyle.Height = 29;
             userlist.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             userlist.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            userlist.CellClick += userlist_CellClick;
             // 
             // User
             // 
@@ -513,7 +515,7 @@
             // 
             guna2HtmlLabel9.BackColor = Color.Transparent;
             guna2HtmlLabel9.Font = new Font("Segoe UI", 15F);
-            guna2HtmlLabel9.Location = new Point(4, 50);
+            guna2HtmlLabel9.Location = new Point(12, 52);
             guna2HtmlLabel9.Name = "guna2HtmlLabel9";
             guna2HtmlLabel9.Size = new Size(64, 37);
             guna2HtmlLabel9.TabIndex = 3;
@@ -523,10 +525,11 @@
             // 
             flowLayoutPanel2.AutoScroll = true;
             flowLayoutPanel2.BackColor = Color.White;
+            flowLayoutPanel2.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel2.Location = new Point(255, 58);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(458, 336);
+            flowLayoutPanel2.Size = new Size(446, 336);
             flowLayoutPanel2.TabIndex = 18;
             // 
             // verifybtn
@@ -863,8 +866,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(guna2CustomGradientPanel1);
             Controls.Add(menulist);
+            Controls.Add(guna2CustomGradientPanel1);
             Name = "Client";
             Text = "Client";
             Load += Client_Load;
@@ -909,20 +912,20 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
         private Guna.UI2.WinForms.Guna2CirclePictureBox Userimage;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private System.Windows.Forms.Timer timer1;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel2;
+        private Guna.UI2.WinForms.Guna2Button sendbtn1;
+        private Guna.UI2.WinForms.Guna2TextBox chater;
+        private Guna.UI2.WinForms.Guna2TextBox chatbox;
         private Panel panel1;
         private Guna.UI2.WinForms.Guna2DataGridView userlist;
         private Guna.UI2.WinForms.Guna2TextBox User;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
-        private Guna.UI2.WinForms.Guna2Button sendbtn1;
-        private Guna.UI2.WinForms.Guna2TextBox chater;
-        private Guna.UI2.WinForms.Guna2TextBox chatbox;
-        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel3;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Guna.UI2.WinForms.Guna2Button sendbtn;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
         private FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Timer timer1;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel3;
+        private Guna.UI2.WinForms.Guna2Button sendbtn;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

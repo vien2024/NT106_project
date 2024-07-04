@@ -12,11 +12,18 @@ namespace NT106_project
 
         }
 
-        
+
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Server server = new Server();
+            server.Show();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            newUIloginsiguppage1 newUIloginsiguppage = new newUIloginsiguppage1();
+            newUIloginsiguppage.Show();
         }
     }
 }

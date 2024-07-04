@@ -21,6 +21,7 @@ using System.Reflection.Metadata;
 using FireSharp.Response;
 using System.Drawing.Imaging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Guna.UI2.WinForms;
 namespace NT106_project
 {
 
@@ -60,112 +61,11 @@ namespace NT106_project
 
         private async void Client_Load(object sender, EventArgs e)
         {
-            client = new FireSharp.FirebaseClient(ifc);
-
-            if (client == null)
-            {
-                MessageBox.Show("There was a problem in connecting to the server");
-            }
-
-            FirebaseResponse response = await client.GetTaskAsync("Users/" + Currentuser);
-            Data obj = response.ResultAs<Data>();
-            if (check != lastcheck)
-            {
-                if (check == 0)
-                {
-                    lastcheck = 0;
-                    if (checkfirstime)
-                    {
-                        check = 1;
-                    }
-                    else
-                    {
-                        check = 3;
-                    }
-                }
-
-
-                if (check == 1) // profile load
-                {
-                    lastcheck = 1;
-                    // load UI
-                    guna2CustomGradientPanel1.Show();
-                    guna2CustomGradientPanel2.Hide();
-                    guna2CustomGradientPanel3.Hide();
-                    guna2Button1.Enabled = false;
-                    guna2Button1.BackColor = Color.FromArgb(128, 128, 255);
-                    guna2Button3.BackColor = Color.Transparent;
-                    guna2Button4.BackColor = Color.Transparent;
-                    guna2Button8.BackColor = Color.Transparent;
-                    //  load data
-                    byte[] image = Convert.FromBase64String(obj.image);
-                    MemoryStream ms = new MemoryStream();
-                    ms.Write(image, 0, Convert.ToInt32(image.Length));
-                    Bitmap bm = new Bitmap(ms, false);
-                    ms.Dispose();
-
-
-                    Userimage.Image = bm;
-                    UserName.Text = obj.name;
-                    Email.Text = obj.email;
-                    Phone.Text = obj.phone;
-                    Desc.Text = obj.desc;
-                    Sex.Text = obj.sex;
-                    checkverify = obj.verified;
-
-
-                    if (checkverify == true)
-                    {
-                        verifybtn.Hide();
-                    }
-                    else
-                    {
-                        verifybtn.Show();
-                    }
-
-                }
-                else if (check == 2)  // private chat load
-                {
-                    lastcheck = 2;
-                    // load UI
-                    guna2CustomGradientPanel1.Hide();
-                    guna2CustomGradientPanel2.Show();
-                    guna2CustomGradientPanel3.Hide();
-                    guna2Button3.Enabled = false;
-                    guna2Button3.BackColor = Color.FromArgb(128, 128, 255);
-                    guna2Button1.BackColor = Color.Transparent;
-                    guna2Button4.BackColor = Color.Transparent;
-                    guna2Button8.BackColor = Color.Transparent;
-                    // load data
-                    LoadData();
-                    User.Text = obj.name;
-                    Username = obj.name;
-                    userlist.ColumnHeadersVisible = false;
-                    userlist.CellBorderStyle = DataGridViewCellBorderStyle.None;
-                    userlist.GridColor = userlist.BackgroundColor;
-                    userlist.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-                    userlist.RowTemplate.Height = 50;
-                    userlist.AllowUserToResizeRows = false;
-                    userlist.ClearSelection();
-                    userlist.DefaultCellStyle.SelectionBackColor = Color.White;
-                }
-                else if (check == 3) // forum chat load
-                {
-                    lastcheck = 3;
-                    // load UI
-                    guna2CustomGradientPanel1.Hide();
-                    guna2CustomGradientPanel2.Hide();
-                    guna2CustomGradientPanel3.Show();
-                    guna2Button4.Enabled = false;
-                    guna2Button4.BackColor = Color.FromArgb(128, 128, 255);
-                    guna2Button3.BackColor = Color.Transparent;
-                    guna2Button1.BackColor = Color.Transparent;
-                    guna2Button8.BackColor = Color.Transparent;
-                }
-            }
+           loadfunction();
 
 
         }
+
         //........................................................................................................................
         // private ui :
         // load data   
@@ -177,7 +77,8 @@ namespace NT106_project
 
         // load data to datagridview
         private async Task LoadDataIntoDataGridView()
-        {
+        {   
+            MessageBox.Show("LoadDataIntoDataGridView");
             var names = await GetNamesFromFirebaseAsync();
             // Ensure we update the DataGridView on the UI thread
             if (userlist.InvokeRequired)
@@ -195,6 +96,7 @@ namespace NT106_project
         // get name list from firebase
         private async Task<List<string>> GetNamesFromFirebaseAsync()
         {
+            MessageBox.Show("GetNamesFromFirebaseAsync");
             var firebaseClient = new Firebase.Database.FirebaseClient("https://appchatdizz-default-rtdb.firebaseio.com/");
 
             var data = await firebaseClient
@@ -894,46 +796,142 @@ namespace NT106_project
         // button to open profile
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            guna2CustomGradientPanel1.Show();
-            guna2CustomGradientPanel2.Hide();
-            guna2CustomGradientPanel3.Hide();
-            guna2Button1.Enabled = false;
-            guna2Button1.BackColor = Color.FromArgb(128, 128, 255);
-            guna2Button3.BackColor = Color.Transparent;
-            guna2Button4.BackColor = Color.Transparent;
-            guna2Button8.BackColor = Color.Transparent;
+           
             check = 1;
+            loadfunction();
         }
         // button to open forum chat
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-            guna2CustomGradientPanel1.Hide();
-            guna2CustomGradientPanel2.Hide();
-            guna2CustomGradientPanel3.Show();
-            guna2Button4.Enabled = false;
-            guna2Button4.BackColor = Color.FromArgb(128, 128, 255);
-            guna2Button3.BackColor = Color.Transparent;
-            guna2Button1.BackColor = Color.Transparent;
-            guna2Button8.BackColor = Color.Transparent;
+            
             check = 3;
+            loadfunction();
+
         }
         // button to open chat private
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            guna2CustomGradientPanel1.Hide();
-            guna2CustomGradientPanel2.Show();
-            guna2CustomGradientPanel3.Hide();
-            guna2Button3.Enabled = false;
-            guna2Button3.BackColor = Color.FromArgb(128, 128, 255);
-            guna2Button1.BackColor = Color.Transparent;
-            guna2Button4.BackColor = Color.Transparent;
-            guna2Button8.BackColor = Color.Transparent;
             check = 2;
+            loadfunction();
 
         }
 
       
+        private async void loadfunction()
+        {
+            client = new FireSharp.FirebaseClient(ifc);
 
+            if (client == null)
+            {
+                MessageBox.Show("There was a problem in connecting to the server");
+            }
+
+            FirebaseResponse response = await client.GetTaskAsync("Users/" + Currentuser);
+            Data obj = response.ResultAs<Data>();
+            if (check != lastcheck)
+            {
+                if (check == 0)
+                {
+                    lastcheck = 0;
+                    if (checkfirstime)
+                    {
+                        check = 1;
+                    }
+                    else
+                    {
+                        check = 3;
+                    }
+                }
+
+
+                if (check == 1) // profile load
+                {
+                    lastcheck = 1;
+                    // load UI
+                    guna2CustomGradientPanel1.Show();
+                    guna2CustomGradientPanel2.Hide();
+                    guna2CustomGradientPanel3.Hide();
+                    guna2Button1.Enabled = false;
+                    guna2Button4.Enabled = true;
+                    guna2Button3.Enabled = true;
+                    guna2Button1.BackColor = Color.FromArgb(128, 128, 255);
+                    guna2Button3.BackColor = Color.Transparent;
+                    guna2Button4.BackColor = Color.Transparent;
+                    guna2Button8.BackColor = Color.Transparent;
+                    //  load data
+                    byte[] image = Convert.FromBase64String(obj.image);
+                    MemoryStream ms = new MemoryStream();
+                    ms.Write(image, 0, Convert.ToInt32(image.Length));
+                    Bitmap bm = new Bitmap(ms, false);
+                    ms.Dispose();
+
+
+                    Userimage.Image = bm;
+                    UserName.Text = obj.name;
+                    Email.Text = obj.email;
+                    Phone.Text = obj.phone;
+                    Desc.Text = obj.desc;
+                    Sex.Text = obj.sex;
+                    checkverify = obj.verified;
+
+
+                    if (checkverify == true)
+                    {
+                        verifybtn.Hide();
+                    }
+                    else
+                    {
+                        verifybtn.Show();
+                    }
+
+                }
+                else if (check == 2)  // private chat load
+                {
+                    lastcheck = 2;
+                    // load UI
+                    guna2CustomGradientPanel1.Show();
+                    guna2CustomGradientPanel2.Show();
+                    guna2CustomGradientPanel3.Hide();
+
+                    guna2Button3.Enabled = false;
+                    guna2Button4.Enabled = true;
+                    guna2Button1.Enabled = true;
+                    guna2Button3.BackColor = Color.FromArgb(128, 128, 255);
+                    guna2Button1.BackColor = Color.Transparent;
+                    guna2Button4.BackColor = Color.Transparent;
+                    guna2Button8.BackColor = Color.Transparent;
+
+                    // load data
+                    LoadData();
+                    User.Text = obj.name;
+                    Username = obj.name;
+                    userlist.ColumnHeadersVisible = false;
+                    userlist.CellBorderStyle = DataGridViewCellBorderStyle.None;
+                    userlist.GridColor = userlist.BackgroundColor;
+                    userlist.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+                    userlist.RowTemplate.Height = 50;
+                    userlist.AllowUserToResizeRows = false;
+                    userlist.ClearSelection();
+                    userlist.DefaultCellStyle.SelectionBackColor = Color.White;
+                }
+                else if (check == 3) // forum chat load
+                {
+                    lastcheck = 3;
+                    // load UI
+                    guna2CustomGradientPanel1.Show();
+                    guna2CustomGradientPanel2.Show();
+                    guna2CustomGradientPanel3.Show();
+
+                    guna2Button4.Enabled = false;
+                    guna2Button1.Enabled = true;
+                    guna2Button3.Enabled = true;
+                    guna2Button4.BackColor = Color.FromArgb(128, 128, 255);
+                    guna2Button3.BackColor = Color.Transparent;
+                    guna2Button1.BackColor = Color.Transparent;
+                    guna2Button8.BackColor = Color.Transparent;
+                }
+            }
+        }
 
 
 
