@@ -218,17 +218,11 @@ namespace NT106_project
             } 
             if ( checklog == 0 )
             {   
-                MessageBox.Show("Login successfull");  // make notice for success
-                // rt to home page ( forum chat page only if first time != false )
-                // else rt to profile page
-                // 
-                if (a == true)
-                {   
+               
                     // rt to profile page
-                    profilepage profile = new profilepage(b);
-                    profile.Show();
+                    Client client = new Client(b,a);
+                    client.Show();
                     this.Hide();
-                }
             }
             
         }

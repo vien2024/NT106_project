@@ -55,8 +55,9 @@ namespace NT106_project
         public Server()
         {
             InitializeComponent();
+            InitializeServer();
+            CheckForIllegalCrossThreadCalls = false;
             Userconectedlistid = new Dictionary<string, Socket>();
-
         }
 
         private void Server_Load(object sender, EventArgs e)
@@ -228,8 +229,8 @@ namespace NT106_project
                 string Userid1 = data.USerid1;
                 bool isconnected = await IsUserConnectedAsync(Userid1);
                 Userconectedlistid[Userid1] = client;
-            
-            // checkmessage is value to check that client is sending message or not
+
+            // checkmessage is value to check that client is sending request or not
             if (!data.Checkmessage)
             {
                 if (!isconnected)   // check if user have connected for so or not by using Lastconnected
@@ -342,33 +343,38 @@ namespace NT106_project
                     }
                }
                 else
-                {
-                    if( data.USerid2 == "All" )
+                {   
+                    if (!string.IsNullOrEmpty(data.Message))
                     {
-                        string logpath = "D:\\K2-N2\\lap_trinh_mang_can_ban\\git\\filelog\\forum.txt";
-                        string mess = $"{Userid1} && {data.Message}";
-                        insertdatatofile(mess,logpath);
-                        List<Socket> Forumclient = await GetClientConectedtoforum();
-                        foreach (Socket client1 in Forumclient)
+                        if (data.USerid2 == "All")
                         {
-                            datasending data1 = new datasending(data.Message, true);
-                            SendData(client, data1);
-                        }    
+                            string logpath = "D:\\K2-N2\\lap_trinh_mang_can_ban\\git\\filelog\\forum.txt";
+                            string mess = $"{Userid1} && {data.Message}";
+                            insertdatatofile(mess, logpath);
+                            List<Socket> Forumclient = await GetClientConectedtoforum();
+                            foreach (Socket client1 in Forumclient)
+                            {
+                                datasending data1 = new datasending(data.Message, true);
+                                SendData(client1, data1);
+                            }
+                        }
+                        else 
+                        {
+                            string a = await GetFileLogNameFromFirebaseAsync(data.USerid1, data.USerid2);
+                            FirebaseResponse firebaseResponse2 = await firebaseClient.GetTaskAsync("filelog/" + a);
+                            FileLogdatabase fileLog = firebaseResponse2.ResultAs<FileLogdatabase>();
+                            string path = fileLog.path;
+                            string mess = $"{Userid1} && {data.Message}";
+                            insertdatatofile(mess, path);
+                            if (Userconectedlistid.ContainsKey(data.USerid2))
+                            {
+                                Socket Usersent = Userconectedlistid[data.USerid2];
+                                datasending data1 = new datasending(data.Message, true);
+                                SendData(Usersent, data1);
+                            }
+                        }
                     }    
-                    else
-                    {
-                        string a = await GetFileLogNameFromFirebaseAsync(data.USerid1, data.USerid2);
-                        FirebaseResponse firebaseResponse2 = await firebaseClient.GetTaskAsync("filelog/" + a);
-                        FileLogdatabase fileLog = firebaseResponse2.ResultAs<FileLogdatabase>();
-                        string path = fileLog.path;
-                        string mess = $"{Userid1} && {data.Message}";
-                        insertdatatofile(mess,path);
-                        if(Userconectedlistid.ContainsKey(data.USerid2))
-                        {
-                            datasending data1 = new datasending(data.Message, true);
-                            SendData(client, data1);
-                        }    
-                    }
+                    
                 } 
                     
             }
@@ -495,12 +501,12 @@ namespace NT106_project
             return data.Where(item => item.Object.Lastconnected == "All").Select(item => item.Object.client).ToList();
         }
 
-        // function to add data to file
-        private void insertdatatofile(string a, string filepath) 
+        // function to add data to filelog
+        private void insertdatatofile(string a, string filelogpath) 
         {
             try
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(filePath, true))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(filelogpath, true))
                 {
                     file.WriteLine(a);
                 }
