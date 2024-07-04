@@ -29,6 +29,7 @@ namespace NT106_project
     {
 
         // public value
+        private bool isClickable = true;
         bool checkfirstime;
         string Username;
         int lastcheck = 9;
@@ -205,11 +206,33 @@ namespace NT106_project
         }
 
         // function to click in list name ( friend list will be soon update for  )
-        private void userlist_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void userlist_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (!isClickable)
+            {
+                return;
+            }
+            isClickable = false; // Disable clicking
+            timer1.Start(); // Start the timer
             var cellValue = userlist.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-            // notice.Hide();
             chater.Text = cellValue.ToString();
+            flowLayoutPanel2.Controls.Clear();
+            // send message to server that client want to connect to this user and load message from filelog
+            string Userid2 = await GetUserIDFromName(chater.Text);
+            datasending data = new datasending(Currentuser, Userid2, true, true);
+            SendMessage(data);
+        }
+        // function to take userid from Name
+        private async Task<string> GetUserIDFromName(string name)
+        {
+            var firebaseClient = new Firebase.Database.FirebaseClient("https://appchatdizz-default-rtdb.firebaseio.com/");
+
+            var data = await firebaseClient
+                .Child("Users") // Replace with your data node in Firebase
+                .OnceAsync<Data>();
+
+            // Extract the names from the data
+            return data.Where(item => item.Object.name == name).Select(item => item.Object.Userid).FirstOrDefault();
         }
 
         // make cell that we click selected ( Use in receive that)
@@ -319,11 +342,91 @@ namespace NT106_project
             }
         }
 
-
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            isClickable = true; // Re-enable clicking
+            timer1.Stop(); // Stop the timer
+        }
 
         //........................................................................................................................
         // forum ui :
+        private void guna2TextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && e.Shift)
+            {
+                // Lấy vị trí con trỏ hiện tại
+                int selectionStart = guna2TextBox1.SelectionStart;
 
+                // Thêm ký tự xuống dòng tại vị trí con trỏ
+                guna2TextBox1.Text += "\r\n";
+                guna2TextBox1.SelectionStart = selectionStart + 2;
+
+                // Đặt lại vị trí con trỏ sau khi chèn
+                // Ngăn không cho ký tự Enter gốc được thêm vào
+
+                e.SuppressKeyPress = true;
+                guna2TextBox1.ScrollToCaret();
+
+                // In ra vị trí của con trỏ và nội dung TextBox để kiểm tra
+                // Điều chỉnh chiều cao của TextBox
+
+                guna2TextBox1.Height += chatbox.Font.Height;
+
+                // Dịch chuyển TextBox lên trên theo chiều dọc
+                System.Drawing.Point currentLocation = guna2TextBox1.Location;
+                System.Drawing.Point newLocation = new System.Drawing.Point(currentLocation.X, currentLocation.Y - guna2TextBox1.Font.Height);
+                guna2TextBox1.Location = newLocation;
+
+
+
+            }
+            else if (e.KeyCode == Keys.Enter && !e.Shift)
+            {
+                // Ngăn không cho sự kiện Enter gốc được xử lý
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Back)
+            {
+                // Kiểm tra nếu Guna2TextBox không có ký tự nào
+                if (guna2TextBox1.Text.Length == 0)
+                {
+                    return; // Không làm gì nếu không có ký tự để xóa
+                }
+
+                // Lấy vị trí của ký tự hiện tại đang được chọn
+                int selectionStart = guna2TextBox1.SelectionStart;
+
+                // Kiểm tra nếu vị trí con trỏ không phải là đầu chuỗi
+                if (selectionStart > 0)
+                {
+
+                    // Lấy ký tự trước con trỏ
+                    char charToDelete = guna2TextBox1.Text[selectionStart - 1];
+                    if (charToDelete == '\n')
+                    {
+                        guna2TextBox1.Text = guna2TextBox1.Text.Remove(selectionStart - 1, 1);
+                        guna2TextBox1.Text = guna2TextBox1.Text.Remove(selectionStart - 2, 1);
+                        guna2TextBox1.SelectionStart = selectionStart - 2;
+                        guna2TextBox1.Height -= guna2TextBox1.Font.Height;
+                        System.Drawing.Point currentLocation = guna2TextBox1.Location;
+                        System.Drawing.Point newLocation = new System.Drawing.Point(currentLocation.X, currentLocation.Y + guna2TextBox1.Font.Height);
+                        guna2TextBox1.Location = newLocation;
+                    }
+                    else
+                    {
+                        guna2TextBox1.Text = guna2TextBox1.Text.Remove(selectionStart - 1, 1);
+
+                        // Đặt lại vị trí con trỏ
+                        guna2TextBox1.SelectionStart = selectionStart - 1;
+                    }
+
+
+                }
+
+                // Ngăn không cho sự kiện Backspace gốc được xử lý
+                e.SuppressKeyPress = true;
+            }
+        }
 
 
 
@@ -578,51 +681,213 @@ namespace NT106_project
             }
         }
 
-
-
-
-
         // .............................................................................................................................
         // public function :
-
-
 
         // receive data function
         private void receive()
         {
+            StringBuilder buffer = new StringBuilder();
 
+            while (true)
+            {
+                Byte[] data = new Byte[5120];
+                int recv = clientdevice.Receive(data);
+                if (recv == 0)
+                {
+                    throw new Exception("Server disconnected");
+                }
+                string jsonString = Encoding.UTF8.GetString(data, 0, recv);
 
+                // Append received data to the buffer
+                buffer.Append(jsonString);
 
+                while (true)
+                {
+                    string bufferContent = buffer.ToString();
+                    int startIndex = bufferContent.IndexOf('{');
+                    int endIndex = bufferContent.IndexOf('}');
 
+                    if (startIndex == -1 || endIndex == -1)
+                    {
+                        // No complete JSON object found, exit the inner loop
+                        break;
+                    }
+                    // Find the actual end of the JSON object (consider nested objects)
+                    int openBraces = 0;
+                    int closeBraces = 0;
+                    endIndex = -1;
 
+                    for (int i = startIndex; i < bufferContent.Length; i++)
+                    {
+                        if (bufferContent[i] == '{')
+                        {
+                            openBraces++;
+                        }
+                        else if (bufferContent[i] == '}')
+                        {
+                            closeBraces++;
+                        }
 
+                        if (openBraces == closeBraces && openBraces != 0)
+                        {
+                            endIndex = i;
+                            break;
+                        }
+                    }
 
+                    if (endIndex == -1)
+                    {
+                        // No complete JSON object found, exit the inner loop
+                        break;
+                    }
 
-            // private chat
+                    // Extract the complete JSON object
+                    string completeJson = bufferContent.Substring(startIndex, endIndex - startIndex + 1);
 
+                    // Remove the processed JSON object from the buffer
+                    buffer.Remove(0, endIndex + 1);
 
+                    try
+                    {
 
-
-
-
-
-
-
-
-
-            // forum chat
-
-
+                        datasending msg = JsonSerializer.Deserialize<datasending>(completeJson);
+                        handle_data(msg);
+                    }
+                    catch (JsonException jsonEx)
+                    {
+                        MessageBox.Show($"JSON Deserialization error: {jsonEx.Message}");
+                    }
+                }
+            }
 
 
         }
         // handle data function
-        private void handle_data(Data obj)
+        private async void handle_data(datasending obj)
         {
-
+            if (check == 2)  // private chat
+            {
+                if (obj.Type == "None" && obj.USerid1 == "None" && !obj.Checkload)
+                {
+                    if (obj.Message != "None")
+                    {
+                        FirebaseResponse response = await client.GetTaskAsync("Users/" + obj.Message);
+                        Data data1 = response.ResultAs<Data>();
+                        chater.Text = data1.name;
+                        SelectCellWithStringA(userlist, data1.name);
+                        flowLayoutPanel2.Controls.Clear();
+                        datasending datasending = new datasending(Currentuser, obj.Message, true, true);
+                        SendMessage(datasending);
+                    }
+                }
+                else if (obj.Type == "Private" && obj.Checkload)
+                {
+                    isClickable = false;
+                    timer1.Start();
+                    if (obj.USerid1 == Currentuser)
+                    {
+                        try
+                        {
+                            // Create a new user control
+                            UserControl2 userControl2 = new UserControl2(obj.Message);
+                            Panel panel = new Panel();
+                            panel.Height = userControl2.Height;
+                            panel.Width = flowLayoutPanel1.ClientSize.Width;
+                            panel.Controls.Add(userControl2);
+                            MessageBox.Show(panel.Height.ToString());
+                            MessageBox.Show(panel.Width.ToString());
+                            userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
+                            flowLayoutPanel1.Controls.Add(panel);
+                            flowLayoutPanel1.ScrollControlIntoView(panel);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"An error occurred: {ex.Message}");
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            UserControl1 userControl1 = new UserControl1(guna2TextBox1.Text);
+                            Panel panel = new Panel();
+                            panel.Height = userControl1.Height;
+                            panel.Width = flowLayoutPanel1.ClientSize.Width;
+                            panel.Controls.Add(userControl1);
+                            MessageBox.Show(panel.Height.ToString());
+                            MessageBox.Show(panel.Width.ToString());
+                            userControl1.Location = new Point(2, 0);
+                            flowLayoutPanel1.Controls.Add(panel);
+                            flowLayoutPanel1.ScrollControlIntoView(panel);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"An error occurred: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            else if (check == 3) // forum chat 
+            {
+                if (obj.Type == "All" && obj.Checkload)
+                {
+                    if (obj.USerid1 == Currentuser)
+                    {
+                        try
+                        {
+                            // Create a new user control
+                            UserControl2 userControl2 = new UserControl2(obj.Message);
+                            Panel panel = new Panel();
+                            panel.Height = userControl2.Height;
+                            panel.Width = flowLayoutPanel1.ClientSize.Width;
+                            panel.Controls.Add(userControl2);
+                            MessageBox.Show(panel.Height.ToString());
+                            MessageBox.Show(panel.Width.ToString());
+                            userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
+                            flowLayoutPanel1.Controls.Add(panel);
+                            flowLayoutPanel1.ScrollControlIntoView(panel);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"An error occurred: {ex.Message}");
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            UserControl1 userControl1 = new UserControl1(guna2TextBox1.Text);
+                            Panel panel = new Panel();
+                            panel.Height = userControl1.Height;
+                            panel.Width = flowLayoutPanel1.ClientSize.Width;
+                            panel.Controls.Add(userControl1);
+                            MessageBox.Show(panel.Height.ToString());
+                            MessageBox.Show(panel.Width.ToString());
+                            userControl1.Location = new Point(2, 0);
+                            flowLayoutPanel1.Controls.Add(panel);
+                            flowLayoutPanel1.ScrollControlIntoView(panel);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"An error occurred: {ex.Message}");
+                        }
+                    }
+                }
+            }
         }
 
+        // send data function
+        private void SendMessage(datasending data)
+        {
+            string jsonString = JsonSerializer.Serialize(data);
+            byte[] sendData = Encoding.UTF8.GetBytes(jsonString);
+            if (client != null && clientdevice.Connected)
+            {
+                clientdevice.Send(sendData);
+            }
 
+        }
 
 
 
@@ -639,11 +904,6 @@ namespace NT106_project
             guna2Button8.BackColor = Color.Transparent;
             check = 1;
         }
-
-        // button to open chat private
-
-
-
         // button to open forum chat
         private void guna2Button4_Click(object sender, EventArgs e)
         {
@@ -657,7 +917,7 @@ namespace NT106_project
             guna2Button8.BackColor = Color.Transparent;
             check = 3;
         }
-
+        // button to open chat private
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             guna2CustomGradientPanel1.Hide();
@@ -672,7 +932,11 @@ namespace NT106_project
 
         }
 
-       
+      
+
+
+
+
 
 
 

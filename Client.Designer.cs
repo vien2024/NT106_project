@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -120,6 +121,7 @@
             guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             Userimage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            timer1 = new System.Windows.Forms.Timer(components);
             menulist.SuspendLayout();
             guna2CustomGradientPanel1.SuspendLayout();
             guna2CustomGradientPanel2.SuspendLayout();
@@ -287,14 +289,15 @@
             guna2CustomGradientPanel3.CustomizableEdges = customizableEdges13;
             guna2CustomGradientPanel3.Dock = DockStyle.Right;
             guna2CustomGradientPanel3.FillColor = Color.Blue;
-            guna2CustomGradientPanel3.Location = new Point(719, 0);
+            guna2CustomGradientPanel3.Location = new Point(0, 0);
             guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
             guna2CustomGradientPanel3.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2CustomGradientPanel3.Size = new Size(10, 450);
+            guna2CustomGradientPanel3.Size = new Size(729, 450);
             guna2CustomGradientPanel3.TabIndex = 17;
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel1.Location = new Point(16, 58);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -333,6 +336,7 @@
             guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             guna2TextBox1.Location = new Point(17, 387);
             guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
+            guna2TextBox1.Multiline = true;
             guna2TextBox1.Name = "guna2TextBox1";
             guna2TextBox1.PasswordChar = '\0';
             guna2TextBox1.PlaceholderText = "";
@@ -340,6 +344,7 @@
             guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2TextBox1.Size = new Size(649, 48);
             guna2TextBox1.TabIndex = 16;
+            guna2TextBox1.KeyDown += guna2TextBox1_KeyDown;
             // 
             // guna2HtmlLabel10
             // 
@@ -405,6 +410,7 @@
             chatbox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             chatbox.Location = new Point(264, 401);
             chatbox.Margin = new Padding(3, 4, 3, 4);
+            chatbox.Multiline = true;
             chatbox.Name = "chatbox";
             chatbox.PasswordChar = '\0';
             chatbox.PlaceholderText = "";
@@ -515,6 +521,7 @@
             // 
             // flowLayoutPanel2
             // 
+            flowLayoutPanel2.AutoScroll = true;
             flowLayoutPanel2.BackColor = Color.White;
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel2.Location = new Point(255, 58);
@@ -846,6 +853,11 @@
             guna2HtmlLabel1.TabIndex = 2;
             guna2HtmlLabel1.Text = "Your Profile";
             // 
+            // timer1
+            // 
+            timer1.Interval = 60000;
+            timer1.Tick += timer1_Tick;
+            // 
             // Client
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -911,5 +923,6 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
         private FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Timer timer1;
     }
 }

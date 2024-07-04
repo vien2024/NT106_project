@@ -230,7 +230,7 @@ namespace NT106_project
                 bool isconnected = await IsUserConnectedAsync(Userid1);
                 Userconectedlistid[Userid1] = client;
 
-            // checkmessage is value to check that client is sending request or not
+            // checkmessage is value to check that client is sending request or not false is client send request ìnformation to server(check last connect )
             if (!data.Checkmessage)
             {
                 if (!isconnected)   // check if user have connected for so or not by using Lastconnected
@@ -259,7 +259,7 @@ namespace NT106_project
                     else
                     {
                         string mess = $"{Last_connected}";
-                        datasending data1 = new datasending("None", "None", mess, false);
+                        datasending data1 = new datasending("None","None", mess, false);
                         SendData(client, data1);
                     }
                 }
