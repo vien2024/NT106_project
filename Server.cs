@@ -253,19 +253,13 @@ namespace NT106_project
                     if (Last_connected == "")
                     {
                         string mess = "None";
-                        datasending data1 = new datasending(mess, false);
-                        SendData(client, data1);
-                    }
-                    else if (Last_connected == "All")
-                    {
-                        string mess = "All";
-                        datasending data1 = new datasending(mess, false);
+                        datasending data1 = new datasending("None","None",mess, false);
                         SendData(client, data1);
                     }
                     else
                     {
                         string mess = $"{Last_connected}";
-                        datasending data1 = new datasending(mess, false);
+                        datasending data1 = new datasending("None", "None", mess, false);
                         SendData(client, data1);
                     }
                 }
@@ -289,7 +283,9 @@ namespace NT106_project
                                 string[] parts = text.Split('|');
                                 foreach (string part in parts)
                                 {
-                                    datasending data1 = new datasending(part, true);
+                                    string[] arg = part.Split("&&");
+
+                                    datasending data1 = new datasending("All", arg[0], arg[1], true);
                                     foreach (Socket client1 in Forumclient)
                                     {
                                         SendData(client1, data1);
@@ -329,9 +325,12 @@ namespace NT106_project
                                     string line;
                                     string text = File.ReadAllText(path);
                                     string[] parts = text.Split('|');
+
                                     foreach (string part in parts)
                                     {
-                                        datasending data1 = new datasending(part, true);
+                                        string[] arg = part.Split("&&");
+
+                                    datasending data1 = new datasending("Private",arg[0], arg[1], true);
                                         SendData(client, data1);
                                     }                                    
                             }
@@ -353,10 +352,13 @@ namespace NT106_project
                             insertdatatofile(mess, logpath);
                             List<Socket> Forumclient = await GetClientConectedtoforum();
                             foreach (Socket client1 in Forumclient)
-                            {
-                                datasending data1 = new datasending(data.Message, true);
-                                SendData(client1, data1);
-                            }
+                            {   
+                                if (client1 != client)
+                                {
+                                    datasending data1 = new datasending("All",Userid1,data.Message, true);
+                                    SendData(client1, data1);
+                                }
+                            }   
                         }
                         else 
                         {
@@ -369,7 +371,7 @@ namespace NT106_project
                             if (Userconectedlistid.ContainsKey(data.USerid2))
                             {
                                 Socket Usersent = Userconectedlistid[data.USerid2];
-                                datasending data1 = new datasending(data.Message, true);
+                                datasending data1 = new datasending("Private",data.USerid1,data.Message, true);
                                 SendData(Usersent, data1);
                             }
                         }

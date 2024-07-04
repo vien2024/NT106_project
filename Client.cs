@@ -20,16 +20,19 @@ using System.Text.Json;
 using System.Reflection.Metadata;
 using FireSharp.Response;
 using System.Drawing.Imaging;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 namespace NT106_project
 {
 
 
     public partial class Client : Form
     {
-        bool checkfirstime;
+
         // public value
+        bool checkfirstime;
+        string Username;
         int lastcheck = 9;
-        int check=0;
+        int check = 0;
         bool checkchangepw;
         bool checksave;
         bool checkverify;
@@ -43,7 +46,7 @@ namespace NT106_project
         IPEndPoint iep;
         Socket clientdevice;
 
-        //............................................
+        //........................................................................................................................
 
         public Client(string UserID, bool a)
         {
@@ -65,7 +68,7 @@ namespace NT106_project
 
             FirebaseResponse response = await client.GetTaskAsync("Users/" + Currentuser);
             Data obj = response.ResultAs<Data>();
-            if ( check != lastcheck)
+            if (check != lastcheck)
             {
                 if (check == 0)
                 {
@@ -76,7 +79,7 @@ namespace NT106_project
                     }
                     else
                     {
-                        check = 3;  
+                        check = 3;
                     }
                 }
 
@@ -133,7 +136,17 @@ namespace NT106_project
                     guna2Button4.BackColor = Color.Transparent;
                     guna2Button8.BackColor = Color.Transparent;
                     // load data
-
+                    LoadData();
+                    User.Text = obj.name;
+                    Username = obj.name;
+                    userlist.ColumnHeadersVisible = false;
+                    userlist.CellBorderStyle = DataGridViewCellBorderStyle.None;
+                    userlist.GridColor = userlist.BackgroundColor;
+                    userlist.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+                    userlist.RowTemplate.Height = 50;
+                    userlist.AllowUserToResizeRows = false;
+                    userlist.ClearSelection();
+                    userlist.DefaultCellStyle.SelectionBackColor = Color.White;
                 }
                 else if (check == 3) // forum chat load
                 {
@@ -148,18 +161,163 @@ namespace NT106_project
                     guna2Button1.BackColor = Color.Transparent;
                     guna2Button8.BackColor = Color.Transparent;
                 }
-            }    
-            
+            }
+
 
         }
         //........................................................................................................................
         // private ui :
+        // load data   
+        private async void LoadData()
+        {
+            await LoadDataIntoDataGridView();
+        }
+        // tìm tên ()
+
+        // load data to datagridview
+        private async Task LoadDataIntoDataGridView()
+        {
+            var names = await GetNamesFromFirebaseAsync();
+            // Ensure we update the DataGridView on the UI thread
+            if (userlist.InvokeRequired)
+            {
+                userlist.Invoke(new Action(() =>
+                {
+                    userlist.DataSource = names.Select(name => new { Name = name }).ToList();
+                }));
+            }
+            else
+            {
+                userlist.DataSource = names.Select(name => new { Name = name }).ToList();
+            }
+        }
+        // get name list from firebase
+        private async Task<List<string>> GetNamesFromFirebaseAsync()
+        {
+            var firebaseClient = new Firebase.Database.FirebaseClient("https://appchatdizz-default-rtdb.firebaseio.com/");
+
+            var data = await firebaseClient
+                .Child("Users") // Replace with your data node in Firebase
+                .OnceAsync<Data>();
+
+            // Extract the names from the data
+            return data.Where(item => item.Object.name != Username).Select(item => item.Object.name).ToList();
+        }
+
+        // function to click in list name ( friend list will be soon update for  )
+        private void userlist_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var cellValue = userlist.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+            // notice.Hide();
+            chater.Text = cellValue.ToString();
+        }
+
+        // make cell that we click selected ( Use in receive that)
+        private void SelectCellWithStringA(DataGridView dataGridView, string a)
+        {
+            // Iterate through all rows in the DataGridView
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                // Iterate through all cells in the row
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    // Check if the cell's value is "string a"
+                    if (cell.Value != null && cell.Value.ToString() == a)
+                    {
+                        // Select the cell
+                        cell.Selected = true;
+
+                        // Optionally, scroll to the cell
+                        dataGridView.FirstDisplayedScrollingRowIndex = row.Index;
+
+                        // Exit the loop after finding the first match
+                        return;
+                    }
+                }
+            }
+
+            // If no cell is found with the value "string a", display a message or handle accordingly
+            MessageBox.Show("Cell with value 'string a' not found.");
+        }
+
+        // function for writing chat
+        private void chatbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && e.Shift)
+            {
+                // Lấy vị trí con trỏ hiện tại
+                int selectionStart = chatbox.SelectionStart;
+
+                // Thêm ký tự xuống dòng tại vị trí con trỏ
+                chatbox.Text += "\r\n";
+                chatbox.SelectionStart = selectionStart + 2;
+
+                // Đặt lại vị trí con trỏ sau khi chèn
+                // Ngăn không cho ký tự Enter gốc được thêm vào
+
+                e.SuppressKeyPress = true;
+                chatbox.ScrollToCaret();
+
+                // In ra vị trí của con trỏ và nội dung TextBox để kiểm tra
+                // Điều chỉnh chiều cao của TextBox
+
+                chatbox.Height += chatbox.Font.Height;
+
+                // Dịch chuyển TextBox lên trên theo chiều dọc
+                System.Drawing.Point currentLocation = chatbox.Location;
+                System.Drawing.Point newLocation = new System.Drawing.Point(currentLocation.X, currentLocation.Y - chatbox.Font.Height);
+                chatbox.Location = newLocation;
 
 
 
+            }
+            else if (e.KeyCode == Keys.Enter && !e.Shift)
+            {
+                // Ngăn không cho sự kiện Enter gốc được xử lý
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Back)
+            {
+                // Kiểm tra nếu Guna2TextBox không có ký tự nào
+                if (chatbox.Text.Length == 0)
+                {
+                    return; // Không làm gì nếu không có ký tự để xóa
+                }
+
+                // Lấy vị trí của ký tự hiện tại đang được chọn
+                int selectionStart = chatbox.SelectionStart;
+
+                // Kiểm tra nếu vị trí con trỏ không phải là đầu chuỗi
+                if (selectionStart > 0)
+                {
+
+                    // Lấy ký tự trước con trỏ
+                    char charToDelete = chatbox.Text[selectionStart - 1];
+                    if (charToDelete == '\n')
+                    {
+                        chatbox.Text = chatbox.Text.Remove(selectionStart - 1, 1);
+                        chatbox.Text = chatbox.Text.Remove(selectionStart - 2, 1);
+                        chatbox.SelectionStart = selectionStart - 2;
+                        chatbox.Height -= chatbox.Font.Height;
+                        System.Drawing.Point currentLocation = chatbox.Location;
+                        System.Drawing.Point newLocation = new System.Drawing.Point(currentLocation.X, currentLocation.Y + chatbox.Font.Height);
+                        chatbox.Location = newLocation;
+                    }
+                    else
+                    {
+                        chatbox.Text = chatbox.Text.Remove(selectionStart - 1, 1);
+
+                        // Đặt lại vị trí con trỏ
+                        chatbox.SelectionStart = selectionStart - 1;
+                    }
 
 
+                }
 
+                // Ngăn không cho sự kiện Backspace gốc được xử lý
+                e.SuppressKeyPress = true;
+            }
+        }
 
 
 
@@ -315,6 +473,75 @@ namespace NT106_project
 
         }
 
+        // function for writing in description
+        private void Desc_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && e.Shift)
+            {
+                // Lấy vị trí con trỏ hiện tại
+                int selectionStart = Desc.SelectionStart;
+
+                // Thêm ký tự xuống dòng tại vị trí con trỏ
+                Desc.Text += "\r\n";
+                Desc.SelectionStart = selectionStart + 2;
+
+                // Đặt lại vị trí con trỏ sau khi chèn
+                // Ngăn không cho ký tự Enter gốc được thêm vào
+
+                e.SuppressKeyPress = true;
+                Desc.ScrollToCaret();
+
+                // In ra vị trí của con trỏ và nội dung TextBox để kiểm tra
+                // Điều chỉnh chiều cao của TextBox
+
+
+
+            }
+            else if (e.KeyCode == Keys.Enter && !e.Shift)
+            {
+                // Ngăn không cho sự kiện Enter gốc được xử lý
+                e.SuppressKeyPress = true;
+            }
+            if (e.KeyCode == Keys.Back)
+            {
+                // Kiểm tra nếu Guna2TextBox không có ký tự nào
+                if (Desc.Text.Length == 0)
+                {
+                    return; // Không làm gì nếu không có ký tự để xóa
+                }
+
+                // Lấy vị trí của ký tự hiện tại đang được chọn
+                int selectionStart = Desc.SelectionStart;
+
+                // Kiểm tra nếu vị trí con trỏ không phải là đầu chuỗi
+                if (selectionStart > 0)
+                {
+
+                    // Lấy ký tự trước con trỏ
+                    char charToDelete = Desc.Text[selectionStart - 1];
+                    if (charToDelete == '\n')
+                    {
+                        Desc.Text = Desc.Text.Remove(selectionStart - 1, 1);
+                        Desc.Text = Desc.Text.Remove(selectionStart - 2, 1);
+                        Desc.SelectionStart = selectionStart - 2;
+
+                    }
+                    else
+                    {
+                        Desc.Text = Desc.Text.Remove(selectionStart - 1, 1);
+
+                        // Đặt lại vị trí con trỏ
+                        Desc.SelectionStart = selectionStart - 1;
+                    }
+
+
+                }
+
+                // Ngăn không cho sự kiện Backspace gốc được xử lý
+                e.SuppressKeyPress = true;
+            }
+        }
+
         // .........................................................................................................................
         // logout fuction
         private void guna2Button8_Click(object sender, EventArgs e)
@@ -444,6 +671,10 @@ namespace NT106_project
             check = 2;
 
         }
+
+       
+
+
 
         //.............................................................................................................................
     }

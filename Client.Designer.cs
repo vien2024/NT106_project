@@ -272,10 +272,10 @@
             guna2CustomGradientPanel2.Controls.Add(flowLayoutPanel2);
             guna2CustomGradientPanel2.CustomizableEdges = customizableEdges23;
             guna2CustomGradientPanel2.Dock = DockStyle.Right;
-            guna2CustomGradientPanel2.Location = new Point(700, 0);
+            guna2CustomGradientPanel2.Location = new Point(0, 0);
             guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
             guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            guna2CustomGradientPanel2.Size = new Size(29, 450);
+            guna2CustomGradientPanel2.Size = new Size(729, 450);
             guna2CustomGradientPanel2.TabIndex = 26;
             // 
             // guna2CustomGradientPanel3
@@ -287,7 +287,7 @@
             guna2CustomGradientPanel3.CustomizableEdges = customizableEdges13;
             guna2CustomGradientPanel3.Dock = DockStyle.Right;
             guna2CustomGradientPanel3.FillColor = Color.Blue;
-            guna2CustomGradientPanel3.Location = new Point(19, 0);
+            guna2CustomGradientPanel3.Location = new Point(719, 0);
             guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
             guna2CustomGradientPanel3.ShadowDecoration.CustomizableEdges = customizableEdges14;
             guna2CustomGradientPanel3.Size = new Size(10, 450);
@@ -403,15 +403,16 @@
             chatbox.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             chatbox.Font = new Font("Segoe UI", 9F);
             chatbox.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            chatbox.Location = new Point(264, 399);
+            chatbox.Location = new Point(264, 401);
             chatbox.Margin = new Padding(3, 4, 3, 4);
             chatbox.Name = "chatbox";
             chatbox.PasswordChar = '\0';
             chatbox.PlaceholderText = "";
             chatbox.SelectedText = "";
             chatbox.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            chatbox.Size = new Size(395, 38);
+            chatbox.Size = new Size(395, 36);
             chatbox.TabIndex = 12;
+            chatbox.KeyDown += chatbox_KeyDown;
             // 
             // panel1
             // 
@@ -695,6 +696,7 @@
             Desc.Size = new Size(382, 151);
             Desc.TabIndex = 15;
             Desc.TextOffset = new Point(0, -60);
+            Desc.KeyDown += Desc_KeyDown;
             // 
             // Phone
             // 

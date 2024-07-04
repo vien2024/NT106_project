@@ -16,27 +16,25 @@ namespace NT106_project
 
         public bool Checkmessage { get; set; }
         public bool Checkloadmessage { get; set; }
+
+        public bool Checkload { get; set; }
+        public string Type { get; set; }
         public datasending()
         {
         }
 
-        public datasending(string userid1, string userid2, string message, bool checkmessage)
-        {
-            USerid1 = userid1;
-            USerid2 = userid2;
-            Message = message;
-            Checkmessage = checkmessage;
-
-        }
+       
         public datasending(string userid1)
         {
             USerid1 = userid1;
         }
       
-        public datasending(string message, bool checkloadmessage) // server send message to client
+        public datasending( string type ,string userid1 ,string message, bool checkload) // server send message to client
         {
+            Type = type;
+            USerid1 = userid1;
             Message = message;
-            Checkloadmessage = checkloadmessage; 
+            Checkload = checkload;
         }
 
         public datasending(string userid1, string userid2, bool checkmessage, bool checkloadmessage) // client send message to server ( use for requesting loading message from filelog))
