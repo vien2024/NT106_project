@@ -24,9 +24,10 @@ namespace NT106_project
         }
 
        
-        public datasending(string userid1)
+        public datasending(string userid1, bool checkmessage)
         {
             USerid1 = userid1;
+            Checkmessage = checkmessage;
         }
       
         public datasending( string type ,string userid1 ,string message, bool checkload) // server send message to client

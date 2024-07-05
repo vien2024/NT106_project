@@ -22,6 +22,7 @@ using FireSharp.Response;
 using System.Drawing.Imaging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Guna.UI2.WinForms;
+using static System.Net.Mime.MediaTypeNames;
 namespace NT106_project
 {
 
@@ -61,7 +62,7 @@ namespace NT106_project
 
         private async void Client_Load(object sender, EventArgs e)
         {
-           loadfunction();
+            loadfunction();
 
 
         }
@@ -77,7 +78,7 @@ namespace NT106_project
 
         // load data to datagridview
         private async Task LoadDataIntoDataGridView()
-        {   
+        {
             MessageBox.Show("LoadDataIntoDataGridView");
             var names = await GetNamesFromFirebaseAsync();
             // Ensure we update the DataGridView on the UI thread
@@ -121,8 +122,15 @@ namespace NT106_project
             flowLayoutPanel2.Controls.Clear();
             // send message to server that client want to connect to this user and load message from filelog
             string Userid2 = await GetUserIDFromName(chater.Text);
+            var Userconnect = new User_connect
+            {
+                Userid = Currentuser,
+                Lastconnected = Userid2,
+            };
+            FirebaseResponse firebaseResponse3 = await client.SetTaskAsync("Userconnect/" + Currentuser, Userconnect);
             datasending data = new datasending(Currentuser, Userid2, true, true);
             SendMessage(data);
+            
         }
         // function to take userid from Name
         private async Task<string> GetUserIDFromName(string name)
@@ -249,7 +257,29 @@ namespace NT106_project
             isClickable = true; // Re-enable clicking
             timer1.Stop(); // Stop the timer
         }
+        private async void sendbtn1_Click(object sender, EventArgs e)
+        {
+            FirebaseResponse firebaseResponse3 = await client.GetTaskAsync("Userconnect/" + Currentuser);
+            User_connect obj = firebaseResponse3.ResultAs<User_connect>();
+            datasending data = new datasending(Currentuser, obj.Lastconnected, chatbox.Text, true, false);
+            SendMessage(data);
+            UserControl2 userControl2 = new UserControl2(chatbox.Text);
+            Panel panel = new Panel();
+            panel.Height = userControl2.Height;
+            panel.Width = flowLayoutPanel2.ClientSize.Width;
+            panel.Controls.Add(userControl2);
+            MessageBox.Show(panel.Height.ToString());
+            MessageBox.Show(panel.Width.ToString());
+            userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
+            flowLayoutPanel2.Controls.Add(panel);
 
+            chatbox.Clear();
+            chatbox.Height = 30;
+            System.Drawing.Point currentLocation = chatbox.Location;
+            System.Drawing.Point newLocation = new System.Drawing.Point(currentLocation.X, 401);
+            chatbox.Location = newLocation;
+
+        }
         //........................................................................................................................
         // forum ui :
         private void guna2TextBox1_KeyDown(object sender, KeyEventArgs e)
@@ -330,7 +360,29 @@ namespace NT106_project
             }
         }
 
+        private void sendbtn_Click(object sender, EventArgs e)
+        {
+            datasending datasending = new datasending(Currentuser,"All",guna2TextBox1.Text,true,false);
+            SendMessage(datasending);
+           
+            UserControl2 userControl2 = new UserControl2(guna2TextBox1.Text);
+            Panel panel = new Panel();
+            panel.Height = userControl2.Height;
+            panel.Width = flowLayoutPanel1.ClientSize.Width;
+            panel.Controls.Add(userControl2);
+            MessageBox.Show(panel.Height.ToString());
+            MessageBox.Show(panel.Width.ToString());
+            userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
+            flowLayoutPanel1.Controls.Add(panel);
 
+
+            // Optionally, clear the text from the textbox
+            guna2TextBox1.Clear();
+            guna2TextBox1.Height = 48;
+            System.Drawing.Point currentLocation = guna2TextBox1.Location;
+            System.Drawing.Point newLocation = new System.Drawing.Point(currentLocation.X, 374);
+            guna2TextBox1.Location = newLocation;
+        }
 
 
 
@@ -472,7 +524,7 @@ namespace NT106_project
             ofd.Filter = "Choose Image(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                Image img = new Bitmap(ofd.FileName);
+                System.Drawing.Image img = new Bitmap(ofd.FileName);
                 Userimage.Image = img.GetThumbnailImage(100, 100, null, new IntPtr());
             }
 
@@ -569,7 +621,7 @@ namespace NT106_project
                 listen.IsBackground = true;
                 listen.Start();
 
-                datasending data = new datasending(Currentuser);
+                datasending data = new datasending(Currentuser,false);
 
                 string jsonString = JsonSerializer.Serialize(data);
                 byte[] sendData = Encoding.UTF8.GetBytes(jsonString); ;
@@ -687,92 +739,115 @@ namespace NT106_project
                 {
                     isClickable = false;
                     timer1.Start();
-                    if (obj.USerid1 == Currentuser)
+                    string[] parts = (obj.Message).Split('|');
+                    foreach (string part in parts)
                     {
-                        try
+                        if (part.Contains("&&"))
                         {
-                            // Create a new user control
-                            UserControl2 userControl2 = new UserControl2(obj.Message);
-                            Panel panel = new Panel();
-                            panel.Height = userControl2.Height;
-                            panel.Width = flowLayoutPanel1.ClientSize.Width;
-                            panel.Controls.Add(userControl2);
-                            MessageBox.Show(panel.Height.ToString());
-                            MessageBox.Show(panel.Width.ToString());
-                            userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
-                            flowLayoutPanel1.Controls.Add(panel);
-                            flowLayoutPanel1.ScrollControlIntoView(panel);
+                            string[] arg = part.Split("&&");
+                            if (arg[0] == Currentuser )
+                            {
+                                try // use for your mess
+                                {
+                                    Invoke((MethodInvoker)delegate {
+                                        // Create a new user control
+                                    UserControl2 userControl2 = new UserControl2(arg[1]);
+                                    Panel panel = new Panel();
+                                    panel.Height = userControl2.Height;
+                                    panel.Width = flowLayoutPanel1.ClientSize.Width;
+                                    panel.Controls.Add(userControl2);
+                                    
+                                    userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
+                                    flowLayoutPanel1.Controls.Add(panel);
+                                    flowLayoutPanel1.ScrollControlIntoView(panel);
+                                    });
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show($"An error occurred: {ex.Message}");
+                                }
+                            }
+                            else
+                            {
+                                try   // Use for your friend mess
+                                {
+                                    Invoke((MethodInvoker)delegate {
+                                    UserControl1 userControl1 = new UserControl1(arg[1]);
+                                    Panel panel = new Panel();
+                                    panel.Height = userControl1.Height;
+                                    panel.Width = flowLayoutPanel1.ClientSize.Width;
+                                    panel.Controls.Add(userControl1);
+                                  
+                                    userControl1.Location = new Point(2, 0);
+                                    flowLayoutPanel1.Controls.Add(panel);
+                                    flowLayoutPanel1.ScrollControlIntoView(panel);
+                                    });
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show($"An error occurred: {ex.Message}");
+                                }
+                            } 
+                                
+
+
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"An error occurred: {ex.Message}");
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            UserControl1 userControl1 = new UserControl1(guna2TextBox1.Text);
-                            Panel panel = new Panel();
-                            panel.Height = userControl1.Height;
-                            panel.Width = flowLayoutPanel1.ClientSize.Width;
-                            panel.Controls.Add(userControl1);
-                            MessageBox.Show(panel.Height.ToString());
-                            MessageBox.Show(panel.Width.ToString());
-                            userControl1.Location = new Point(2, 0);
-                            flowLayoutPanel1.Controls.Add(panel);
-                            flowLayoutPanel1.ScrollControlIntoView(panel);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"An error occurred: {ex.Message}");
-                        }
-                    }
+                    }                     
                 }
             }
             else if (check == 3) // forum chat 
             {
                 if (obj.Type == "All" && obj.Checkload)
                 {
-                    if (obj.USerid1 == Currentuser)
+                    string[] parts = (obj.Message).Split('|');
+                    foreach (string part in parts)
                     {
-                        try
+                        if (part.Contains("&&"))
                         {
-                            // Create a new user control
-                            UserControl2 userControl2 = new UserControl2(obj.Message);
-                            Panel panel = new Panel();
-                            panel.Height = userControl2.Height;
-                            panel.Width = flowLayoutPanel1.ClientSize.Width;
-                            panel.Controls.Add(userControl2);
-                            MessageBox.Show(panel.Height.ToString());
-                            MessageBox.Show(panel.Width.ToString());
-                            userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
-                            flowLayoutPanel1.Controls.Add(panel);
-                            flowLayoutPanel1.ScrollControlIntoView(panel);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"An error occurred: {ex.Message}");
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            UserControl1 userControl1 = new UserControl1(guna2TextBox1.Text);
-                            Panel panel = new Panel();
-                            panel.Height = userControl1.Height;
-                            panel.Width = flowLayoutPanel1.ClientSize.Width;
-                            panel.Controls.Add(userControl1);
-                            MessageBox.Show(panel.Height.ToString());
-                            MessageBox.Show(panel.Width.ToString());
-                            userControl1.Location = new Point(2, 0);
-                            flowLayoutPanel1.Controls.Add(panel);
-                            flowLayoutPanel1.ScrollControlIntoView(panel);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"An error occurred: {ex.Message}");
+                            string[] arg = part.Split("&&");
+                            if (arg[0] == Currentuser)
+                            {
+                                try
+                                {
+                                    Invoke((MethodInvoker)delegate {
+                                        // Create a new user control
+                                    UserControl2 userControl2 = new UserControl2(arg[1]);
+                                    Panel panel = new Panel();
+                                    panel.Height = userControl2.Height;
+                                    panel.Width = flowLayoutPanel1.ClientSize.Width;
+                                    panel.Controls.Add(userControl2);
+                                    userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
+                                    flowLayoutPanel1.Controls.Add(panel);
+                                    flowLayoutPanel1.ScrollControlIntoView(panel);
+                                    });
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show($"An error occurred: {ex.Message}");
+                                }
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    Invoke((MethodInvoker)delegate {
+                                        UserControl1 userControl1 = new UserControl1(arg[1]);
+                                    Panel panel = new Panel();
+                                    panel.Height = userControl1.Height;
+                                    panel.Width = flowLayoutPanel1.ClientSize.Width;
+                                    panel.Controls.Add(userControl1);
+                                    
+                                    userControl1.Location = new Point(2, 0);
+                                    flowLayoutPanel1.Controls.Add(panel);
+                                    flowLayoutPanel1.ScrollControlIntoView(panel);
+                                    });
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show($"An error occurred: {ex.Message}");
+                                }
+                            }
+
                         }
                     }
                 }
@@ -796,27 +871,28 @@ namespace NT106_project
         // button to open profile
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-           
+
             check = 1;
             loadfunction();
+            // clear all data in chat box
         }
         // button to open forum chat
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-            
+
             check = 3;
             loadfunction();
-
+            // clear all data in chat box
         }
         // button to open chat private
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             check = 2;
             loadfunction();
-
+            // clear all data in chat box
         }
 
-      
+
         private async void loadfunction()
         {
             client = new FireSharp.FirebaseClient(ifc);
@@ -913,6 +989,8 @@ namespace NT106_project
                     userlist.AllowUserToResizeRows = false;
                     userlist.ClearSelection();
                     userlist.DefaultCellStyle.SelectionBackColor = Color.White;
+                    datasending data = new datasending(Currentuser, false);
+                    SendMessage(data);
                 }
                 else if (check == 3) // forum chat load
                 {
@@ -929,9 +1007,16 @@ namespace NT106_project
                     guna2Button3.BackColor = Color.Transparent;
                     guna2Button1.BackColor = Color.Transparent;
                     guna2Button8.BackColor = Color.Transparent;
+
+                    datasending datasending = new datasending(Currentuser, "All", true, true);
+                    SendMessage(datasending);
                 }
             }
         }
+
+       
+
+
 
 
 

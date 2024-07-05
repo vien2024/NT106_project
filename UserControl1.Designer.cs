@@ -62,7 +62,7 @@ namespace NT106_project
             guna2TextBox1.ReadOnly = true;
             guna2TextBox1.SelectedText = "";
             guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2TextBox1.Size = new Size(400, 586);
+            guna2TextBox1.Size = new Size(400, 600);
             guna2TextBox1.TabIndex = 3;
             guna2TextBox1.WordWrap = false;
             // 
@@ -75,7 +75,7 @@ namespace NT106_project
             MaximumSize = new Size(500, 600);
             MinimumSize = new Size(50, 50);
             Name = "UserControl1";
-            Size = new Size(500, 586);
+            Size = new Size(500, 600);
             ResumeLayout(false);
         }
 

@@ -38,6 +38,8 @@ namespace NT106_project
         string fileName;
         string filePath;
         private Dictionary<string, Socket> Userconectedlistid;
+        private Dictionary<Socket, string> Userconectedlistid1;
+        private Dictionary< Socket, string> listuser;
         IFirebaseConfig ifc = new FirebaseConfig()
         {
             AuthSecret = "kHKs9ZwngaoM2odQCgyLjDzG7sF0JVQzNEf1IA1N",
@@ -80,7 +82,9 @@ namespace NT106_project
                 IPEndPoint iep = new IPEndPoint(IPAddress.Any, 9999);
                 server.Bind(iep);
                 clientList = new List<Socket>();
-                Userconectedlistid = new Dictionary<string, Socket>();
+                 Userconectedlistid = new Dictionary<string, Socket>();
+                listuser = new Dictionary<Socket, string>();
+                Userconectedlistid1 = new Dictionary<Socket, string>();
                 Thread acceptClientThread = new Thread(AcceptClients);
                 acceptClientThread.IsBackground = true;
                 acceptClientThread.Start();
@@ -232,71 +236,68 @@ namespace NT106_project
         private async void ProcessReceivedData(Socket client, datasending data)
         {
                 MessageBox.Show("data's processed");
-                string Userid1 = data.USerid1;
-                bool isconnected = await IsUserConnectedAsync(Userid1);
+                string Userid1 = data.USerid1;               
                 Userconectedlistid[Userid1] = client;
+                Userconectedlistid1[client] = Userid1;            
 
             // checkmessage is value to check that client is sending request or not false is client send request ìnformation to server(check last connect )
             if (!data.Checkmessage)
             {
+                bool isconnected = await IsUserConnectedAsync(Userid1);
                 if (!isconnected)   // check if user have connected for so or not by using Lastconnected
                 {
-                    
                     var Userconnect = new User_connect
                     {
                         Userid = Userid1,
-                        client = client,
                         Lastconnected = "",
                     };
-                    FirebaseResponse firebaseResponse2 = await firebaseClient.SetTaskAsync("User_connect/" + Userid1, Userconnect);
+                    FirebaseResponse firebaseResponse3 = await firebaseClient.SetTaskAsync("Userconnect/" + Userid1,Userconnect);
+                   
                 }
-                else
-                {
-                    FirebaseResponse firebaseResponse = await firebaseClient.GetTaskAsync("User_connect/" + Userid1);
+                
+                FirebaseResponse firebaseResponse = await firebaseClient.GetTaskAsync("Userconnect/" + Userid1);
                     User_connect user = firebaseResponse.ResultAs<User_connect>();
                     string User_id = user.Userid;
                     string Last_connected = user.Lastconnected;
                     if (Last_connected == "")
                     {
                         string mess = "None";
-                        datasending data1 = new datasending("None","None",mess, false);
+                        datasending data1 = new datasending("None", "None", mess, false);
                         SendData(client, data1);
                     }
                     else
                     {
                         string mess = $"{Last_connected}";
-                        datasending data1 = new datasending("None","None", mess, false);
+                        datasending data1 = new datasending("None", "None", mess, false);
                         SendData(client, data1);
                     }
-                }
+               
+                
+                  
+                
 
             }
             else  // handle data  sending form client to client throught server
             {
                if (data.Checkloadmessage)
-               {
-                    if (data.USerid2 == "All")
-                    {   
+               {    
 
-                        Forumclient = await GetClientConectedtoforum();
+                    if (data.USerid2 == "All")
+                    {
+                        listuser[client] = "All";
                         string logpath = "D:\\K2-N2\\lap_trinh_mang_can_ban\\git\\filelog\\forum.txt";
+
                         try
                         {
                             using (StreamReader sr = new StreamReader(logpath))
                             {
-                                string line;
                                 string text = File.ReadAllText(logpath);
-                                string[] parts = text.Split('|');
-                                foreach (string part in parts)
-                                {
-                                    string[] arg = part.Split("&&");
-
-                                    datasending data1 = new datasending("All", arg[0], arg[1], true);
-                                    foreach (Socket client1 in Forumclient)
-                                    {
-                                        SendData(client1, data1);
-                                    }
+                                if (!string.IsNullOrEmpty(text))
+                                {    
+                                 datasending data1 = new datasending("All", Userconectedlistid1[client] ,text, true);
+                                 SendData(client, data1);
                                 }
+                              
                             }
                         }
                         catch (Exception ex)
@@ -306,8 +307,9 @@ namespace NT106_project
 
                     }
                     else
-                    {   
-                         bool isfilelogexist = await IsFileLogExistAsync(data.USerid1, data.USerid2);
+                    {
+                        listuser[client] = "Private";
+                        bool isfilelogexist = await IsFileLogExistAsync(data.USerid1, data.USerid2);
                         if (!isfilelogexist)
                         {
                             createfile();
@@ -323,22 +325,23 @@ namespace NT106_project
                         else
                         {
                             string a = await GetFileLogNameFromFirebaseAsync(data.USerid1,data.USerid2);
-                            FirebaseResponse firebaseResponse2 = await firebaseClient.GetTaskAsync("filelog/" + a);
+                            FirebaseResponse firebaseResponse2 = await firebaseClient.GetTaskAsync("Filelog/" + a);
                             FileLogdatabase fileLog = firebaseResponse2.ResultAs<FileLogdatabase>();
                             string path = fileLog.path;
                             try
-                            {    
-                                    string line;
+                            {
+                                using (StreamReader sr = new StreamReader(path))
+                                {
                                     string text = File.ReadAllText(path);
-                                    string[] parts = text.Split('|');
-
-                                    foreach (string part in parts)
+                                    if (!string.IsNullOrEmpty(text))
                                     {
-                                        string[] arg = part.Split("&&");
 
-                                    datasending data1 = new datasending("Private",arg[0], arg[1], true);
+                                        datasending data1 = new datasending("Private", Userconectedlistid1[client],text, true);
                                         SendData(client, data1);
-                                    }                                    
+
+                                    }
+                                }
+                                                                  
                             }
                             catch (Exception ex)
                             {
@@ -347,32 +350,32 @@ namespace NT106_project
                         }
                     }
                }
-                else
+               else
                 {   
                     if (!string.IsNullOrEmpty(data.Message))
                     {
                         if (data.USerid2 == "All")
                         {
                             string logpath = "D:\\K2-N2\\lap_trinh_mang_can_ban\\git\\filelog\\forum.txt";
-                            string mess = $"{Userid1} && {data.Message}";
+                            string mess = $"{Userid1} && {data.Message} |";
                             insertdatatofile(mess, logpath);
-                            List<Socket> Forumclient = await GetClientConectedtoforum();
-                            foreach (Socket client1 in Forumclient)
+                            foreach (Socket client1 in clientList)
                             {   
-                                if (client1 != client)
-                                {
+                                if (client1 != client && listuser[client1]=="All")
+                                {   
                                     datasending data1 = new datasending("All",Userid1,data.Message, true);
                                     SendData(client1, data1);
+                                   
                                 }
                             }   
                         }
                         else 
                         {
                             string a = await GetFileLogNameFromFirebaseAsync(data.USerid1, data.USerid2);
-                            FirebaseResponse firebaseResponse2 = await firebaseClient.GetTaskAsync("filelog/" + a);
+                            FirebaseResponse firebaseResponse2 = await firebaseClient.GetTaskAsync("Filelog/" + a);
                             FileLogdatabase fileLog = firebaseResponse2.ResultAs<FileLogdatabase>();
                             string path = fileLog.path;
-                            string mess = $"{Userid1} && {data.Message}";
+                            string mess = $"{Userid1} && {data.Message} |";
                             insertdatatofile(mess, path);
                             if (Userconectedlistid.ContainsKey(data.USerid2))
                             {
@@ -455,7 +458,7 @@ namespace NT106_project
         {
             Firebase.Database.FirebaseClient firebaseClient = new Firebase.Database.FirebaseClient("https://appchatdizz-default-rtdb.firebaseio.com/");
             var users = await firebaseClient
-                .Child("User_connect")
+                .Child("Userconnect")
                 .OrderBy("Userid")
                 .EqualTo(Userid)
                 .OnceAsync<User_connect>();
@@ -490,24 +493,14 @@ namespace NT106_project
                 .OnceAsync<FileLogdatabase>();
 
             // Find the first FileLogdatabase object that matches User1 and User2 and return its Name
-            var fileLog = data.FirstOrDefault(item => item.Object.User1 == User1 && item.Object.User2 == User2)?.Object;
+            var fileLog = data.FirstOrDefault(item => (item.Object.User1 == User1 && item.Object.User2 == User2)|| (item.Object.User2 == User1 && item.Object.User1 == User2))?.Object;
 
             return fileLog?.Name;
         }
 
 
         // function to take User  connect to  forum 
-        private async Task<List<Socket>> GetClientConectedtoforum()
-        {
-            var firebaseClient = new Firebase.Database.FirebaseClient("https://appchatdizz-default-rtdb.firebaseio.com/");
-
-            var data = await firebaseClient
-                .Child("User_connect") // Replace with your data node in Firebase
-                .OnceAsync<User_connect>();
-
-            // Extract the names from the data
-            return data.Where(item => item.Object.Lastconnected == "All").Select(item => item.Object.client).ToList();
-        }
+      
 
         // function to add data to filelog
         private void insertdatatofile(string a, string filelogpath) 
@@ -524,8 +517,8 @@ namespace NT106_project
                 MessageBox.Show(ex.Message);
             }
         }
+        
 
- 
 
         //End  other function ........................................................................................................................
     }

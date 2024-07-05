@@ -85,21 +85,15 @@ namespace NT106_project
             guna2TextBox1.Text = string.Join("\r\n", adjustedLines);
 
             int lineCount = adjustedLines.Count;
-            MessageBox.Show($"lineCount: {lineCount}");
+            
             int fontHeight = guna2TextBox1.Font.Height;
             guna2TextBox1.AutoSize = false;
             int calculatedHeight = fontHeight * (lineCount + 1);
-            //guna2TextBox1.Height = 28 * lineCount + 11;
-            MessageBox.Show($"font: {guna2TextBox1.Font.Height}");
-
-            //guna2TextBox1.Width = Math.Max(len, 50);
+          
             guna2TextBox1.Size = new Size(Math.Max(len, 50), Math.Max(calculatedHeight, 50));
             this.Size = new Size(500, Math.Max(calculatedHeight, 50));
 
-            MessageBox.Show($"tbWidth: {guna2TextBox1.Width}");
-            MessageBox.Show($"tbHeight: {guna2TextBox1.Height}");
-            MessageBox.Show($"Height: {this.Height}");
-            MessageBox.Show($"Witdh: {this.Width}");
+          
         }
 
 
