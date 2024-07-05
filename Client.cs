@@ -24,13 +24,30 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Guna.UI2.WinForms;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using J3QQ4;
+using System.Reflection;
 namespace NT106_project
 {
 
 
     public partial class Client : Form
     {
+        private List<string> Smiles = new List<string>();
+        public void AddEmojisToList()
+        {
+            // Get all public static fields of the Emoji class
+            FieldInfo[] fields = typeof(Emoji).GetFields(BindingFlags.Public | BindingFlags.Static);
 
+            foreach (var field in fields)
+            {
+                // Check if the field is a constant and of type string
+                if (field.IsLiteral && !field.IsInitOnly && field.FieldType == typeof(string))
+                {
+                    // Add the value of the field to the Smiles list
+                    Smiles.Add((string)field.GetValue(null));
+                }
+            }
+        }
         // public value
         private bool isClickable = true;
         bool checkfirstime;
@@ -131,7 +148,7 @@ namespace NT106_project
             FirebaseResponse firebaseResponse3 = await client.SetTaskAsync("Userconnect/" + Currentuser, Userconnect);
             datasending data = new datasending(Currentuser, Userid2, true, true);
             SendMessage(data);
-            
+
         }
         // function to take userid from Name
         private async Task<string> GetUserIDFromName(string name)
@@ -363,9 +380,9 @@ namespace NT106_project
 
         private void sendbtn_Click(object sender, EventArgs e)
         {
-            datasending datasending = new datasending(Currentuser,"All",guna2TextBox1.Text,true,false);
+            datasending datasending = new datasending(Currentuser, "All", guna2TextBox1.Text, true, false);
             SendMessage(datasending);
-           
+
             UserControl2 userControl2 = new UserControl2(guna2TextBox1.Text);
             Panel panel = new Panel();
             panel.Height = userControl2.Height;
@@ -622,7 +639,7 @@ namespace NT106_project
                 listen.IsBackground = true;
                 listen.Start();
 
-                datasending data = new datasending(Currentuser,false);
+                datasending data = new datasending(Currentuser, false);
 
                 string jsonString = JsonSerializer.Serialize(data);
                 byte[] sendData = Encoding.UTF8.GetBytes(jsonString); ;
@@ -746,21 +763,22 @@ namespace NT106_project
                         if (part.Contains("&&"))
                         {
                             string[] arg = part.Split("&&");
-                            if (arg[0].Trim() == Currentuser )
+                            if (arg[0].Trim() == Currentuser)
                             {
                                 try // use for your mess
                                 {
-                                    Invoke((MethodInvoker)delegate {
+                                    Invoke((System.Windows.Forms.MethodInvoker)delegate
+                                    {
                                         // Create a new user control
-                                    UserControl2 userControl2 = new UserControl2(arg[1]);
-                                    Panel panel = new Panel();
-                                    panel.Height = userControl2.Height;
-                                    panel.Width = flowLayoutPanel2.ClientSize.Width;
-                                    panel.Controls.Add(userControl2);
-                                    
-                                    userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
-                                    flowLayoutPanel2.Controls.Add(panel);
-                                    flowLayoutPanel2.ScrollControlIntoView(panel);
+                                        UserControl2 userControl2 = new UserControl2(arg[1]);
+                                        Panel panel = new Panel();
+                                        panel.Height = userControl2.Height;
+                                        panel.Width = flowLayoutPanel2.ClientSize.Width;
+                                        panel.Controls.Add(userControl2);
+
+                                        userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
+                                        flowLayoutPanel2.Controls.Add(panel);
+                                        flowLayoutPanel2.ScrollControlIntoView(panel);
                                     });
                                 }
                                 catch (Exception ex)
@@ -772,28 +790,29 @@ namespace NT106_project
                             {
                                 try   // Use for your friend mess
                                 {
-                                    Invoke((MethodInvoker)delegate {
-                                    UserControl1 userControl1 = new UserControl1(arg[1]);
-                                    Panel panel = new Panel();
-                                    panel.Height = userControl1.Height;
-                                    panel.Width = flowLayoutPanel2.ClientSize.Width;
-                                    panel.Controls.Add(userControl1);
-                                  
-                                    userControl1.Location = new Point(2, 0);
-                                    flowLayoutPanel2.Controls.Add(panel);
-                                    flowLayoutPanel2.ScrollControlIntoView(panel);
+                                    Invoke((System.Windows.Forms.MethodInvoker)delegate
+                                    {
+                                        UserControl1 userControl1 = new UserControl1(arg[1]);
+                                        Panel panel = new Panel();
+                                        panel.Height = userControl1.Height;
+                                        panel.Width = flowLayoutPanel2.ClientSize.Width;
+                                        panel.Controls.Add(userControl1);
+
+                                        userControl1.Location = new Point(2, 0);
+                                        flowLayoutPanel2.Controls.Add(panel);
+                                        flowLayoutPanel2.ScrollControlIntoView(panel);
                                     });
                                 }
                                 catch (Exception ex)
                                 {
                                     MessageBox.Show($"An error occurred: {ex.Message}");
                                 }
-                            } 
-                                
+                            }
+
 
 
                         }
-                    }                     
+                    }
                 }
             }
             else if (check == 3) // forum chat 
@@ -810,16 +829,17 @@ namespace NT106_project
                             {
                                 try
                                 {
-                                    Invoke((MethodInvoker)delegate {
+                                    Invoke((System.Windows.Forms.MethodInvoker)delegate
+                                    {
                                         // Create a new user control
-                                    UserControl2 userControl2 = new UserControl2(arg[1]);
-                                    Panel panel = new Panel();
-                                    panel.Height = userControl2.Height;
-                                    panel.Width = flowLayoutPanel1.ClientSize.Width;
-                                    panel.Controls.Add(userControl2);
-                                    userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
-                                    flowLayoutPanel1.Controls.Add(panel);
-                                    flowLayoutPanel1.ScrollControlIntoView(panel);
+                                        UserControl2 userControl2 = new UserControl2(arg[1]);
+                                        Panel panel = new Panel();
+                                        panel.Height = userControl2.Height;
+                                        panel.Width = flowLayoutPanel1.ClientSize.Width;
+                                        panel.Controls.Add(userControl2);
+                                        userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
+                                        flowLayoutPanel1.Controls.Add(panel);
+                                        flowLayoutPanel1.ScrollControlIntoView(panel);
                                     });
                                 }
                                 catch (Exception ex)
@@ -831,16 +851,17 @@ namespace NT106_project
                             {
                                 try
                                 {
-                                    Invoke((MethodInvoker)delegate {
+                                    Invoke((System.Windows.Forms.MethodInvoker)delegate
+                                    {
                                         UserControl1 userControl1 = new UserControl1(arg[1]);
-                                    Panel panel = new Panel();
-                                    panel.Height = userControl1.Height;
-                                    panel.Width = flowLayoutPanel1.ClientSize.Width;
-                                    panel.Controls.Add(userControl1);
-                                    
-                                    userControl1.Location = new Point(2, 0);
-                                    flowLayoutPanel1.Controls.Add(panel);
-                                    flowLayoutPanel1.ScrollControlIntoView(panel);
+                                        Panel panel = new Panel();
+                                        panel.Height = userControl1.Height;
+                                        panel.Width = flowLayoutPanel1.ClientSize.Width;
+                                        panel.Controls.Add(userControl1);
+
+                                        userControl1.Location = new Point(2, 0);
+                                        flowLayoutPanel1.Controls.Add(panel);
+                                        flowLayoutPanel1.ScrollControlIntoView(panel);
                                     });
                                 }
                                 catch (Exception ex)
@@ -913,7 +934,7 @@ namespace NT106_project
                     if (checkfirstime)
                     {
                         check = 1;
-                       
+
 
                     }
                     else
@@ -938,7 +959,7 @@ namespace NT106_project
                     guna2Button4.BackColor = Color.Transparent;
                     guna2Button8.BackColor = Color.Transparent;
                     //  load data
-                    if(string.IsNullOrEmpty(obj.image))
+                    if (string.IsNullOrEmpty(obj.image))
                     {
                         byte[] image = Convert.FromBase64String(obj.image);
                         MemoryStream ms = new MemoryStream();
@@ -947,10 +968,10 @@ namespace NT106_project
                         ms.Dispose();
                         Userimage.Image = bm;
                     }
-                  
 
 
-                   
+
+
                     UserName.Text = obj.name;
                     Email.Text = obj.email;
                     Phone.Text = obj.phone;
@@ -1038,8 +1059,20 @@ namespace NT106_project
             }
         }
 
-       
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            AddEmojisToList();
+            var emojiPicker = new EmojiPickerForm(Smiles);
 
+            emojiPicker.EmojiSelected += EmojiPicker_EmojiSelected;
+
+            emojiPicker.Show();
+        }
+
+        private void EmojiPicker_EmojiSelected(object sender, string e)
+        {
+            guna2TextBox1.Text += e + " ";
+        }
 
 
 
