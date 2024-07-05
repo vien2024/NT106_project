@@ -383,20 +383,10 @@ namespace NT106_project
             datasending datasending = new datasending(Currentuser, "All", guna2TextBox1.Text, true, false);
             SendMessage(datasending);
 
-            UserControl2 userControl2 = new UserControl2(guna2TextBox1.Text);
-            Panel panel = new Panel();
-            panel.Height = userControl2.Height;
-            panel.Width = flowLayoutPanel1.ClientSize.Width;
-            panel.Controls.Add(userControl2);
-            MessageBox.Show(panel.Height.ToString());
-            MessageBox.Show(panel.Width.ToString());
-            userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
-            flowLayoutPanel1.Controls.Add(panel);
-
 
             // Optionally, clear the text from the textbox
             guna2TextBox1.Clear();
-            guna2TextBox1.Height = 48;
+            guna2TextBox1.Height = 37;
             System.Drawing.Point currentLocation = guna2TextBox1.Location;
             System.Drawing.Point newLocation = new System.Drawing.Point(currentLocation.X, 374);
             guna2TextBox1.Location = newLocation;
@@ -773,7 +763,7 @@ namespace NT106_project
                                         UserControl2 userControl2 = new UserControl2(arg[1]);
                                         Panel panel = new Panel();
                                         panel.Height = userControl2.Height;
-                                        panel.Width = flowLayoutPanel2.ClientSize.Width;
+                                        panel.Width = flowLayoutPanel2.ClientSize.Width - 5;
                                         panel.Controls.Add(userControl2);
 
                                         userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
@@ -795,7 +785,7 @@ namespace NT106_project
                                         UserControl1 userControl1 = new UserControl1(arg[1]);
                                         Panel panel = new Panel();
                                         panel.Height = userControl1.Height;
-                                        panel.Width = flowLayoutPanel2.ClientSize.Width;
+                                        panel.Width = flowLayoutPanel2.ClientSize.Width - 5;
                                         panel.Controls.Add(userControl1);
 
                                         userControl1.Location = new Point(2, 0);
@@ -835,7 +825,7 @@ namespace NT106_project
                                         UserControl2 userControl2 = new UserControl2(arg[1]);
                                         Panel panel = new Panel();
                                         panel.Height = userControl2.Height;
-                                        panel.Width = flowLayoutPanel1.ClientSize.Width;
+                                        panel.Width = flowLayoutPanel1.ClientSize.Width - 5;
                                         panel.Controls.Add(userControl2);
                                         userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
                                         flowLayoutPanel1.Controls.Add(panel);
@@ -856,7 +846,7 @@ namespace NT106_project
                                         UserControl1 userControl1 = new UserControl1(arg[1]);
                                         Panel panel = new Panel();
                                         panel.Height = userControl1.Height;
-                                        panel.Width = flowLayoutPanel1.ClientSize.Width;
+                                        panel.Width = flowLayoutPanel1.ClientSize.Width - 5;
                                         panel.Controls.Add(userControl1);
 
                                         userControl1.Location = new Point(2, 0);
@@ -1074,6 +1064,20 @@ namespace NT106_project
             guna2TextBox1.Text += e + " ";
         }
 
+        private void guna2Button7_Click(object sender, EventArgs e)
+        {
+
+            AddEmojisToList();
+            var emojiPicker = new EmojiPickerForm(Smiles);
+
+            emojiPicker.EmojiSelected += EmojiPicker_EmojiSelected2;
+
+            emojiPicker.Show();
+        }
+        private void EmojiPicker_EmojiSelected2(object sender, string e)
+        {
+            chatbox.Text += e + " ";
+        }
 
 
 

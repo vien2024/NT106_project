@@ -285,7 +285,7 @@ namespace NT106_project
                     if (data.USerid2 == "All")
                     {
                         listuser[client] = "All";
-                        string logpath = "D:\\K2-N2\\lap_trinh_mang_can_ban\\git\\filelog\\forum.txt";
+                        string logpath = "D:\\K2-N2\\lap_trinh_mang_can_ban\\git1\\NT106_project\\filelog\\forum.txt";
 
                         try
                         {
@@ -356,18 +356,15 @@ namespace NT106_project
                     {
                         if (data.USerid2 == "All")
                         {
-                            string logpath = "D:\\K2-N2\\lap_trinh_mang_can_ban\\git\\filelog\\forum.txt";
+                            string logpath = "D:\\K2-N2\\lap_trinh_mang_can_ban\\git1\\NT106_project\\filelog\\forum.txt";
                             string mess = $"{Userid1} && {data.Message} |";
                             insertdatatofile(mess, logpath);
                             foreach (Socket client1 in clientList)
-                            {   
-                                if (client1 != client && listuser[client1]=="All")
-                                {   
-                                    datasending data1 = new datasending("All",Userid1,data.Message, true);
-                                    SendData(client1, data1);
-                                   
-                                }
-                            }   
+                            {
+                                datasending data1 = new datasending("All", Userid1, mess, true);
+                                SendData(client1, data1);
+
+                            }
                         }
                         else 
                         {
@@ -379,8 +376,8 @@ namespace NT106_project
                             insertdatatofile(mess, path);
                             if (Userconectedlistid.ContainsKey(data.USerid2))
                             {
-                                datasending data1 = new datasending("Private",Userid1,data.Message, true);
-                                SendData(client, data1);
+                                datasending data1 = new datasending("Private", Userid1, mess, true);
+                                SendData(Userconectedlistid[data.USerid2], data1);
                             }
                         }
                     }    
