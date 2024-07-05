@@ -131,7 +131,7 @@ namespace NT106_project
             FirebaseResponse firebaseResponse3 = await client.SetTaskAsync("Userconnect/" + Currentuser, Userconnect);
             datasending data = new datasending(Currentuser, Userid2, true, true);
             SendMessage(data);
-            
+
         }
         // function to take userid from Name
         private async Task<string> GetUserIDFromName(string name)
@@ -366,18 +366,7 @@ namespace NT106_project
             datasending datasending = new datasending(Currentuser,"All",guna2TextBox1.Text,true,false);
             SendMessage(datasending);
            
-            UserControl2 userControl2 = new UserControl2(guna2TextBox1.Text);
-            Panel panel = new Panel();
-            panel.Height = userControl2.Height;
-            panel.Width = flowLayoutPanel1.ClientSize.Width;
-            panel.Controls.Add(userControl2);
-            MessageBox.Show(panel.Height.ToString());
-            MessageBox.Show(panel.Width.ToString());
-            userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
-            flowLayoutPanel1.Controls.Add(panel);
-
-
-            // Optionally, clear the text from the textbox
+          
             guna2TextBox1.Clear();
             guna2TextBox1.Height = 48;
             System.Drawing.Point currentLocation = guna2TextBox1.Location;
@@ -876,6 +865,8 @@ namespace NT106_project
             check = 1;
             loadfunction();
             // clear all data in chat box
+            flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel2.Controls.Clear();
         }
         // button to open forum chat
         private void guna2Button4_Click(object sender, EventArgs e)
@@ -884,6 +875,7 @@ namespace NT106_project
             check = 3;
             loadfunction();
             // clear all data in chat box
+            flowLayoutPanel2.Controls.Clear();
         }
         // button to open chat private
         private void guna2Button3_Click(object sender, EventArgs e)
@@ -891,6 +883,7 @@ namespace NT106_project
             check = 2;
             loadfunction();
             // clear all data in chat box
+            flowLayoutPanel1.Controls.Clear();
         }
 
 
@@ -938,7 +931,7 @@ namespace NT106_project
                     guna2Button4.BackColor = Color.Transparent;
                     guna2Button8.BackColor = Color.Transparent;
                     //  load data
-                    if(string.IsNullOrEmpty(obj.image))
+                    if(!string.IsNullOrEmpty(obj.image))
                     {
                         byte[] image = Convert.FromBase64String(obj.image);
                         MemoryStream ms = new MemoryStream();

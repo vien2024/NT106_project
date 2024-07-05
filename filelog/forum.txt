@@ -1,3 +1,11 @@
 ﻿deptrainhatlang_id && hello
 do you know me 
  |
+deptrainhatlang_id && hello |
+light_id && hi |
+light_id && hello |
+deptrainhatlang_id && hi |
+deptrainhatlang_id && hello |
+light_id && hello |
+deptrainhatlang_id && hi there |
+deptrainhatlang_id && hi there |

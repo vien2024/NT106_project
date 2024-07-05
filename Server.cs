@@ -168,7 +168,7 @@ namespace NT106_project
         // Receive 
         private void receive(Socket client)
         {   
-            MessageBox.Show("data's received");
+           
             StringBuilder sb = new StringBuilder();
             try
             {
@@ -235,9 +235,9 @@ namespace NT106_project
         // Process Received Data 
         private async void ProcessReceivedData(Socket client, datasending data)
         {
-                MessageBox.Show("data's processed");
+              
                 string Userid1 = data.USerid1;               
-                Userconectedlistid[Userid1] = client;
+                Userconectedlistid[Userid1] = client; // 
                 Userconectedlistid1[client] = Userid1;            
 
             // checkmessage is value to check that client is sending request or not false is client send request ìnformation to server(check last connect )
@@ -262,13 +262,13 @@ namespace NT106_project
                     if (Last_connected == "")
                     {
                         string mess = "None";
-                        datasending data1 = new datasending("None", "None", mess, false);
+                        datasending data1 = new datasending("None","None", mess, false);
                         SendData(client, data1);
                     }
                     else
                     {
-                        string mess = $"{Last_connected}";
-                        datasending data1 = new datasending("None", "None", mess, false);
+                        string mess = Last_connected;
+                        datasending data1 = new datasending("None","None", mess, false);
                         SendData(client, data1);
                     }
                
@@ -279,8 +279,8 @@ namespace NT106_project
             }
             else  // handle data  sending form client to client throught server
             {
-               if (data.Checkloadmessage)
-               {    
+               if (data.Checkloadmessage) // checkloadmessage = false client send mess  == true request to laod message from filelog
+                {    
 
                     if (data.USerid2 == "All")
                     {
@@ -360,13 +360,10 @@ namespace NT106_project
                             string mess = $"{Userid1} && {data.Message} |";
                             insertdatatofile(mess, logpath);
                             foreach (Socket client1 in clientList)
-                            {   
-                                if (client1 != client && listuser[client1]=="All")
-                                {   
-                                    datasending data1 = new datasending("All",Userid1,data.Message, true);
+                            {    
+                                    datasending data1 = new datasending("All",Userid1,mess, true);
                                     SendData(client1, data1);
                                    
-                                }
                             }   
                         }
                         else 
@@ -379,8 +376,8 @@ namespace NT106_project
                             insertdatatofile(mess, path);
                             if (Userconectedlistid.ContainsKey(data.USerid2))
                             {
-                                datasending data1 = new datasending("Private",Userid1,data.Message, true);
-                                SendData(client, data1);
+                                datasending data1 = new datasending("Private",Userid1,mess, true);
+                                SendData(Userconectedlistid[data.USerid2], data1);
                             }
                         }
                     }    
