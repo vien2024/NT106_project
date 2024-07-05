@@ -89,6 +89,7 @@ namespace NT106_project
         {
             var data = new Data
             {
+                image = "",
                 Userid = tbEmailSign.Text + "_id",
                 Username = tbEmailSign.Text,
                 Password = tbPassSign.Text,
@@ -98,6 +99,7 @@ namespace NT106_project
                 desc = "",
                 firstime = true,
                 verified = false,
+                sex = ""
             };
             // Đăng ký
             if (string.IsNullOrEmpty(tbEmailSign.Text) || string.IsNullOrEmpty(tbPassSign.Text) || string.IsNullOrEmpty(tbPassConfirmSign.Text) || string.IsNullOrEmpty(Email.Text))

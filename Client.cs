@@ -23,6 +23,7 @@ using System.Drawing.Imaging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Guna.UI2.WinForms;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace NT106_project
 {
 
@@ -745,7 +746,7 @@ namespace NT106_project
                         if (part.Contains("&&"))
                         {
                             string[] arg = part.Split("&&");
-                            if (arg[0] == Currentuser )
+                            if (arg[0].Trim() == Currentuser )
                             {
                                 try // use for your mess
                                 {
@@ -805,7 +806,7 @@ namespace NT106_project
                         if (part.Contains("&&"))
                         {
                             string[] arg = part.Split("&&");
-                            if (arg[0] == Currentuser)
+                            if (arg[0].Trim() == Currentuser)
                             {
                                 try
                                 {
@@ -912,6 +913,8 @@ namespace NT106_project
                     if (checkfirstime)
                     {
                         check = 1;
+                       
+
                     }
                     else
                     {
@@ -935,14 +938,19 @@ namespace NT106_project
                     guna2Button4.BackColor = Color.Transparent;
                     guna2Button8.BackColor = Color.Transparent;
                     //  load data
-                    byte[] image = Convert.FromBase64String(obj.image);
-                    MemoryStream ms = new MemoryStream();
-                    ms.Write(image, 0, Convert.ToInt32(image.Length));
-                    Bitmap bm = new Bitmap(ms, false);
-                    ms.Dispose();
+                    if(string.IsNullOrEmpty(obj.image))
+                    {
+                        byte[] image = Convert.FromBase64String(obj.image);
+                        MemoryStream ms = new MemoryStream();
+                        ms.Write(image, 0, Convert.ToInt32(image.Length));
+                        Bitmap bm = new Bitmap(ms, false);
+                        ms.Dispose();
+                        Userimage.Image = bm;
+                    }
+                  
 
 
-                    Userimage.Image = bm;
+                   
                     UserName.Text = obj.name;
                     Email.Text = obj.email;
                     Phone.Text = obj.phone;
@@ -950,7 +958,23 @@ namespace NT106_project
                     Sex.Text = obj.sex;
                     checkverify = obj.verified;
 
-
+                    FirebaseResponse firebaseResponse3 = await client.GetTaskAsync("Users/" + Currentuser);
+                    Data data3 = firebaseResponse3.ResultAs<Data>();
+                    var data = new Data
+                    {
+                        image = data3.image,
+                        name = UserName.Text,
+                        email = Email.Text,
+                        phone = Phone.Text,
+                        desc = Desc.Text,
+                        sex = Sex.Text,
+                        Username = data3.Username,
+                        Password = data3.Password,
+                        Userid = data3.Userid,
+                        firstime = false,
+                        verified = data3.verified
+                    };
+                    FirebaseResponse response2 = await client.UpdateTaskAsync("Users/" + Currentuser, data);
                     if (checkverify == true)
                     {
                         verifybtn.Hide();
