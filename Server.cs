@@ -379,9 +379,8 @@ namespace NT106_project
                             insertdatatofile(mess, path);
                             if (Userconectedlistid.ContainsKey(data.USerid2))
                             {
-                                Socket Usersent = Userconectedlistid[data.USerid2];
-                                datasending data1 = new datasending("Private",data.USerid1,data.Message, true);
-                                SendData(Usersent, data1);
+                                datasending data1 = new datasending("Private",Userid1,data.Message, true);
+                                SendData(client, data1);
                             }
                         }
                     }    

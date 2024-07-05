@@ -35,6 +35,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges50 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -81,12 +83,11 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges47 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges48 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges49 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             menulist = new FlowLayoutPanel();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button8 = new Guna.UI2.WinForms.Guna2Button();
             guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
@@ -124,7 +125,6 @@
             Userimage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             timer1 = new System.Windows.Forms.Timer(components);
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             menulist.SuspendLayout();
             guna2CustomGradientPanel1.SuspendLayout();
             guna2CustomGradientPanel2.SuspendLayout();
@@ -213,6 +213,29 @@
             guna2Button3.Size = new Size(74, 56);
             guna2Button3.TabIndex = 8;
             guna2Button3.Click += guna2Button3_Click;
+            // 
+            // guna2Button2
+            // 
+            guna2Button2.BackColor = Color.Transparent;
+            guna2Button2.CustomizableEdges = customizableEdges7;
+            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button2.FillColor = Color.Transparent;
+            guna2Button2.Font = new Font("Segoe UI", 9F);
+            guna2Button2.ForeColor = Color.Black;
+            guna2Button2.Image = Properties.Resources._360_F_413179058_KVgmeeNLlhgQyBkiieNCnTKCUL9MH9rS_removebg_preview;
+            guna2Button2.ImageSize = new Size(35, 35);
+            guna2Button2.Location = new Point(0, 387);
+            guna2Button2.Margin = new Padding(0, 218, 0, 0);
+            guna2Button2.Name = "guna2Button2";
+            guna2Button2.RightToLeft = RightToLeft.Yes;
+            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2Button2.Size = new Size(70, 56);
+            guna2Button2.TabIndex = 12;
+            guna2Button2.TextAlign = HorizontalAlignment.Left;
+            guna2Button2.Click += guna2Button8_Click;
             // 
             // guna2Button8
             // 
@@ -507,7 +530,7 @@
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.AutoScroll = true;
-            flowLayoutPanel2.BackColor = Color.White;
+            flowLayoutPanel2.BackColor = SystemColors.Control;
             flowLayoutPanel2.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel2.Location = new Point(255, 59);
@@ -866,29 +889,6 @@
             // 
             timer1.Interval = 60000;
             timer1.Tick += timer1_Tick;
-            // 
-            // guna2Button2
-            // 
-            guna2Button2.BackColor = Color.Transparent;
-            guna2Button2.CustomizableEdges = customizableEdges7;
-            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button2.FillColor = Color.Transparent;
-            guna2Button2.Font = new Font("Segoe UI", 9F);
-            guna2Button2.ForeColor = Color.Black;
-            guna2Button2.Image = Properties.Resources._360_F_413179058_KVgmeeNLlhgQyBkiieNCnTKCUL9MH9rS_removebg_preview;
-            guna2Button2.ImageSize = new Size(35, 35);
-            guna2Button2.Location = new Point(0, 387);
-            guna2Button2.Margin = new Padding(0, 218, 0, 0);
-            guna2Button2.Name = "guna2Button2";
-            guna2Button2.RightToLeft = RightToLeft.Yes;
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Button2.Size = new Size(70, 56);
-            guna2Button2.TabIndex = 12;
-            guna2Button2.TextAlign = HorizontalAlignment.Left;
-            guna2Button2.Click += guna2Button8_Click;
             // 
             // Client
             // 

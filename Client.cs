@@ -754,12 +754,12 @@ namespace NT106_project
                                     UserControl2 userControl2 = new UserControl2(arg[1]);
                                     Panel panel = new Panel();
                                     panel.Height = userControl2.Height;
-                                    panel.Width = flowLayoutPanel1.ClientSize.Width;
+                                    panel.Width = flowLayoutPanel2.ClientSize.Width;
                                     panel.Controls.Add(userControl2);
                                     
                                     userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
-                                    flowLayoutPanel1.Controls.Add(panel);
-                                    flowLayoutPanel1.ScrollControlIntoView(panel);
+                                    flowLayoutPanel2.Controls.Add(panel);
+                                    flowLayoutPanel2.ScrollControlIntoView(panel);
                                     });
                                 }
                                 catch (Exception ex)
@@ -775,12 +775,12 @@ namespace NT106_project
                                     UserControl1 userControl1 = new UserControl1(arg[1]);
                                     Panel panel = new Panel();
                                     panel.Height = userControl1.Height;
-                                    panel.Width = flowLayoutPanel1.ClientSize.Width;
+                                    panel.Width = flowLayoutPanel2.ClientSize.Width;
                                     panel.Controls.Add(userControl1);
                                   
                                     userControl1.Location = new Point(2, 0);
-                                    flowLayoutPanel1.Controls.Add(panel);
-                                    flowLayoutPanel1.ScrollControlIntoView(panel);
+                                    flowLayoutPanel2.Controls.Add(panel);
+                                    flowLayoutPanel2.ScrollControlIntoView(panel);
                                     });
                                 }
                                 catch (Exception ex)
