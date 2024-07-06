@@ -17,8 +17,8 @@ namespace NT106_project
     public partial class UserControl2 : UserControl
     {
         private const int MaxWidth = 387;
-        private const int UppercaseWidth = 27;
-        private const int LowercaseWidth = 17;
+        private const int UppercaseWidth = 25;
+        private const int LowercaseWidth = 15;
         string message;
 
         public UserControl2(string mess)

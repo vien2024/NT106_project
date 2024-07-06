@@ -159,7 +159,6 @@ namespace NT106_project
                 tbEmailSign.Clear();
                 tbPassSign.Clear();
                 tbPassConfirmSign.Clear();
-                MessageBox.Show("Sign Up Success"); // make notice for success
                 showlogin();
 
             }
@@ -275,10 +274,7 @@ namespace NT106_project
         {
             client = new FireSharp.FirebaseClient(ifc);
 
-            if (client == null)
-            {
-                MessageBox.Show("There was a problem in connecting to the server");
-            }
+          
         }
     }
 }

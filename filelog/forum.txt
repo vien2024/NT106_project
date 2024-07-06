@@ -1,4 +1,3 @@
-﻿deptrainhatlang_id && hello
-do you know me 
- |
-light_id && 👲  |
+﻿
+light1_id &&hello|
+light1_id &&hello anyone here|

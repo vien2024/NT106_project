@@ -97,7 +97,7 @@ namespace NT106_project
         // load data to datagridview
         private async Task LoadDataIntoDataGridView()
         {
-            MessageBox.Show("LoadDataIntoDataGridView");
+           
             var names = await GetNamesFromFirebaseAsync();
             // Ensure we update the DataGridView on the UI thread
             if (userlist.InvokeRequired)
@@ -115,7 +115,7 @@ namespace NT106_project
         // get name list from firebase
         private async Task<List<string>> GetNamesFromFirebaseAsync()
         {
-            MessageBox.Show("GetNamesFromFirebaseAsync");
+           
             var firebaseClient = new Firebase.Database.FirebaseClient("https://appchatdizz-default-rtdb.firebaseio.com/");
 
             var data = await firebaseClient
@@ -188,7 +188,7 @@ namespace NT106_project
             }
 
             // If no cell is found with the value "string a", display a message or handle accordingly
-            MessageBox.Show("Cell with value 'string a' not found.");
+           
         }
 
         // function for writing chat
@@ -284,10 +284,9 @@ namespace NT106_project
             UserControl2 userControl2 = new UserControl2(chatbox.Text);
             Panel panel = new Panel();
             panel.Height = userControl2.Height;
-            panel.Width = flowLayoutPanel2.ClientSize.Width;
+            panel.Width = flowLayoutPanel2.ClientSize.Width -15;
             panel.Controls.Add(userControl2);
-            MessageBox.Show(panel.Height.ToString());
-            MessageBox.Show(panel.Width.ToString());
+          
             userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
             flowLayoutPanel2.Controls.Add(panel);
 
@@ -405,10 +404,19 @@ namespace NT106_project
         // save button function to update user data
         private async void savebtn_Click(object sender, EventArgs e)
         {
-            MemoryStream ms = new MemoryStream();
-            Userimage.Image.Save(ms, ImageFormat.Jpeg);
-            byte[] img = ms.ToArray();
-            string output = Convert.ToBase64String(img);
+            string output;
+            if (Userimage.Image != null)
+            {
+                MemoryStream ms = new MemoryStream();
+                Userimage.Image.Save(ms, ImageFormat.Jpeg);
+
+                byte[] img = ms.ToArray();
+                output = Convert.ToBase64String(img);
+            }
+            else
+            {
+                output = "";
+            }
 
             FirebaseResponse response3 = await client.GetTaskAsync("Users/" + Currentuser);
             Data obj3 = response3.ResultAs<Data>();
@@ -442,11 +450,7 @@ namespace NT106_project
             }
             else
             {
-                if (checkverify != true)
-                {
-                    MessageBox.Show("Please verify your email first!");
-                }
-                else
+                if (checkverify == true)
                 {
                     checksave = true;
                 }
@@ -454,7 +458,7 @@ namespace NT106_project
             if (checksave == true)
             {
                 FirebaseResponse response = await client.UpdateTaskAsync("Users/" + Currentuser, data);
-                MessageBox.Show("Data Updated Successfully");
+               
             }
 
         }
@@ -462,12 +466,9 @@ namespace NT106_project
         // change password button function
         private async void changepasswordbtn_Click(object sender, EventArgs e)
         {
-            if (checkverify != true)
+            if (checkverify == true)
             {
-                MessageBox.Show("Please verify your email first!");
-            }
-            else
-            {
+           
                 if (string.IsNullOrEmpty(Current_Password.Text) || string.IsNullOrEmpty(New_Password.Text))
                 {
                     if (string.IsNullOrEmpty(Current_Password.Text))
@@ -513,7 +514,7 @@ namespace NT106_project
                 changepw.sex = obj2.sex;
                 changepw.Username = obj2.Username;
                 FirebaseResponse response2 = await client.UpdateTaskAsync("Users/" + Currentuser, changepw);
-                MessageBox.Show("Data Updated Successfully");
+               
             }
         }
 
@@ -763,7 +764,7 @@ namespace NT106_project
                                         UserControl2 userControl2 = new UserControl2(arg[1]);
                                         Panel panel = new Panel();
                                         panel.Height = userControl2.Height;
-                                        panel.Width = flowLayoutPanel2.ClientSize.Width - 5;
+                                        panel.Width = flowLayoutPanel2.ClientSize.Width - 15;
                                         panel.Controls.Add(userControl2);
 
                                         userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
@@ -785,7 +786,7 @@ namespace NT106_project
                                         UserControl1 userControl1 = new UserControl1(arg[1]);
                                         Panel panel = new Panel();
                                         panel.Height = userControl1.Height;
-                                        panel.Width = flowLayoutPanel2.ClientSize.Width - 5;
+                                        panel.Width = flowLayoutPanel2.ClientSize.Width - 15;
                                         panel.Controls.Add(userControl1);
 
                                         userControl1.Location = new Point(2, 0);
@@ -825,7 +826,7 @@ namespace NT106_project
                                         UserControl2 userControl2 = new UserControl2(arg[1]);
                                         Panel panel = new Panel();
                                         panel.Height = userControl2.Height;
-                                        panel.Width = flowLayoutPanel1.ClientSize.Width - 5;
+                                        panel.Width = flowLayoutPanel1.ClientSize.Width - 15;
                                         panel.Controls.Add(userControl2);
                                         userControl2.Location = new Point(panel.Width - userControl2.Width - 2, 0);
                                         flowLayoutPanel1.Controls.Add(panel);
@@ -846,7 +847,7 @@ namespace NT106_project
                                         UserControl1 userControl1 = new UserControl1(arg[1]);
                                         Panel panel = new Panel();
                                         panel.Height = userControl1.Height;
-                                        panel.Width = flowLayoutPanel1.ClientSize.Width - 5;
+                                        panel.Width = flowLayoutPanel1.ClientSize.Width - 15;
                                         panel.Controls.Add(userControl1);
 
                                         userControl1.Location = new Point(2, 0);
@@ -887,6 +888,8 @@ namespace NT106_project
             check = 1;
             loadfunction();
             // clear all data in chat box
+            flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel2.Controls.Clear();
         }
         // button to open forum chat
         private void guna2Button4_Click(object sender, EventArgs e)
@@ -895,6 +898,7 @@ namespace NT106_project
             check = 3;
             loadfunction();
             // clear all data in chat box
+            flowLayoutPanel2.Controls.Clear();
         }
         // button to open chat private
         private void guna2Button3_Click(object sender, EventArgs e)
@@ -902,6 +906,7 @@ namespace NT106_project
             check = 2;
             loadfunction();
             // clear all data in chat box
+            flowLayoutPanel1.Controls.Clear();
         }
 
 
@@ -909,10 +914,7 @@ namespace NT106_project
         {
             client = new FireSharp.FirebaseClient(ifc);
 
-            if (client == null)
-            {
-                MessageBox.Show("There was a problem in connecting to the server");
-            }
+           
 
             FirebaseResponse response = await client.GetTaskAsync("Users/" + Currentuser);
             Data obj = response.ResultAs<Data>();
@@ -949,7 +951,7 @@ namespace NT106_project
                     guna2Button4.BackColor = Color.Transparent;
                     guna2Button8.BackColor = Color.Transparent;
                     //  load data
-                    if (string.IsNullOrEmpty(obj.image))
+                    if (!string.IsNullOrEmpty(obj.image))
                     {
                         byte[] image = Convert.FromBase64String(obj.image);
                         MemoryStream ms = new MemoryStream();

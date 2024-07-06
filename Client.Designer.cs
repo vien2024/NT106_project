@@ -326,10 +326,10 @@
             guna2CustomGradientPanel3.CustomizableEdges = customizableEdges17;
             guna2CustomGradientPanel3.Dock = DockStyle.Right;
             guna2CustomGradientPanel3.FillColor = Color.Blue;
-            guna2CustomGradientPanel3.Location = new Point(1, 0);
+            guna2CustomGradientPanel3.Location = new Point(0, 0);
             guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
             guna2CustomGradientPanel3.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2CustomGradientPanel3.Size = new Size(726, 451);
+            guna2CustomGradientPanel3.Size = new Size(727, 451);
             guna2CustomGradientPanel3.TabIndex = 19;
             // 
             // guna2Button6

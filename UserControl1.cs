@@ -14,7 +14,7 @@ namespace NT106_project
     {
 
         private const int MaxWidth = 387;
-        private const int UppercaseWidth = 27;
+        private const int UppercaseWidth = 25;
         private const int LowercaseWidth = 15;
         string message;
         public UserControl1(string Mess )

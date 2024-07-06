@@ -77,7 +77,7 @@ namespace NT106_project
         {
             try
             {   
-                MessageBox.Show("Server started");
+              
                 server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint iep = new IPEndPoint(IPAddress.Any, 9999);
                 server.Bind(iep);
@@ -102,7 +102,7 @@ namespace NT106_project
         // Accept Clients
         private void AcceptClients()
         {   
-            MessageBox.Show("Server is now accepting client");
+          
             try
             {
                 server.Listen(10);
@@ -139,7 +139,7 @@ namespace NT106_project
         // send function ...................................................................................................................................
         private void SendData(Socket client, datasending data)
         {   
-            MessageBox.Show("data's sent");
+          
             try
             {
                 string jsonString = JsonSerializer.Serialize(data);
@@ -168,7 +168,6 @@ namespace NT106_project
         // Receive 
         private void receive(Socket client)
         {   
-            MessageBox.Show("data's received");
             StringBuilder sb = new StringBuilder();
             try
             {
@@ -235,7 +234,7 @@ namespace NT106_project
         // Process Received Data 
         private async void ProcessReceivedData(Socket client, datasending data)
         {
-                MessageBox.Show("data's processed");
+    
                 string Userid1 = data.USerid1;               
                 Userconectedlistid[Userid1] = client;
                 Userconectedlistid1[client] = Userid1;            
@@ -357,7 +356,7 @@ namespace NT106_project
                         if (data.USerid2 == "All")
                         {
                             string logpath = "D:\\K2-N2\\lap_trinh_mang_can_ban\\git1\\NT106_project\\filelog\\forum.txt";
-                            string mess = $"{Userid1} && {data.Message} |";
+                            string mess = $"{Userid1} &&{data.Message}|";
                             insertdatatofile(mess, logpath);
                             foreach (Socket client1 in clientList)
                             {
@@ -372,7 +371,7 @@ namespace NT106_project
                             FirebaseResponse firebaseResponse2 = await firebaseClient.GetTaskAsync("Filelog/" + a);
                             FileLogdatabase fileLog = firebaseResponse2.ResultAs<FileLogdatabase>();
                             string path = fileLog.path;
-                            string mess = $"{Userid1} && {data.Message} |";
+                            string mess = $"{Userid1} &&{data.Message}|";
                             insertdatatofile(mess, path);
                             if (Userconectedlistid.ContainsKey(data.USerid2))
                             {

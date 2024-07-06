@@ -88,6 +88,7 @@
             verified_code.ShadowDecoration.CustomizableEdges = customizableEdges4;
             verified_code.Size = new Size(286, 47);
             verified_code.TabIndex = 1;
+            verified_code.Click += verified_code_Click;
             // 
             // guna2HtmlLabel1
             // 
